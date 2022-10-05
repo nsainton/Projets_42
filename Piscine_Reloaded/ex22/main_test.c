@@ -1,29 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_ft.c                                            :+:      :+:    :+:   */
+/*   test.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nsainton <nsainton@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/05 13:28:07 by nsainton          #+#    #+#             */
-/*   Updated: 2022/10/05 18:34:55 by nsainton         ###   ########.fr       */
+/*   Created: 2022/10/05 19:30:41 by nsainton          #+#    #+#             */
+/*   Updated: 2022/10/05 19:33:42 by nsainton         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-void	ft_ft(int *nbr)
-{
-	*nbr = 42;
-}
-
+#include "ft_abs.h"
 #include <stdio.h>
 
 int	main(void)
 {
-	int	nbr;
-	int	*p;
-
-	p = &nbr;
-	ft_ft(p);
-	printf("Voici la valeur contenur dans le nombre : %d\n", nbr);
+	printf("%d %d %d %d\n", ABS(0), ABS(-2), ABS(3 - 4), ABS(9));
 	return (0);
 }

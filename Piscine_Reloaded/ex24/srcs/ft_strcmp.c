@@ -1,29 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_ft.c                                            :+:      :+:    :+:   */
+/*   ft_strcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nsainton <nsainton@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/05 13:28:07 by nsainton          #+#    #+#             */
-/*   Updated: 2022/10/05 18:34:55 by nsainton         ###   ########.fr       */
+/*   Created: 2022/10/05 23:08:26 by nsainton          #+#    #+#             */
+/*   Updated: 2022/10/05 23:12:15 by nsainton         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-void	ft_ft(int *nbr)
+#include "../includes/ft.h"
+
+int	ft_strcmp(char *s1, char *s2)
 {
-	*nbr = 42;
-}
+	int		i;
+	char	stop;
 
-#include <stdio.h>
-
-int	main(void)
-{
-	int	nbr;
-	int	*p;
-
-	p = &nbr;
-	ft_ft(p);
-	printf("Voici la valeur contenur dans le nombre : %d\n", nbr);
-	return (0);
+	if (s1 == NULL || s2 == NULL)
+		return (0);
+	stop = 1;
+	i = 0;
+	while (*(s1 + i) && *(s2 + i) && stop)
+	{
+		if (*(s1 + i) != *(s2 + i))
+		{
+			stop = 0;
+			i --;
+		}
+		i ++;
+	}
+	return ((unsigned int)*(s1 + i) - \
+	(unsigned int)*(s2 + i));
 }

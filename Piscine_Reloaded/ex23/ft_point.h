@@ -1,29 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_ft.c                                            :+:      :+:    :+:   */
+/*   ft_point.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nsainton <nsainton@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/05 13:28:07 by nsainton          #+#    #+#             */
-/*   Updated: 2022/10/05 18:34:55 by nsainton         ###   ########.fr       */
+/*   Created: 2022/10/05 19:39:14 by nsainton          #+#    #+#             */
+/*   Updated: 2022/10/05 19:50:53 by nsainton         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-void	ft_ft(int *nbr)
+#ifndef FT_POINT_H
+# define FT_POINT_H
+
+typedef struct s_point
 {
-	*nbr = 42;
-}
+	int	x;
+	int	y;
+}				t_point;
 
-#include <stdio.h>
+void	set_point(t_point *point);
 
-int	main(void)
-{
-	int	nbr;
-	int	*p;
-
-	p = &nbr;
-	ft_ft(p);
-	printf("Voici la valeur contenur dans le nombre : %d\n", nbr);
-	return (0);
-}
+#endif

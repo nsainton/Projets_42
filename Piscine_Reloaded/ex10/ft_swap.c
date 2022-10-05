@@ -6,7 +6,7 @@
 /*   By: nsainton <nsainton@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/05 13:32:29 by nsainton          #+#    #+#             */
-/*   Updated: 2022/10/05 13:52:43 by nsainton         ###   ########.fr       */
+/*   Updated: 2022/10/05 18:36:23 by nsainton         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ void	ft_swap(int *a, int *b)
 }
 
 #include <stdio.h>
+
 int	main(void)
 {
 	int	a;

@@ -6,7 +6,7 @@
 /*   By: nsainton <nsainton@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/05 13:53:45 by nsainton          #+#    #+#             */
-/*   Updated: 2022/10/05 14:01:13 by nsainton         ###   ########.fr       */
+/*   Updated: 2022/10/05 18:35:08 by nsainton         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ void	ft_div_mod(int a, int b, int *div, int *mod)
 }
 
 #include <stdio.h>
+
 int	main(void)
 {
 	int	a;

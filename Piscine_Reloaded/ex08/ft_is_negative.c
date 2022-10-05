@@ -6,7 +6,7 @@
 /*   By: nsainton <nsainton@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/05 13:22:53 by nsainton          #+#    #+#             */
-/*   Updated: 2022/10/05 13:26:03 by nsainton         ###   ########.fr       */
+/*   Updated: 2022/10/05 18:34:40 by nsainton         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ void	ft_is_negative(int n)
 }
 
 #include <stdlib.h>
+
 int	main(int ac, char **av)
 {
 	int	i;

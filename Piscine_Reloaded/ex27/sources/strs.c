@@ -1,29 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_ft.c                                            :+:      :+:    :+:   */
+/*   strs.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nsainton <nsainton@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/05 13:28:07 by nsainton          #+#    #+#             */
-/*   Updated: 2022/10/05 18:34:55 by nsainton         ###   ########.fr       */
+/*   Created: 2022/10/06 00:51:49 by nsainton          #+#    #+#             */
+/*   Updated: 2022/10/06 00:56:13 by nsainton         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-void	ft_ft(int *nbr)
+#include "strs.h"
+
+int	ft_strlen(char *str)
 {
-	*nbr = 42;
+	int	i;
+
+	if (str == NULL)
+		return (0);
+	i = 0;
+	while (*(str + i))
+		i ++;
+	return (i);
 }
 
-#include <stdio.h>
-
-int	main(void)
+void	ft_putstr(int fd, char *str)
 {
-	int	nbr;
-	int	*p;
-
-	p = &nbr;
-	ft_ft(p);
-	printf("Voici la valeur contenur dans le nombre : %d\n", nbr);
-	return (0);
+	if (str == NULL)
+		return ;
+	write(fd, str, ft_strlen(str));
 }

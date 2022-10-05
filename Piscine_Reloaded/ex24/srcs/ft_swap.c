@@ -1,29 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_ft.c                                            :+:      :+:    :+:   */
+/*   ft_swap.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nsainton <nsainton@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/05 13:28:07 by nsainton          #+#    #+#             */
-/*   Updated: 2022/10/05 18:34:55 by nsainton         ###   ########.fr       */
+/*   Created: 2022/10/05 22:38:40 by nsainton          #+#    #+#             */
+/*   Updated: 2022/10/05 22:51:33 by nsainton         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-void	ft_ft(int *nbr)
+#include "../includes/ft.h"
+
+void	ft_swap(int *a, int *b)
 {
-	*nbr = 42;
-}
+	int	tmp;
 
-#include <stdio.h>
-
-int	main(void)
-{
-	int	nbr;
-	int	*p;
-
-	p = &nbr;
-	ft_ft(p);
-	printf("Voici la valeur contenur dans le nombre : %d\n", nbr);
-	return (0);
+	tmp = *a;
+	*a = *b;
+	*b = tmp;
 }
