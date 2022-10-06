@@ -1,0 +1,12 @@
+# env file for the colors #
+	.env
+
+# MacOs generated folders #
+	.DS_Store
+	*.dSYM
+
+# Objects files #
+	*.o
+
+# Vim swap files #
+	*.swp
