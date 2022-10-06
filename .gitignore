@@ -1,15 +1,15 @@
 # env file for the colors #
-	.env
+.env
 
 # MacOs generated folders #
-	.DS_Store
-	*.dSYM
+.DS_Store
+*.dSYM
 
 # Objects files #
-	*.o
+*.o
 
 # Vim swap files #
-	*.swp
+*.swp
 
 # Executable files #
-	*.out
+*.out
