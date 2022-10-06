@@ -13,3 +13,6 @@
 
 # Executable files #
 *.out
+
+# Test file #
+main.c
