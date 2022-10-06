@@ -1,5 +1,5 @@
 # env file for the colors #
-	*.env
+	.env
 
 # MacOs generated folders #
 	.DS_Store
