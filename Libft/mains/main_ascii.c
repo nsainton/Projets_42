@@ -1,24 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   libft.h                                            :+:      :+:    :+:   */
+/*   main_ascii.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nsainton <nsainton@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/06 19:32:01 by nsainton          #+#    #+#             */
-/*   Updated: 2022/10/06 20:12:40 by nsainton         ###   ########.fr       */
+/*   Created: 2022/10/06 19:44:18 by nsainton          #+#    #+#             */
+/*   Updated: 2022/10/08 09:47:29 by nsainton         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIBFT_H
-# define LIBFT_H
+#include <stdio.h>
+#include "../includes/libft.h"
 
-int	ft_isalpha(int c);
+int	main(int ac, char **av)
+{
+	int	i;
 
-int	ft_isdigit(int c);
-
-int	ft_isalnum(int c);
-
-int	ft_isascii(int c);
-
-#endif
+	i = 0;
+	while (i < ac)
+	{
+		printf("%d\n", ft_isascii(*(*(av + i))));
+		i ++;
+	}
+	return (0);
+}
