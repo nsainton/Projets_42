@@ -1,30 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memcpy.c                                        :+:      :+:    :+:   */
+/*   main_strlcpy.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nsainton <nsainton@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/09 13:44:46 by nsainton          #+#    #+#             */
-/*   Updated: 2022/10/11 12:52:00 by nsainton         ###   ########.fr       */
+/*   Created: 2022/10/11 14:38:35 by nsainton          #+#    #+#             */
+/*   Updated: 2022/10/11 16:15:47 by nsainton         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/libft.h"
+#include <stdio.h>
 
-void	*ft_memcpy(void *dest, const void *src, size_t n)
+int	main(int ac, char **av)
 {
-	size_t				i;
+	char	test[100];
+	int		i;
+	int		length;
 
-	if (dest == NULL)
-		return (NULL);
-	if (src == NULL)
-		return (dest);
 	i = 0;
-	while (i < n)
+	while(i < ac)
 	{
-		*((char *)(dest + i)) = *((char *)(src + i));
+	/*
+		length = strlcpy(test, *(av + i));
+		printf("Voici la copie réalisée par strlcpy : \"%s\"", test);
+		printf(" et le nombre renvoyé : %d\n", length);
+	*/
+		length = ft_strlcpy(test, *(av + i), 0);
+		printf("Voici la copie réalisée par ft_strlcpy : \"%s\"", test);
+		printf(" et le nombre renvoyé : %d\n", length);
 		i ++;
 	}
-	return (dest);
+	return (0);
 }

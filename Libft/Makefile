@@ -6,7 +6,7 @@
 #    By: nsainton <nsainton@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/06 17:45:33 by nsainton          #+#    #+#              #
-#    Updated: 2022/10/08 16:02:02 by nsainton         ###   ########.fr        #
+#    Updated: 2022/10/11 12:26:08 by nsainton         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -68,5 +68,8 @@ git:
 	git commit
 	git push origin main
 
+getsrcs:
+	echo $(SRCS_NAMES) > srcs
+
 .SILENT:
-.PHONY: all clean fclean re git
+.PHONY: all clean fclean re git getsrcs
