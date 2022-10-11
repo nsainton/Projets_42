@@ -6,7 +6,7 @@
 #    By: nsainton <nsainton@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/06 17:45:33 by nsainton          #+#    #+#              #
-#    Updated: 2022/10/06 18:43:32 by nsainton         ###   ########.fr        #
+#    Updated: 2022/10/08 16:02:02 by nsainton         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -55,11 +55,13 @@ $(OBJS_DIR):
 
 clean:
 	rm -rf $(OBJS_DIR)
-	echo -e "\e$(GREEN)make clean done\e$(RESET)"
+	echo -e "\e$(RED)Objects directory\e$(GREEN) has been successfully removed\e$(RESET)"
 
 fclean: clean
 	rm -f $(NAME)
-	echo -e "\e$(YELLOW)$(NAME)\e$(CYAN) has been successfully remnoved\e$(RESET)"
+	echo -e "\e$(YELLOW)$(NAME)\e$(CYAN) has been successfully removed\e$(RESET)"
+
+re: fclean all
 
 git:
 	git add --all
