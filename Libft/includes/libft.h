@@ -45,6 +45,8 @@ char	*ft_strrchr(const char *s, int c);
 
 char	*ft_strnstr(const char *s1, const char *s2, size_t n);
 
+char	*ft_strdup(const char *s);
+
 void	*ft_memset(void *b, int c, size_t len);
 
 void	ft_bzero(void *s, size_t n);
