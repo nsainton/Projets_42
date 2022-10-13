@@ -6,7 +6,7 @@
 #    By: nsainton <nsainton@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/06 17:45:33 by nsainton          #+#    #+#              #
-#    Updated: 2022/10/11 12:26:08 by nsainton         ###   ########.fr        #
+#    Updated: 2022/10/13 11:53:25 by nsainton         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -66,7 +66,6 @@ re: fclean all
 git:
 	git add --all
 	git commit
-	git push origin main
 
 getsrcs:
 	echo $(SRCS_NAMES) > srcs
