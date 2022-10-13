@@ -6,7 +6,7 @@
 /*   By: nsainton <nsainton@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/13 13:46:03 by nsainton          #+#    #+#             */
-/*   Updated: 2022/10/13 14:02:46 by nsainton         ###   ########.fr       */
+/*   Updated: 2022/10/13 14:12:08 by nsainton         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,6 @@ static void	ft_test(const char *s1, const char *set)
 int	main(void)
 {
 	ft_test("       BONJOUR   !!!!!    j        ", " ");
-	/*
 	ft_test("tttttttBonjourttttttt", "t");
 	ft_test("BONJOUR_____", "_");
 	ft_test("bonjour comnment ca va ??  ads", "bonjour??");
@@ -44,6 +43,5 @@ int	main(void)
 	ft_test("BONJOUR", NULL);
 	ft_test(NULL, "string");
 	ft_test(NULL, NULL);
-	*/
 	return (0);
 }

@@ -6,28 +6,26 @@
 /*   By: nsainton <nsainton@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/13 13:13:44 by nsainton          #+#    #+#             */
-/*   Updated: 2022/10/13 13:58:02 by nsainton         ###   ########.fr       */
+/*   Updated: 2022/10/13 14:11:55 by nsainton         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/libft.h"
-#include <stdio.h>
 
 static	int	ft_in(char c, char const *set)
 {
 	size_t	i;
+	char	test;
 
 	i = 0;
-	while (*(set + i) != c)
+	test = *(set + i);
+	while (test && test != c)
 	{
-		printf("char : %c and ref : %c\n", *(set + i), c);
 		i ++;
+		test = *(set + i);
 	}
-	if (*(set + i))
-	{
-		printf("OK ---- REF : %c ---- CHAR : %c\n", c, *(set + i));
+	if (test)
 		return (1);
-	}
 	return (0);
 }
 
@@ -48,7 +46,7 @@ char	*ft_strtrim(char const *s1, char const *set)
 	end = start;
 	while (*(s1 + i))
 	{
-		if (ft_in(*(s1 + i), set))
+		if (!ft_in(*(s1 + i), set))
 			end = i;
 		i ++;
 	}
