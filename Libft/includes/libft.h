@@ -6,7 +6,7 @@
 /*   By: nsainton <nsainton@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/06 19:32:01 by nsainton          #+#    #+#             */
-/*   Updated: 2022/10/14 14:53:14 by nsainton         ###   ########.fr       */
+/*   Updated: 2022/10/14 16:12:30 by nsainton         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,4 +69,5 @@ void	*ft_memchr(const void *s, int c, size_t n);
 
 void	*ft_calloc(size_t nmemb, size_t size);
 
+void	ft_striteri(char *s, void (*f) (unsigned int, char *));
 #endif
