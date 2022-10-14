@@ -6,7 +6,7 @@
 /*   By: nsainton <nsainton@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/13 14:17:35 by nsainton          #+#    #+#             */
-/*   Updated: 2022/10/14 13:33:23 by nsainton         ###   ########.fr       */
+/*   Updated: 2022/10/14 13:53:49 by nsainton         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,9 +35,9 @@ static void	ft_find_bounds(const char *s, char c, size_t *start, size_t *end)
 
 	i = 0;
 	j = 0;
-	while (*(s + i) == c)
+	while (*(s + i) && *(s + i) == c)
 		i ++;
-	while (*(s + i + j) != c)
+	while (*(s + i + j) && *(s + i + j) != c)
 		j ++;
 	*start = i;
 	*end = j;
@@ -51,7 +51,7 @@ static int	ft_split_rec(const char *s, char c, char ***nt, size_t index)
 	ft_find_bounds(s, c, &start, &end);
 	if (! (start || end))
 	{
-		*nt = (char **)malloc((index + 1) * sizeof(**nt));
+		*nt = (char **)malloc((index + 1) * sizeof(char *));
 		if (*nt == NULL)
 			return (0);
 		*(*nt + index) = NULL;
