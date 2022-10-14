@@ -6,17 +6,20 @@
 /*   By: nsainton <nsainton@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/14 14:02:18 by nsainton          #+#    #+#             */
-/*   Updated: 2022/10/14 14:53:54 by nsainton         ###   ########.fr       */
+/*   Updated: 2022/10/14 15:35:25 by nsainton         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/libft.h"
+#include <stdio.h>
 
 static size_t	ft_digits(int n)
 {
 	unsigned int	nbr;
 	size_t			dig;
 
+	if (! n)
+		return (1);
 	dig = 0;
 	if (n < 0)
 	{
@@ -27,7 +30,7 @@ static size_t	ft_digits(int n)
 		nbr = (unsigned int)n;
 	while (nbr)
 	{
-		nbr %= 10;
+		nbr /= 10;
 		dig ++;
 	}
 	return (dig);
@@ -65,6 +68,7 @@ char	*ft_itoa(int n)
 	int		index;
 
 	dig = ft_digits(n);
+	printf("digs : %ld\n", dig);
 	number = (char *)ft_calloc(dig + 1, sizeof(*number));
 	if (number == NULL)
 		return (NULL);
