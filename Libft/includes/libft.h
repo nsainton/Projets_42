@@ -6,7 +6,7 @@
 /*   By: nsainton <nsainton@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/06 19:32:01 by nsainton          #+#    #+#             */
-/*   Updated: 2022/10/14 20:28:24 by nsainton         ###   ########.fr       */
+/*   Updated: 2022/10/14 20:41:08 by nsainton         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,4 +76,6 @@ void	ft_putchar_fd(char c, int fd);
 void	ft_putstr_fd(char *s, int fd);
 
 void	ft_putendl_fd(char *s, int fd);
+
+void	ft_putnbr_fd(int n, int fd);
 #endif
