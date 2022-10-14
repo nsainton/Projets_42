@@ -6,7 +6,7 @@
 /*   By: nsainton <nsainton@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/14 16:14:07 by nsainton          #+#    #+#             */
-/*   Updated: 2022/10/14 16:21:28 by nsainton         ###   ########.fr       */
+/*   Updated: 2022/10/14 17:44:24 by nsainton         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ static void	f(unsigned int a, char *s)
 {
 	if (s == NULL)
 		return ;
-	*(s + a) = 100 + (*(s + a) % 20);
+	*(s + a) = 'n';
 }
 
 static void	ft_test(char *s, void (*f) (unsigned int, char *))
