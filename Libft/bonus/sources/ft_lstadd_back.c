@@ -1,26 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   libft_bonus.h                                      :+:      :+:    :+:   */
+/*   ft_lstadd_back.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nsainton <nsainton@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/15 15:15:47 by nsainton          #+#    #+#             */
-/*   Updated: 2022/10/15 20:10:07 by nsainton         ###   ########.fr       */
+/*   Created: 2022/10/15 20:03:27 by nsainton          #+#    #+#             */
+/*   Updated: 2022/10/15 20:08:15 by nsainton         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIBFT_BONUS_H
-# define LIBFT_BONUS_H
-# include "libft.h"
+#include "../../includes/libft_bonus.h"
 
-int		ft_lstsize(t_list *lst);
+void	ft_lstadd_back(t_list **lst, t_list *new)
+{
+	t_list	*ptr;
 
-void	ft_lstadd_front(t_list **lst, t_list *new);
-
-void	ft_lstadd_back(t_list **lst, t_list *new);
-
-t_list	*ft_lstnew(void *content);
-
-t_list	*ft_lstlast(t_list *lst);
-#endif
+	if (lst == NULL)
+		return ;
+	ptr = ft_lstlast(*lst);
+	ptr->next = new;
+}
