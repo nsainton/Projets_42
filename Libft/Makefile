@@ -6,7 +6,7 @@
 #    By: nsainton <nsainton@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/06 17:45:33 by nsainton          #+#    #+#              #
-#    Updated: 2022/10/15 16:25:39 by nsainton         ###   ########.fr        #
+#    Updated: 2022/10/15 19:04:19 by nsainton         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@ SRCS_DIR= sources
 
 SRCS_NAMES= $(subst $(SRCS_DIR)/,,$(wildcard $(SRCS_DIR)/*))
 
-SRCS= $(addprefix $(SRCS_DIR)/, $(SRCS_NAME))
+SRCS= $(addprefix $(SRCS_DIR)/,$(SRCS_NAMES))
 
 OBJS_DIR= objects
 
@@ -26,9 +26,17 @@ OBJS= $(addprefix $(OBJS_DIR)/,$(OBJS_NAMES))
 
 BONUS_DIR= bonus
 
-BONUS_NAMES= $(notdir $(wildcard $(BONUS_DIR)/*))
+BONUS_SRCS_DIR= $(addprefix $(BONUS_DIR)/, $(SRCS_DIR))
 
-BONUS_OBJS= $(addprefix $(BONUS_DIR)/,$(BONUS_NAMES:.c=.o))
+BONUS_SRCS_NAMES= $(subst $(BONUS_SRCS_DIR)/,, $(wildcard $(BONUS_SRCS_DIR)/*))
+
+BONUS_SRCS= $(addprefix $(BONUS_SRCS_DIR), $(BONUS_SRCS_NAMES))
+
+BONUS_OBJS_DIR= $(addprefix $(BONUS_DIR)/, $(OBJS_DIR))
+
+BONUS_OBJS_NAMES= $(BONUS_SRCS_NAMES:.c=.o)
+
+BONUS_OBJS= $(addprefix $(BONUS_OBJS_DIR)/,$(BONUS_OBJS_NAMES))
 
 SHELL= zsh
 
@@ -47,6 +55,7 @@ ifneq (,$(wildcard ./.env))
 	export
 endif
 
+.PHONY: all
 all: $(NAME)
 
 $(NAME): $(OBJS) $(INCLUDES)
@@ -56,35 +65,42 @@ $(NAME): $(OBJS) $(INCLUDES)
 $(OBJS_DIR)/%.o: $(SRCS_DIR)/%.c $(INCLUDES) | $(OBJS_DIR)
 	$(CC) $(CFLAGS) $(GG) $(OPT) -c $< -o $@ -I $(INCLUDES)
 
-$(BONUS_DIR)/%.o: $(BONUS_DIR)/%c $(INCLUDES) | $(BONUS_DIR)
+$(BONUS_OBJS_DIR)/%.o: $(BONUS_SRCS_DIR)/%.c $(INCLUDES) | $(BONUS_OBJS_DIR)
 	$(CC) $(CFLAGS) $(GG) $(OPT) -c $< -o $@ -I $(INCLUDES)
 
 $(OBJS_DIR):
 	mkdir $(OBJS_DIR)
 
-$(BONUS_DIR):
-	mkdir $(BONUS_DIR)
+$(BONUS_OBJS_DIR):
+	mkdir -p $@
 
-dlc: $(OBJS) $(BONUS_OBJS) $(INCLUDES)
-	ar -rc $(NAME) $(OBJS) $(BONUS_OBJS) && \
-	echo -e "\e$(YELLOW)$(NAME) DLC$(GREEN) has been successfully created\e$(RESET)"
+.PHONY: bonus
+bonus: all $(BONUS_OBJS) $(INCLUDES)
+	ar -rc $(NAME) $(BONUS_OBJS) && \
+	echo -e "\e$(YELLOW)$(NAME) $(MAGENTA)DLC$(GREEN) has been successfully added\e$(RESET)"
 
+.PHONY: clean
 clean:
 	rm -rf $(OBJS_DIR)
-	echo -e "\e$(RED)Objects directory\e$(GREEN) has been successfully removed\e$(RESET)"
+	rm -rf $(BONUS_OBJS_DIR)
+	echo -e "\e$(RED)Objects directories\e$(GREEN) have been successfully removed\e$(RESET)"
 
+.PHONY: fclean
 fclean: clean
 	rm -f $(NAME)
 	echo -e "\e$(YELLOW)$(NAME)\e$(CYAN) has been successfully removed\e$(RESET)"
 
+.PHONY: re
 re: fclean all
 
-
+.PHONY: git
 git:
 	git add --all
 	git commit
 
+.PHONY: getsrcs
 getsrcs:
 	echo $(SRCS_NAMES) > srcs
+	echo $(BONUS_SRCS_NAMES) > bonus_srcs
 
-.PHONY: all clean fclean re git getsrcs
+.SILENT:
