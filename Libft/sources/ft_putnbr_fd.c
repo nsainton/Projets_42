@@ -6,7 +6,7 @@
 /*   By: nsainton <nsainton@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/14 20:29:07 by nsainton          #+#    #+#             */
-/*   Updated: 2022/10/14 20:46:08 by nsainton         ###   ########.fr       */
+/*   Updated: 2022/10/15 19:42:26 by nsainton         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ static void	ft_fill_string(char *string, int nbr, int *index)
 		ft_fill_string(string, (int)(nbr % 10), index);
 	}
 }
-	
+
 void	ft_putnbr_fd(int n, int fd)
 {
 	char	c[12];
