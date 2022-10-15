@@ -1,28 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   libft_bonus.h                                      :+:      :+:    :+:   */
+/*   ft_lstdelone.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nsainton <nsainton@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/15 15:15:47 by nsainton          #+#    #+#             */
-/*   Updated: 2022/10/15 20:15:00 by nsainton         ###   ########.fr       */
+/*   Created: 2022/10/15 20:12:24 by nsainton          #+#    #+#             */
+/*   Updated: 2022/10/15 20:14:22 by nsainton         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIBFT_BONUS_H
-# define LIBFT_BONUS_H
-# include "libft.h"
+#include "../../includes/libft_bonus.h"
 
-int		ft_lstsize(t_list *lst);
-
-void	ft_lstadd_front(t_list **lst, t_list *new);
-
-void	ft_lstadd_back(t_list **lst, t_list *new);
-
-void	ft_lstdelone(t_list *lst, void (*del) (void *));
-
-t_list	*ft_lstnew(void *content);
-
-t_list	*ft_lstlast(t_list *lst);
-#endif
+void	ft_lstdelone(t_list *lst, void (*del) (void *))
+{
+	if (lst == NULL)
+		return ;
+	del(lst->content);
+	free(lst);
+}

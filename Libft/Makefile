@@ -6,7 +6,7 @@
 #    By: nsainton <nsainton@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/06 17:45:33 by nsainton          #+#    #+#              #
-#    Updated: 2022/10/15 19:29:24 by nsainton         ###   ########.fr        #
+#    Updated: 2022/10/15 20:16:18 by nsainton         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -62,7 +62,7 @@ $(NAME): $(OBJS) $(INCLUDES)
 	ar -rc $(NAME) $(OBJS) && \
 	echo -e "\e$(YELLOW)$(NAME)\e$(GREEN) has been successfully created\e$(RESET)"
 
-$(OBJS_DIR)/%.o: $(SRCS_DIR)/%.c $(INCLUDES) | $(OBJS_DIR)
+$(OBJS_DIR)/%.o: $(SRCS_DIR)/%.c $(INCLUDES)/$(NAME).h | $(OBJS_DIR)
 	$(CC) $(CFLAGS) $(GG) $(OPT) -c $< -o $@ -I $(INCLUDES)
 
 $(BONUS_OBJS_DIR)/%.o: $(BONUS_SRCS_DIR)/%.c $(INCLUDES) | $(BONUS_OBJS_DIR)
@@ -74,7 +74,7 @@ $(OBJS_DIR):
 $(BONUS_OBJS_DIR):
 	mkdir -p $@
 
-bonus: all $(BONUS_OBJS) $(INCLUDES)
+bonus: all $(BONUS_OBJS) $(INCLUDES)/$(NAME)_bonus.h
 	ar -rc $(NAME) $(BONUS_OBJS) && \
 	echo -e "\e$(YELLOW)$(NAME) $(MAGENTA)DLC$(GREEN) has been successfully added\e$(RESET)"
 
