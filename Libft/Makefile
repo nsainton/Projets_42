@@ -6,7 +6,7 @@
 #    By: nsainton <nsainton@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/06 17:45:33 by nsainton          #+#    #+#              #
-#    Updated: 2022/10/15 19:04:19 by nsainton         ###   ########.fr        #
+#    Updated: 2022/10/15 19:29:24 by nsainton         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -74,7 +74,6 @@ $(OBJS_DIR):
 $(BONUS_OBJS_DIR):
 	mkdir -p $@
 
-.PHONY: bonus
 bonus: all $(BONUS_OBJS) $(INCLUDES)
 	ar -rc $(NAME) $(BONUS_OBJS) && \
 	echo -e "\e$(YELLOW)$(NAME) $(MAGENTA)DLC$(GREEN) has been successfully added\e$(RESET)"
@@ -102,5 +101,3 @@ git:
 getsrcs:
 	echo $(SRCS_NAMES) > srcs
 	echo $(BONUS_SRCS_NAMES) > bonus_srcs
-
-.SILENT:

@@ -1,22 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   libft_bonus.h                                      :+:      :+:    :+:   */
+/*   ft_lstsize.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nsainton <nsainton@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/15 15:15:47 by nsainton          #+#    #+#             */
-/*   Updated: 2022/10/15 19:39:59 by nsainton         ###   ########.fr       */
+/*   Created: 2022/10/15 19:37:10 by nsainton          #+#    #+#             */
+/*   Updated: 2022/10/15 19:39:21 by nsainton         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIBFT_BONUS_H
-# define LIBFT_BONUS_H
-# include "libft.h"
+#include "../../includes/libft_bonus.h"
 
-int		ft_lstsize(t_list *lst);
+int	ft_lstsize(t_list *lst)
+{
+	int	size;
 
-t_list	*ft_lstnew(void *content);
-
-t_list	*ft_lstadd_front(t_list **lst, t_list *new);
-#endif
+	if (lst == NULL)
+		return (0);
+	size = 1;
+	while (lst->next != NULL)
+	{
+		lst = lst->next;
+		size ++;
+	}
+	return (size);
+}
