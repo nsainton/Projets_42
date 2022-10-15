@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   test.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nsainton <nsainton@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/08 10:36:43 by nsainton          #+#    #+#             */
-/*   Updated: 2022/10/15 20:55:00 by nsainton         ###   ########.fr       */
+/*   Updated: 2022/10/15 21:39:22 by nsainton         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "includes/libft_bonus.h"
+#include "../includes/libft_bonus.h"
 
 static void	delete(void *s)
 {
@@ -21,7 +21,7 @@ static void	delete(void *s)
 	p = (char *)s;
 	*p = 0;
 }
-
+/*
 static void	print(void *s)
 {
 	char	*p;
@@ -30,8 +30,9 @@ static void	print(void *s)
 		return ;
 	p = (char *)s;
 	ft_putendl_fd(p, 1);
+	ft_putendl_fd("Bonjour", 1);
 }
-
+*/
 int	main(int ac, char **av)
 {
 	t_list	*lst;
@@ -50,10 +51,11 @@ int	main(int ac, char **av)
 			ft_lstclear(&lst, delete);
 			return (1);
 		}
+		ft_putendl_fd((char *)newelem->content, 1);
 		ft_lstadd_back(&lst, newelem);
 		i ++;
 	}
-	ft_lstiter(lst, print);
+	//ft_lstiter(lst, print);
 	ft_lstclear(&lst, delete);
 	return (0);
 }
