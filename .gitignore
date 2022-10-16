@@ -1,6 +1,3 @@
-# env file for the colors #
-.env
-
 # MacOs generated folders #
 .DS_Store
 *.dSYM
