@@ -6,7 +6,7 @@
 /*   By: nsainton <nsainton@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/16 14:06:23 by nsainton          #+#    #+#             */
-/*   Updated: 2022/10/16 15:06:08 by nsainton         ###   ########.fr       */
+/*   Updated: 2022/10/16 20:11:12 by nsainton         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,12 +64,25 @@ size_t	ft_newline(char *buf, size_t size)
 
 char	*ft_getline(char *buf)
 {
-	size_t i;
-	size_t nl;
+	size_t	i;
+	size_t	nl;
+	char	*ns;
+
 	if (buf == NULL)
 		return (NULL);
-	
-
+	nl = ft_newline(buf);
+	ns = (char *)malloc(nl * sizeof(*ns));
+	if (ns == NULL)
+		return (NULL);
+	i = 0;
+	while (i < nl)
+	{
+		*(ns + i) = *(buf + i);
+		i ++:
+	}
+	*(ns + i) = 0;
+	return (ns);
+}
 /*
 #include <stdio.h>
 int	main(void)
