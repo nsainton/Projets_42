@@ -6,7 +6,7 @@
 /*   By: nsainton <nsainton@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/08 10:36:43 by nsainton          #+#    #+#             */
-/*   Updated: 2022/10/16 09:22:15 by nsainton         ###   ########.fr       */
+/*   Updated: 2022/10/16 09:50:14 by nsainton         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,10 +63,34 @@ static t_list	*ft_create(char *s)
 	return (ne);
 }
 
+static void	*modify(void *s)
+{
+	char	*ns;
+	char	*ptr;
+	size_t	i;
+
+	if (s == NULL)
+		return (NULL);
+	ptr = (char *)s;
+	i = ft_strlen(ptr);
+	ns = (char *)malloc((i + 1) * sizeof(char));
+	if (ns == NULL)
+		return (NULL);
+	i = 0;
+	while (*(ptr + i))
+	{
+		*(ns + i) = ft_toupper(*(ptr + i));
+		i ++;
+	}
+	*(ns + i) = 0;
+	return ((void *)ns);
+}
+
 int	main(int ac, char **av)
 {
 	t_list	*lst;
 	t_list	*newelem;
+	t_list	*tmp;
 	int		i;
 
 	i = 1;
@@ -81,7 +105,6 @@ int	main(int ac, char **av)
 			ft_lstclear(&lst, delete);
 			return (1);
 		}
-		//ft_putendl_fd((char *)newelem->content, 1);
 		ft_lstadd_front(&lst, newelem);
 		i ++;
 	}
@@ -98,8 +121,29 @@ int	main(int ac, char **av)
 		i ++;
 	}
 	ft_lstiter(lst, print);
+	newelem = ft_lstmap(lst, modify, delete);
+	ft_putstr_fd("Here is the size of the modified list : ", 1);
+	i = ft_lstsize(newelem);
+	ft_putnbr_fd(i, 1);
+	ft_putchar_fd(10, 1);
+	ft_putendl_fd("Here is the modified list :", 1);
+	ft_lstiter(newelem, print);
+	ft_putendl_fd("Here is the last element of the base list :", 1);
+	ft_lstiter(ft_lstlast(lst), print);
+	ft_putendl_fd("Deletion of the first element :", 1);
+	tmp = lst->next;
+	ft_lstdelone(lst, delete);
+	lst = tmp;
+	ft_putstr_fd("Here is the new size of the base list : ", 1);
+	ft_putnbr_fd(ft_lstsize(lst), 1);
+	ft_putchar_fd(10, 1);
+	ft_putendl_fd("Here is the new base list :", 1);
+	ft_lstiter(lst, print);
 	ft_lstclear(&lst, delete);
+	ft_lstclear(&newelem, delete);
 	if (lst == NULL)
 		ft_putendl_fd("Completed", 1);
+	if (newelem == NULL)
+		ft_putendl_fd("Modified list deleted", 1);
 	return (0);
 }
