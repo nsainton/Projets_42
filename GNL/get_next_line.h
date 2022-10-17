@@ -6,13 +6,13 @@
 /*   By: nsainton <nsainton@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/16 13:02:00 by nsainton          #+#    #+#             */
-/*   Updated: 2022/10/17 14:03:16 by nsainton         ###   ########.fr       */
+/*   Updated: 2022/10/17 16:57:59 by nsainton         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef GET_NEXT_LINE_H
 # define GET_NEXT_LINE_H
-# define BUFF_SIZE 4096
+# define BUFF_SIZE 1
 # include <unistd.h>
 # include <stdlib.h>
 
@@ -26,7 +26,7 @@ void	ft_read_line(t_buffer *buf, int fd);
 
 size_t	ft_strlen(const char *s);
 
-size_t	ft_fill_line(char *line, const char *buffer, size_t start, size_t size);
+size_t	ft_fill_line(char *line, t_buffer *buf, size_t start, size_t size);
 
 char	*ft_realloc(char *line, size_t final_length);
 

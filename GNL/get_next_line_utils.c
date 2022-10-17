@@ -6,7 +6,7 @@
 /*   By: nsainton <nsainton@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/16 14:06:23 by nsainton          #+#    #+#             */
-/*   Updated: 2022/10/17 14:16:19 by nsainton         ###   ########.fr       */
+/*   Updated: 2022/10/17 16:55:58 by nsainton         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,11 +45,13 @@ size_t	ft_strlen(const char *s)
 	return (ptr - s);
 }
 
-size_t	ft_fill_line(char *line, const char *buffer, size_t start, size_t size)
+size_t	ft_fill_line(char *line, t_buffer *buf, size_t start, size_t size)
 {
 	size_t	len;
 	size_t	i;
+	const char	*buffer;
 
+	buffer = buf->buffer;
 	ft_putstr("fill_line");
 	if (! (line || buffer))
 		return (0);
@@ -63,7 +65,7 @@ size_t	ft_fill_line(char *line, const char *buffer, size_t start, size_t size)
 		len ++;
 		start ++;
 	}
-	buff->index = start;
+	buf->index = start + 1;
 	return (start - i);
 }
 
@@ -95,7 +97,7 @@ void	ft_getline(char **line, t_buffer *buff, size_t *length, int fd)
 {
 	size_t	chars_added;
 
-	chars_added = ft_fill_line(*line, buff->buffer, buff->index, (size_t)buff->n_read);
+	chars_added = ft_fill_line(*line, buff, buff->index, (size_t)buff->n_read);
 	while (chars_added == (size_t)buff->n_read)
 	{
 		ft_read_line(buff, fd);
@@ -111,6 +113,6 @@ void	ft_getline(char **line, t_buffer *buff, size_t *length, int fd)
 		*line = ft_realloc(*line, *length);
 		if (*line == NULL)
 			break ;
-		chars_added = ft_fill_line(*line, buff->buffer, buff->index, (size_t)buff->n_read);
+		chars_added = ft_fill_line(*line, buff, buff->index, (size_t)buff->n_read);
 	}
 }
