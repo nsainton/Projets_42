@@ -6,7 +6,7 @@
 /*   By: nsainton <nsainton@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/16 18:22:22 by nsainton          #+#    #+#             */
-/*   Updated: 2022/10/16 20:23:22 by nsainton         ###   ########.fr       */
+/*   Updated: 2022/10/17 14:11:41 by nsainton         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,18 +14,21 @@
 
 char	*ft_get_next_line(int fd)
 {
-	static char		buffer[BUFF_SIZE] = {0};
-	static size_t	index = BUFF_SIZE;
+	static t_buffer	buff = {{0}, BUFF_SIZE, BUFF_SIZE};
 	char			*line;
-	size_t			n_read;
+	size_t			length;
 
-	if (index == BUFF_SIZE)
-		n_read = read(fd, buffer, BUFF_SIZE);
-	if (n_read == -1)
+	ft_read_line(&buff, fd);
+	if (buff.n_read < 1)
 		return (NULL);
+	line = (char *)malloc((buff.n_read + 1) * sizeof(char));
+	if (line == NULL)
+		return (NULL);
+	length = buff.n_read + 1;
+	*line = 0;
+	ft_getline(&line, &buff, &length, fd);
+	if (line == NULL)
+		return (NULL);
+	line = ft_realloc(line, ft_strlen(line));
+	return (line);
 }
-
-size_t	ft_getline(char *buf, size_t start, size_t size)
-{
-	if (start == size)
-		return 
