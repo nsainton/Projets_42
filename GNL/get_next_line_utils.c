@@ -6,7 +6,7 @@
 /*   By: nsainton <nsainton@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/17 21:27:02 by nsainton          #+#    #+#             */
-/*   Updated: 2022/10/18 19:17:17 by nsainton         ###   ########.fr       */
+/*   Updated: 2022/10/18 20:04:02 by nsainton         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ void	ft_fill_line(char *line, t_buffer *buff)
 		line_index ++;
 		index ++;
 		if (*(buffer + index - 1) == 10)
-			break;
+			break ;
 	}
 	buff->line_index = line_index;
 	buff->index = index;
@@ -85,7 +85,7 @@ char	*ft_get_line(char *line, t_buffer *t_buff, int fd, size_t *length)
 		ft_fill_line(line, t_buff);
 		if (*(line + t_buff->line_index - 1) == 10)
 		{
-			break;
+			break ;
 		}
 		ft_read(t_buff, fd);
 	}
