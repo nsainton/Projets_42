@@ -6,13 +6,12 @@
 /*   By: nsainton <nsainton@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/17 19:28:59 by nsainton          #+#    #+#             */
-/*   Updated: 2022/10/18 18:13:56 by nsainton         ###   ########.fr       */
+/*   Updated: 2022/10/18 18:19:06 by nsainton         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef GET_NEXT_LINE_H
 # define GET_NEXT_LINE_H
-# define BUFF_SIZE 4
 # include <unistd.h>
 # include <stdlib.h>
 # include <stdio.h>
