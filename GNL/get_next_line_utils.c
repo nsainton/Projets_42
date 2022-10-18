@@ -6,12 +6,11 @@
 /*   By: nsainton <nsainton@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/17 21:27:02 by nsainton          #+#    #+#             */
-/*   Updated: 2022/10/18 20:13:19 by nsainton         ###   ########.fr       */
+/*   Updated: 2022/10/18 21:09:10 by nsainton         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
-#include <string.h>
 
 void	ft_read(t_buffer *buff, int fd)
 {
