@@ -6,7 +6,7 @@
 /*   By: nsainton <nsainton@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/17 21:27:02 by nsainton          #+#    #+#             */
-/*   Updated: 2022/10/18 20:04:02 by nsainton         ###   ########.fr       */
+/*   Updated: 2022/10/18 20:13:19 by nsainton         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,7 @@ char	*ft_realloc(char *str, size_t size)
 		i ++;
 	}
 	*(ns + i) = 0;
+	free(str);
 	return (ns);
 }
 

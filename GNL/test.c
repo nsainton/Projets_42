@@ -6,7 +6,7 @@
 /*   By: nsainton <nsainton@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/17 12:00:56 by nsainton          #+#    #+#             */
-/*   Updated: 2022/10/18 18:28:27 by nsainton         ###   ########.fr       */
+/*   Updated: 2022/10/18 20:17:08 by nsainton         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ static void	ft_test(char *test)
 	if (test == NULL)
 		return ;
 	fd = open(test, O_RDONLY);
-	if(fd > -1)
+	if (fd > -1)
 		printf("File : %s has been oppened\n", test);
 	line = ft_get_next_line(fd);
 	i = 0;
@@ -55,7 +55,7 @@ static void	ft_time(char *test)
 	start = clock();
 	ft_test(test);
 	cpu_time = (double)(clock() - start) / CLOCKS_PER_SEC;
-	printf("The file has been printed in %f seconds", cpu_time);
+	printf("The file has been processed in %f seconds\n", cpu_time);
 }
 
 int	main(void)
