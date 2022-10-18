@@ -6,7 +6,7 @@
 /*   By: nsainton <nsainton@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/17 21:27:02 by nsainton          #+#    #+#             */
-/*   Updated: 2022/10/18 18:15:05 by nsainton         ###   ########.fr       */
+/*   Updated: 2022/10/18 19:17:17 by nsainton         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,14 +25,6 @@ void	ft_read(t_buffer *buff, int fd)
 	n_read = read(fd, buff->buffer, BUFF_SIZE);
 	buff->n_read = n_read;
 	buff->index = 0;
-	/*
-	if (n_read > 0)
-	{
-		write(1, "Voici les charactères mis dans le buffer :\n", strlen("Voici les charactères mis dans le buffer :\n"));
-		write(1, buff->buffer, n_read);
-		write(1, "--Fin du buffer\n", strlen("--Fin du buffer\n"));
-	}
-	*/
 }
 
 void	ft_fill_line(char *line, t_buffer *buff)
@@ -45,15 +37,10 @@ void	ft_fill_line(char *line, t_buffer *buff)
 	n_read = (size_t)buff->n_read;
 	index = buff->index;
 	line_index = buff->line_index;
-	/*
-	printf("Index de départ : %ld\n", index);
-	printf("Longueur de la ligne : %ld\n", line_index);
-	*/
 	buffer = buff->buffer;
 	while (index < n_read)
 	{
 		*(line + line_index) = *(buffer + index);
-	//	printf("%c", *(buffer + index));
 		line_index ++;
 		index ++;
 		if (*(buffer + index - 1) == 10)
@@ -61,7 +48,6 @@ void	ft_fill_line(char *line, t_buffer *buff)
 	}
 	buff->line_index = line_index;
 	buff->index = index;
-	//printf("buffer index : %ld, n_read : %ld\n", index, buff->n_read);
 }
 
 char	*ft_realloc(char *str, size_t size)
@@ -99,7 +85,6 @@ char	*ft_get_line(char *line, t_buffer *t_buff, int fd, size_t *length)
 		ft_fill_line(line, t_buff);
 		if (*(line + t_buff->line_index - 1) == 10)
 		{
-	//		printf("Bonjour\n");
 			break;
 		}
 		ft_read(t_buff, fd);

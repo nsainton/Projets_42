@@ -6,7 +6,7 @@
 /*   By: nsainton <nsainton@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/17 19:28:59 by nsainton          #+#    #+#             */
-/*   Updated: 2022/10/18 18:19:06 by nsainton         ###   ########.fr       */
+/*   Updated: 2022/10/18 19:16:20 by nsainton         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 # define GET_NEXT_LINE_H
 # include <unistd.h>
 # include <stdlib.h>
-# include <stdio.h>
 
 typedef struct s_buffer{
 	char	buffer[BUFF_SIZE];
