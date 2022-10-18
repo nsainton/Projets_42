@@ -6,7 +6,7 @@
 /*   By: nsainton <nsainton@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/17 19:28:59 by nsainton          #+#    #+#             */
-/*   Updated: 2022/10/18 19:16:20 by nsainton         ###   ########.fr       */
+/*   Updated: 2022/10/18 21:56:49 by nsainton         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,10 +21,6 @@ typedef struct s_buffer{
 	size_t	index;
 	size_t	line_index;
 }				t_buffer;
-
-void	ft_read(t_buffer *buff, int fd);
-
-void	ft_fill_line(char *line, t_buffer *buff);
 
 char	*ft_realloc(char *str, size_t size);
 

@@ -6,13 +6,13 @@
 /*   By: nsainton <nsainton@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/17 21:27:02 by nsainton          #+#    #+#             */
-/*   Updated: 2022/10/18 21:14:27 by nsainton         ###   ########.fr       */
+/*   Updated: 2022/10/18 21:57:30 by nsainton         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-void	ft_read(t_buffer *buff, int fd)
+static void	ft_read(t_buffer *buff, int fd)
 {
 	ssize_t	n_read;
 
@@ -26,7 +26,7 @@ void	ft_read(t_buffer *buff, int fd)
 	buff->index = 0;
 }
 
-void	ft_fill_line(char *line, t_buffer *buff, int fd)
+static void	ft_fill_line(char *line, t_buffer *buff, int fd)
 {
 	size_t		line_index;
 	size_t		index;
