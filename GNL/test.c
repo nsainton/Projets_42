@@ -6,7 +6,7 @@
 /*   By: nsainton <nsainton@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/17 12:00:56 by nsainton          #+#    #+#             */
-/*   Updated: 2022/10/18 20:17:08 by nsainton         ###   ########.fr       */
+/*   Updated: 2022/10/18 20:27:41 by nsainton         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,10 +22,13 @@ static void	ft_test(char *test)
 	int		i;
 	char	*line;
 
-	if (test == NULL)
-		return ;
 	fd = open(test, O_RDONLY);
-	if (fd > -1)
+	if (! (test && *test))
+	{
+		fd = 1;
+		printf("You may now enter characters : press ^D to finish input\n");
+	}
+	if (fd > -1 && fd != 1)
 		printf("File : %s has been oppened\n", test);
 	line = ft_get_next_line(fd);
 	i = 0;
@@ -44,7 +47,10 @@ static void	ft_test(char *test)
 	}
 	if (fd == -1)
 		printf("Closing error\n");
-	printf("File : %s has been closed\n", test);
+	else if (fd != 1 && fd > -1)
+		printf("File : %s has been closed\n", test);
+	else
+		printf("Thanks for using the get_next_line function\n");
 }
 
 static void	ft_time(char *test)
@@ -55,7 +61,7 @@ static void	ft_time(char *test)
 	start = clock();
 	ft_test(test);
 	cpu_time = (double)(clock() - start) / CLOCKS_PER_SEC;
-	printf("The file has been processed in %f seconds\n", cpu_time);
+	printf("The entry has been processed in %f seconds\n", cpu_time);
 }
 
 int	main(void)
@@ -64,5 +70,6 @@ int	main(void)
 	ft_time("get_next_line.c");
 	ft_time("garbage/test");
 	ft_time("Bonjour");
+	ft_time(NULL);
 	return (0);
 }
