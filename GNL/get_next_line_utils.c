@@ -5,106 +5,93 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: nsainton <nsainton@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/16 14:06:23 by nsainton          #+#    #+#             */
-/*   Updated: 2022/10/17 19:20:38 by nsainton         ###   ########.fr       */
+/*   Created: 2022/10/17 21:27:02 by nsainton          #+#    #+#             */
+/*   Updated: 2022/10/18 17:06:45 by nsainton         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-void	ft_read_line(t_buffer *buf, int fd)
+void	ft_read(t_buffer *buff, int fd)
 {
 	ssize_t	n_read;
 
-	if (buf->index < (size_t)buf->n_read)
+	n_read = buff->n_read;
+	if (n_read < 1)
 		return ;
-	n_read = read(fd, buf->buffer, BUFF_SIZE);
-	write(1, buf->buffer, BUFF_SIZE);
-	printf("\n");
-	sleep(2);
-	buf->n_read = n_read;
-	buf->index = 0;
+	if (buff->index < (size_t)n_read - 1)
+		return ;
+	n_read = read(fd, buff->buffer, BUFF_SIZE);
+	buff->n_read = n_read;
+	buff->index = 0;
 }
 
-size_t	ft_strlen(const char *s)
+void	ft_fill_line(char *line, t_buffer *buff)
 {
-	const char	*ptr;
-
-	if (s == NULL)
-		return (0);
-	ptr = s;
-	while (*ptr)
-		ptr ++;
-	return (ptr - s);
-}
-
-void	ft_fill_line(char *line, t_buffer *buf)
-{
-	size_t	len;
-	size_t	size;
-	size_t	start;
+	size_t		line_index;
+	size_t		index;
+	size_t		n_read;
 	const char	*buffer;
 
-	buffer = buf->buffer;
-	if (! (line || buffer))
-		return ;
-	size = (size_t)buf->n_read;
-	len = buf->line_index;
-	start = buf->index;
-	while (start < size)
+	n_read = (size_t)buff->n_read;
+	index = buff->index;
+	line_index = buff->line_index;
+	buffer = buff->buffer;
+	while (index < n_read)
 	{
-		*(line + len) = *(buffer + start);
-		len ++;
-		if (*(buffer + start) == 10)
-			break ;
-		start ++;
+		*(line + line_index) = *(buffer + index);
+		printf("index fill line : %ld, line_index fill line : %ld\n", index, line_index);
+		line_index ++;
+		index ++;
+		if (*(buffer + index - 1) == 10)
+			break;
 	}
-	buf->index = start + 1;
-	buf->line_index = len;
+	buff->line_index = line_index;
+	buff->index = index;
+	printf("final index : %ld, final line_index : %ld\n", index, line_index);
 }
 
-char	*ft_realloc(char *line, size_t final_length)
+char	*ft_realloc(char *str, size_t size)
 {
-	char	*ns;
 	size_t	i;
+	char	*ns;
 
-	if (line == NULL)
+	if (str == NULL)
 		return (NULL);
-	ns = (char *)malloc((final_length + 1) * sizeof(char));
+	ns = (char *)malloc((size + 1) * sizeof(char));
 	if (ns == NULL)
+	{
+		free(str);
+		return (NULL);
+	}
+	i = 0;
+	while (i < size)
+	{
+		*(ns + i) = *(str + i);
+		i ++;
+	}
+	*(ns + i) = 0;
+	return (ns);
+}
+
+char	*ft_get_line(char *line, t_buffer *t_buff, int fd, size_t *length)
+{
+	ft_read(t_buff, fd);
+	while (t_buff->n_read > 0)
+	{
+		*length = *length + (size_t)t_buff->n_read;
+		line = ft_realloc(line, *length);
+		if (line == NULL)
+			break ;
+		ft_fill_line(line, t_buff);
+		if (*(line + t_buff->line_index - 1) == 10)
+			break;
+		ft_read(t_buff, fd);
+	}
+	if (t_buff->n_read == -1)
 	{
 		free(line);
 		return (NULL);
 	}
-	i = 0;
-	while (i < final_length)
-	{
-		*(ns + i) = *(line + i);
-		i ++;
-	}
-	*(ns + i) = 0;
-	free(line);
-	return (ns);
-}
-
-void	ft_getline(char **line, t_buffer *buff, size_t *length, int fd)
-{
-	ft_fill_line(*line, buff);
-	while (! ft_newline(buff))
-	{
-		printf("%d\n", ft_newline(buff));
-		ft_read_line(buff, fd);
-		if (buff->n_read == -1)
-		{
-			free(*line);
-			*line = NULL;
-			break ;
-		}
-		*length = *length + buff->n_read;
-		printf("length : %ld\n", *length);
-		*line = ft_realloc(*line, *length + 1);
-		if (*line == NULL)
-			break ;
-		ft_fill_line(*line, buff);
-	}
+	return (line);
 }
