@@ -6,7 +6,7 @@
 /*   By: nsainton <nsainton@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/17 19:28:59 by nsainton          #+#    #+#             */
-/*   Updated: 2022/10/18 17:00:46 by nsainton         ###   ########.fr       */
+/*   Updated: 2022/10/18 18:13:56 by nsainton         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,8 @@ void	ft_fill_line(char *line, t_buffer *buff);
 char	*ft_realloc(char *str, size_t size);
 
 char	*ft_get_line(char *line, t_buffer *t_buff, int fd, size_t *length);
+
+void	ft_reinit(t_buffer *t_buff);
 
 char	*ft_get_next_line(int fd);
 #endif
