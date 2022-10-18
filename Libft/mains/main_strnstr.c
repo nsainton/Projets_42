@@ -6,7 +6,7 @@
 /*   By: nsainton <nsainton@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/12 16:05:24 by nsainton          #+#    #+#             */
-/*   Updated: 2022/10/12 17:15:10 by nsainton         ###   ########.fr       */
+/*   Updated: 2022/10/18 15:40:04 by nsainton         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,4 +46,5 @@ int	main(void)
 	ft_comp_func("Comment", "omm", 10);
 	ft_comp_func("Comment", "ent", 4);
 	ft_comp_func("Comment", "", 10);
+	ft_comp_func("Choux-ffleur", "fleur", 20);
 }
