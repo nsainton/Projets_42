@@ -6,7 +6,7 @@
 /*   By: nsainton <nsainton@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/17 19:28:29 by nsainton          #+#    #+#             */
-/*   Updated: 2022/10/18 17:10:45 by nsainton         ###   ########.fr       */
+/*   Updated: 2022/10/18 17:37:47 by nsainton         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,6 @@ char *ft_get_next_line(int fd)
 	char	*line;
 	size_t	length;
 
-	if (! buff.n_read)
-		return (NULL);
 	length = 1;
 	line = (char *)malloc(sizeof(char));
 	if (line == NULL)
@@ -27,9 +25,13 @@ char *ft_get_next_line(int fd)
 	*line = 0;
 	buff.line_index = 0;
 	line = ft_get_line(line, &buff, fd, &length);
-	if (line != NULL)
+	if (line != NULL && length > 1)
 		line = ft_realloc(line, buff.line_index);
+	if (length == 1)
+	{
+		free(line);
+		return (NULL);
+	}
 	printf("%s\n", line);
-	sleep(2);
 	return (line);
 }

@@ -6,7 +6,7 @@
 /*   By: nsainton <nsainton@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/17 21:27:02 by nsainton          #+#    #+#             */
-/*   Updated: 2022/10/18 17:06:45 by nsainton         ###   ########.fr       */
+/*   Updated: 2022/10/18 17:27:33 by nsainton         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ void	ft_fill_line(char *line, t_buffer *buff)
 	while (index < n_read)
 	{
 		*(line + line_index) = *(buffer + index);
-		printf("index fill line : %ld, line_index fill line : %ld\n", index, line_index);
+		printf("%c", *(buffer + index));
 		line_index ++;
 		index ++;
 		if (*(buffer + index - 1) == 10)
@@ -48,7 +48,7 @@ void	ft_fill_line(char *line, t_buffer *buff)
 	}
 	buff->line_index = line_index;
 	buff->index = index;
-	printf("final index : %ld, final line_index : %ld\n", index, line_index);
+	printf("buffer index : %ld, n_read : %ld\n", index, buff->n_read);
 }
 
 char	*ft_realloc(char *str, size_t size)
@@ -85,7 +85,10 @@ char	*ft_get_line(char *line, t_buffer *t_buff, int fd, size_t *length)
 			break ;
 		ft_fill_line(line, t_buff);
 		if (*(line + t_buff->line_index - 1) == 10)
+		{
+			printf("Bonjour\n");
 			break;
+		}
 		ft_read(t_buff, fd);
 	}
 	if (t_buff->n_read == -1)
