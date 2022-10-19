@@ -6,7 +6,7 @@
 /*   By: nsainton <nsainton@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/19 22:52:27 by nsainton          #+#    #+#             */
-/*   Updated: 2022/10/19 23:05:47 by nsainton         ###   ########.fr       */
+/*   Updated: 2022/10/20 00:26:19 by nsainton         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,5 +25,5 @@ char	*ft_get_next_line(int fd)
 		return (NULL);
 	line_index = 0;
 	*line = 0;
-	return (ft_get_line(line, (char **)buff, fd, &line_index));
+	return (ft_get_line(line, buff, fd, &line_index));
 }

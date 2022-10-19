@@ -6,37 +6,43 @@
 /*   By: nsainton <nsainton@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/19 20:45:07 by nsainton          #+#    #+#             */
-/*   Updated: 2022/10/19 23:01:14 by nsainton         ###   ########.fr       */
+/*   Updated: 2022/10/20 00:58:40 by nsainton         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-static void	ft_flush(char **buff, size_t start, int fd)
+static void	ft_flush(char buff[FILES][BUFF_SIZE], size_t start, int fd)
 {
 	size_t	index;
 
 	index = start;
 	while (index < BUFF_SIZE)
 	{
-		*(*(buff + fd) + index - start) = *(*(buff + fd) + index);
+		buff[fd][index - start] = buff[fd][index];
+		index ++;
+	}
+	index = BUFF_SIZE - start;
+	while (index < BUFF_SIZE)
+	{
+		buff[fd][index] = 0;
 		index ++;
 	}
 }
 
-static void	ft_fill_line(char *line, char **buff, int fd, size_t *end_of_line)
+static void	ft_fill_line(char *line, char buff[FILES][BUFF_SIZE], int fd, size_t *end_of_line)
 {
 	size_t	buffer_index;
 	size_t	line_index;
 
 	buffer_index = 0;
 	line_index = *end_of_line;
-	while (buffer_index < BUFF_SIZE && *(*(buff + fd) + buffer_index))
+	while (buffer_index < BUFF_SIZE && buff[fd][buffer_index])
 	{
-		*(line + line_index) = *(*(buff + fd) + buffer_index);
+		*(line + line_index) = buff[fd][buffer_index];
 		buffer_index ++;
 		line_index ++;
-		if (*(*(buff + fd) + buffer_index - 1) == 10)
+		if (*(line + line_index - 1) == 10)
 			break ;
 	}
 	ft_flush(buff, buffer_index, fd);
@@ -67,11 +73,12 @@ static char	*ft_realloc(char *str, size_t size)
 	return (ns);
 }
 
-char	*ft_get_line(char *line, char **buff, int fd, size_t *line_index)
+char	*ft_get_line(char *line, char buff[FILES][BUFF_SIZE], int fd, size_t *line_index)
 {
 	ssize_t	n_read;
 
-	n_read = read(fd, (void *)*(buff + fd), BUFF_SIZE);
+	ft_fill_line(line, buff, fd, line_index);
+	n_read = read(fd, buff[fd], BUFF_SIZE);
 	while (n_read > 0)
 	{
 		line = ft_realloc(line, *line_index + (size_t)n_read);
@@ -80,9 +87,9 @@ char	*ft_get_line(char *line, char **buff, int fd, size_t *line_index)
 		ft_fill_line(line, buff, fd, line_index);
 		if (*(line + *line_index - 1) == 10)
 			break ;
-		n_read = read(fd, (void *)*(buff + fd), BUFF_SIZE);
+		n_read = read(fd, (void *)buff[fd], BUFF_SIZE);
 	}
-	if (n_read == -1)
+	if (n_read == -1 || ! (n_read || *line_index))
 	{
 		free(line);
 		return (NULL);
