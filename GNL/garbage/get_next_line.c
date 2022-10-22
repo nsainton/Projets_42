@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: nsainton <nsainton@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/19 22:52:27 by nsainton          #+#    #+#             */
-/*   Updated: 2022/10/20 00:26:19 by nsainton         ###   ########.fr       */
+/*   Created: 2022/10/17 19:28:29 by nsainton          #+#    #+#             */
+/*   Updated: 2022/10/18 20:03:36 by nsainton         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,16 +14,25 @@
 
 char	*ft_get_next_line(int fd)
 {
-	static char	buff[FILES][BUFF_SIZE] = {{0}, {0}};
-	char		*line;
-	size_t		line_index;
+	static t_buffer	buff = {{0}, BUFF_SIZE, BUFF_SIZE, 0};
+	char			*line;
+	size_t			length;
 
-	if (fd > FILES - 1)
-		return (NULL);
+	length = 1;
 	line = (char *)malloc(sizeof(char));
 	if (line == NULL)
 		return (NULL);
-	line_index = 0;
 	*line = 0;
-	return (ft_get_line(line, buff, fd, &line_index));
+	buff.line_index = 0;
+	line = ft_get_line(line, &buff, fd, &length);
+	if (line != NULL && length > 1)
+		line = ft_realloc(line, buff.line_index);
+	if (length == 1)
+	{
+		free(line);
+		line = NULL;
+	}
+	if (line == NULL)
+		ft_reinit(&buff);
+	return (line);
 }

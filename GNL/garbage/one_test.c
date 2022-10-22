@@ -6,7 +6,7 @@
 /*   By: nsainton <nsainton@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/17 12:00:56 by nsainton          #+#    #+#             */
-/*   Updated: 2022/10/20 00:16:47 by nsainton         ###   ########.fr       */
+/*   Updated: 2022/10/22 17:39:13 by nsainton         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,10 @@ static void	ft_test(char *test)
 		fd = 1;
 		printf("You may now enter characters : press ^D to finish input\n");
 	}
+/*
 	if (fd > -1 && fd != 1)
 		printf("File : %s has been oppened\n", test);
+*/
 	line = ft_get_next_line(fd);
 	i = 0;
 	while (line != NULL)
@@ -47,10 +49,12 @@ static void	ft_test(char *test)
 	}
 	if (fd == -1)
 		printf("Closing error\n");
+/*
 	else if (fd != 1 && fd > -1)
 		printf("File : %s has been closed\n", test);
 	else
 		printf("Thanks for using the get_next_line function\n");
+*/
 }
 
 static void	ft_time(char *test)
@@ -61,11 +65,12 @@ static void	ft_time(char *test)
 	start = clock();
 	ft_test(test);
 	cpu_time = (double)(clock() - start) / CLOCKS_PER_SEC;
-	printf("The entry has been processed in %f seconds\n", cpu_time);
+	cpu_time = cpu_time + 1;
+//	printf("The entry has been processed in %f seconds\n", cpu_time);
 }
 
 int	main(void)
 {
-	ft_time("test.c");
+	ft_time("gnl_utils.c");
 	return (0);
 }
