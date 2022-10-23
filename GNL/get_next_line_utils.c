@@ -6,7 +6,7 @@
 /*   By: nsainton <nsainton@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/22 11:28:13 by nsainton          #+#    #+#             */
-/*   Updated: 2022/10/22 17:37:39 by nsainton         ###   ########.fr       */
+/*   Updated: 2022/10/23 13:36:01 by nsainton         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,8 @@ static int	ft_fill_line(char *line, char buff[BUFF_SIZE], size_t *end_of_line)
 	return (new_line);
 }
 
-char	*ft_get_line(char *line, char buff[BUFF_SIZE], int fd, size_t *end_of_line)
+char	*ft_get_line(char *line, char buff[BUFF_SIZE], int fd, \
+size_t *end_of_line)
 {
 	ssize_t	n_read;
 
@@ -88,7 +89,7 @@ char	*ft_get_line(char *line, char buff[BUFF_SIZE], int fd, size_t *end_of_line)
 		line = ft_realloc(line, *end_of_line + (size_t)n_read);
 		if (line == NULL)
 			return (NULL);
-		if(ft_fill_line(line, buff, end_of_line))
+		if (ft_fill_line(line, buff, end_of_line))
 			return (ft_realloc(line, *end_of_line));
 		n_read = read(fd, buff, BUFF_SIZE);
 	}
