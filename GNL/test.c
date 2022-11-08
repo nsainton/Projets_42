@@ -6,7 +6,7 @@
 /*   By: nsainton <nsainton@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/17 12:00:56 by nsainton          #+#    #+#             */
-/*   Updated: 2022/10/22 17:55:40 by nsainton         ###   ########.fr       */
+/*   Updated: 2022/11/08 16:54:41 by nsainton         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ static void	ft_gnl(int *fd, int nb)
 		j = 1;
 		while (line != NULL)
 		{
-			printf("This is the line %d from the file descriptor %d : %s", j, *(fd + i), line);
+			printf("This is the line %.3d from the file descriptor %d : %s", j, *(fd + i), line);
 			j ++;
 			free(line);
 			line = ft_get_next_line(*(fd + i));
