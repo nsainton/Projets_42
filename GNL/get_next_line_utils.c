@@ -6,7 +6,7 @@
 /*   By: nsainton <nsainton@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/22 11:28:13 by nsainton          #+#    #+#             */
-/*   Updated: 2022/10/23 13:36:01 by nsainton         ###   ########.fr       */
+/*   Updated: 2022/11/10 17:03:59 by nsainton         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ static void	ft_flush(char buff[BUFF_SIZE], size_t index)
 	}
 }
 
-static char	*ft_realloc(char *str, size_t size)
+static char	*ft_realloc(char *str, size_t size, size_t base_size)
 {
 	size_t	i;
 	char	*ns;
@@ -44,7 +44,7 @@ static char	*ft_realloc(char *str, size_t size)
 		return (NULL);
 	}
 	i = 0;
-	while (i < size)
+	while (i < base_size)
 	{
 		*(ns + i) = *(str + i);
 		i ++;
@@ -82,15 +82,15 @@ size_t *end_of_line)
 	ssize_t	n_read;
 
 	if (ft_fill_line(line, buff, end_of_line))
-		return (ft_realloc(line, *end_of_line));
+		return (ft_realloc(line, *end_of_line, *end_of_line));
 	n_read = read(fd, buff, BUFF_SIZE);
 	while (n_read > 0)
 	{
-		line = ft_realloc(line, *end_of_line + (size_t)n_read);
+		line = ft_realloc(line, *end_of_line + (size_t)n_read, *end_of_line);
 		if (line == NULL)
 			return (NULL);
 		if (ft_fill_line(line, buff, end_of_line))
-			return (ft_realloc(line, *end_of_line));
+			return (ft_realloc(line, *end_of_line, *end_of_line));
 		n_read = read(fd, buff, BUFF_SIZE);
 	}
 	if (n_read == -1 || ! *line)
@@ -98,5 +98,5 @@ size_t *end_of_line)
 		free(line);
 		return (NULL);
 	}
-	return (ft_realloc(line, *end_of_line));
+	return (ft_realloc(line, *end_of_line, *end_of_line));
 }

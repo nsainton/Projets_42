@@ -6,7 +6,7 @@
 /*   By: nsainton <nsainton@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/22 14:06:27 by nsainton          #+#    #+#             */
-/*   Updated: 2022/10/22 17:57:59 by nsainton         ###   ########.fr       */
+/*   Updated: 2022/11/10 15:27:03 by nsainton         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ char	*ft_get_next_line(int fd)
 	if (line == NULL)
 		return (NULL);
 	line_length = 0;
+	*line = 0;
 	line = ft_get_line(line, buff[fd], fd, &line_length);
 	if (line != NULL && ! *line)
 	{
