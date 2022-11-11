@@ -6,19 +6,19 @@
 /*   By: nsainton <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/10 19:35:10 by nsainton          #+#    #+#             */
-/*   Updated: 2022/11/11 17:59:19 by nsainton         ###   ########.fr       */
+/*   Updated: 2022/11/11 18:55:15 by nsainton         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdio.h>
 #include <unistd.h>
-#include "Libft/libft.h"
+#include "../Libft/libft.h"
 int	main(void)
 {
 	int	printed;
 
 	ft_putstr_fd("Bonjour\n", 1);
-	printed = printf("% d\n", 1232049);
+	printed = printf("%     d\n", 1232049);
 	printf("Number of char printed with %%e: %d\n", printed - 1);
 	printed = printf("%.12f\n", 12.34);
 	printf("Number of char printed with %%f: %d\n", printed - 1);
