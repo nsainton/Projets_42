@@ -6,7 +6,7 @@
 #    By: nsainton <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/11 17:44:10 by nsainton          #+#    #+#              #
-#    Updated: 2022/11/11 17:56:38 by nsainton         ###   ########.fr        #
+#    Updated: 2022/11/11 18:33:50 by nsainton         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -38,7 +38,7 @@ all: $(NAME)
 
 $(NAME): $(OBJS)
 	$(MAKE) bonus -C $(LIBFT_DIR)
-	ar -rc $(NAME) $(LIBFT_DIR)/$(LIBFT) $(OBJS)
+	ar -rc $(NAME) $(OBJS)
 
 $(OBJS_DIR)/%.o: $(SRCS_DIR)/%.c | $(OBJS_DIR)
 	$(CC) $(CFLAGS) -c $< -o $@ -I $(INCLUDES)
