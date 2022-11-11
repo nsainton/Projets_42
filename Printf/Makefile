@@ -6,7 +6,7 @@
 #    By: nsainton <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/11 17:44:10 by nsainton          #+#    #+#              #
-#    Updated: 2022/11/11 18:33:50 by nsainton         ###   ########.fr        #
+#    Updated: 2022/11/11 18:46:27 by nsainton         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -37,7 +37,7 @@ CFLAGS= -Wall -Wextra -Werror
 all: $(NAME)
 
 $(NAME): $(OBJS)
-	$(MAKE) bonus -C $(LIBFT_DIR)
+	$(MAKE) -C $(LIBFT_DIR)
 	ar -rc $(NAME) $(OBJS)
 
 $(OBJS_DIR)/%.o: $(SRCS_DIR)/%.c | $(OBJS_DIR)
@@ -48,7 +48,7 @@ $(OBJS_DIR):
 
 clean:
 	$(MAKE) clean -C $(LIBFT_DIR)
-	rm -f $(OBJS)
+	rm -rf $(OBJS_DIR)
 
 fclean: clean
 	$(MAKE) fclean -C $(LIBFT_DIR)
