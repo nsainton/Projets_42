@@ -6,7 +6,7 @@
 /*   By: nsainton <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 16:27:24 by nsainton          #+#    #+#             */
-/*   Updated: 2022/11/14 17:33:00 by nsainton         ###   ########.fr       */
+/*   Updated: 2022/11/14 20:34:24 by nsainton         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,19 +19,19 @@ static char	ft_capital(char c, int maj)
 	return (ft_tolower(c));
 }
 
-void	ft_putbase(int nbr, int maj, const char *base)
+void	ft_putbase(long long int nbr, int maj, const char *base)
 {
-	unsigned int	nb;
-	size_t			len;
+	unsigned long long int	nb;
+	size_t					len;
 
 	len = ft_strlen(base);
-	if (nbr == -2147483648)
+	if (nbr == LLONG_MIN)
 	{
 		ft_putchar_fd('-', 1);
-		nb = (unsigned int)(-1 * nbr);
+		nb = (unsigned long long int)(-1 * nbr);
 		if (nb / len)
-			ft_putbase((int)(nb / len), maj, base);
-		ft_putbase((int)(nb % len), maj, base);
+			ft_putbase((long long int)(nb / len), maj, base);
+		ft_putbase((long long int)(nb % len), maj, base);
 	}
 	else if (nbr < 0)
 	{
