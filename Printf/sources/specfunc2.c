@@ -1,30 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printmemory.c                                   :+:      :+:    :+:   */
+/*   specfunc2.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nsainton <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/14 17:39:33 by nsainton          #+#    #+#             */
-/*   Updated: 2022/11/15 16:13:55 by nsainton         ###   ########.fr       */
+/*   Created: 2022/11/16 19:54:22 by nsainton          #+#    #+#             */
+/*   Updated: 2022/11/17 02:11:26 by nsainton         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/libftprintf.h"
-#include <stdio.h>
 
-size_t	ft_printmemory(void *p, int maj)
+void	printf_percent(va_list ap, int *print, int fd, char flag)
 {
-	char	c;
-	size_t	printed;
+	if (flag)
+		return ;
+	write(fd, "%", 1);
+	*print += 1;
+}
 
-	printed = 0;
-	if (maj)
-		c = 'X';
-	else
-		c = 'x';
-	ft_putchar_fd('0', 1);
-	ft_putchar_fd(c, 1);
-	ft_putbase((long long int)p, maj, "0123456789abcdef", &printed);
-	return (printed);
+void	printf_unsigned(va_list ap, int *print, int fd, char flag)
+{
+	unsigned int	nbr;
+
+	nbr = va_arg(ap, unsigned int);
+	if (flag && nbr > -1)
+	{
+		ft_putchar_fd(flag, fd);
+		*print += 1;
+	}
+	printf_putbase((long long int)nbr, "0123456789", print, fd);
 }

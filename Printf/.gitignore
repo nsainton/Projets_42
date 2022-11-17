@@ -3,3 +3,6 @@ mains
 
 # Archive files #
 *.a
+
+# Swap files #
+*.swo
