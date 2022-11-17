@@ -6,7 +6,7 @@
 /*   By: nsainton <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 17:39:33 by nsainton          #+#    #+#             */
-/*   Updated: 2022/11/17 02:37:46 by nsainton         ###   ########.fr       */
+/*   Updated: 2022/11/17 03:11:19 by nsainton         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,5 +27,5 @@ void	printf_printmemory(va_list ap, int *printed, int fd, char flag)
 	}
 	*printed += 2;
 	ft_putstr_fd("0x", fd);
-	ft_putbase((long long int)p, "0123456789abcdef", printed, fd);
+	printf_putbase((long long int)p, "0123456789abcdef", printed, fd);
 }

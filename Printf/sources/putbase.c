@@ -6,7 +6,7 @@
 /*   By: nsainton <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 16:27:24 by nsainton          #+#    #+#             */
-/*   Updated: 2022/11/17 01:24:14 by nsainton         ###   ########.fr       */
+/*   Updated: 2022/11/17 03:12:26 by nsainton         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,8 @@ int *printed, int fd)
 		(*printed)++;
 		nb = (unsigned long long int)(-1 * nbr);
 		if (nb / len)
-			ft_putbase((long long int)(nb / len), base, printed, fd);
-		ft_putbase((long long int)(nb % len), base, printed, fd);
+			printf_putbase((long long int)(nb / len), base, printed, fd);
+		printf_putbase((long long int)(nb % len), base, printed, fd);
 	}
 	else if (nbr < (long long int)len)
 	{
@@ -35,7 +35,7 @@ int *printed, int fd)
 	}
 	else
 	{
-		ft_putbase(nbr / len, base, printed, fd);
-		ft_putbase(nbr % len, base, printed, fd);
+		printf_putbase(nbr / len, base, printed, fd);
+		printf_putbase(nbr % len, base, printed, fd);
 	}
 }

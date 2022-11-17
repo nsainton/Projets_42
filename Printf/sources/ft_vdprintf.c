@@ -6,13 +6,13 @@
 /*   By: nsainton <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 19:26:40 by nsainton          #+#    #+#             */
-/*   Updated: 2022/11/17 02:43:39 by nsainton         ###   ########.fr       */
+/*   Updated: 2022/11/17 03:10:26 by nsainton         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/libftprintf.h"
 
-static void	loop(char **s, int fd, int *printed)
+static void	loop(const char **s, int fd, int *printed)
 {
 	while (**s && **s != '%')
 	{
@@ -36,7 +36,7 @@ static int	isvalid(char c)
 	return (1);
 }
 
-static void	init(void (*f)(va_list, int *, int, char), int *initialized)
+static void	init(void (*f[128])(va_list, int *, int, char), int *initialized)
 {
 	f['d'] = &printf_putdec;
 	f['u'] = &printf_unsigned;
@@ -51,10 +51,9 @@ static void	init(void (*f)(va_list, int *, int, char), int *initialized)
 
 int	ft_vdprintf(int fd, const char *format, va_list ap)
 {
-	size_t		i;
 	static int	initialized = 0;
 	int			printed;
-	static void	(*f)(va_list, int *, int, char)[128];
+	static void	(*f[128])(va_list, int *, int, char);
 
 	if (! initialized)
 		init(f, &initialized);
@@ -66,9 +65,9 @@ int	ft_vdprintf(int fd, const char *format, va_list ap)
 		loop(&format, fd, &printed);
 		format ++;
 		if (isvalid(*format) == 1)
-			f[*(format + 1)](ap, &printed, fd, *format);
+			f[(int)*(format + 1)](ap, &printed, fd, *format);
 		if (isvalid(*format) == 2)
-			f[*format](ap, &printed, fd, 0);
+			f[(int)*format](ap, &printed, fd, 0);
 		format += isvalid(*format);
 	}
 	return (printed);
