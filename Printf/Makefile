@@ -6,7 +6,7 @@
 #    By: nsainton <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/11 17:44:10 by nsainton          #+#    #+#              #
-#    Updated: 2022/11/17 03:19:55 by nsainton         ###   ########.fr        #
+#    Updated: 2022/11/17 17:58:18 by nsainton         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -49,7 +49,7 @@ INCLUDES= includes
 
 CC= gcc
 
-CFLAGS= -Wall -Wextra -Werror
+CFLAGS= -Wall -Wextra -Werror -g3
 
 all: $(NAME)
 

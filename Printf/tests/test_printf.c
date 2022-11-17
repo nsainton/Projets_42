@@ -6,7 +6,7 @@
 /*   By: nsainton <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/16 23:42:04 by nsainton          #+#    #+#             */
-/*   Updated: 2022/11/17 00:25:26 by nsainton         ###   ########.fr       */
+/*   Updated: 2022/11/17 18:15:55 by nsainton         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,13 +28,13 @@ static void test(void)
 
 	i = printf("Bonjour\n");
 	printf("Retour de la fonction : %d\n", i);
-	i = printf("Bonjour%d\n", i);
+	i = printf("Bonjour : %d\n", i);
 	printf("Retour de la fonction : %d\n", i);
-	i = printf("Un nombre en hexa%x\n", 129);
+	i = printf("Un nombre en hexa : %x\n", 129);
 	printf("Retour de la fonction : %d\n", i);
 	i = printf("Le meme en maj : %X\n", 129);
 	printf("Retour de la fonction : %d\n", i);
-	i = printf("Plusieurs %c arguments %d histoire %x de %X tester %s\n",\
+	i = printf("Plusieurs | %c | arguments |%d| histoire |%x| de |%X| tester |%s|\n",\
 	'c', 123, 123, 123, "Bonjour");
 	printf("Retour de la fonction : %d\n", i);
 	i = printf("Avec un pointeur : %p\n", &i);
@@ -45,6 +45,14 @@ static void test(void)
 	s);
 	printf("Retour de la fonction : %d\n", i);
 	i = printf("Et avec une chaine vide : %s\n", "");
+	printf("Retour de la fonction : %d\n", i);
+	i = printf("Un hexa negatif : %x\n", -456);
+	printf("Retour de la fonction : %d\n", i);
+	i = printf("Un entier negatif : %d\n", -456);
+	printf("Retour de la fonction : %d\n", i);
+	i = printf("Un unsigned int random : %u\n", 1239);
+	printf("Retour de la fonction : %d\n", i);
+	i = printf("Et un integer (en vrai c'est la meme) : %i\n", 230);
 	printf("Retour de la fonction : %d\n", i);
 	i = printf("Un hexa non null avec un flag : %#x\n", 123);
 	printf("Retour de la fonction : %d\n", i);

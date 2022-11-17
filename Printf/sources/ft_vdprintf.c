@@ -6,11 +6,12 @@
 /*   By: nsainton <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 19:26:40 by nsainton          #+#    #+#             */
-/*   Updated: 2022/11/17 03:10:26 by nsainton         ###   ########.fr       */
+/*   Updated: 2022/11/17 18:02:17 by nsainton         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/libftprintf.h"
+#include <stdio.h>
 
 static void	loop(const char **s, int fd, int *printed)
 {
@@ -46,6 +47,7 @@ static void	init(void (*f[128])(va_list, int *, int, char), int *initialized)
 	f['p'] = &printf_printmemory;
 	f['s'] = &printf_putstr;
 	f['%'] = &printf_percent;
+	f['c'] = &printf_putchar;
 	*initialized = 1;
 }
 
@@ -63,11 +65,15 @@ int	ft_vdprintf(int fd, const char *format, va_list ap)
 	while (*format)
 	{
 		loop(&format, fd, &printed);
+		if (*format == 0)
+			return (printed);
 		format ++;
 		if (isvalid(*format) == 1)
-			f[(int)*(format + 1)](ap, &printed, fd, *format);
-		if (isvalid(*format) == 2)
 			f[(int)*format](ap, &printed, fd, 0);
+		else if (isvalid(*format) == 2)
+			f[(int)*(format + 1)](ap, &printed, fd, *format);
+		else
+			return (printed);
 		format += isvalid(*format);
 	}
 	return (printed);
