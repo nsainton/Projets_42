@@ -6,7 +6,7 @@
 #    By: nsainton <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/11 17:44:10 by nsainton          #+#    #+#              #
-#    Updated: 2022/11/17 17:58:18 by nsainton         ###   ########.fr        #
+#    Updated: 2022/11/18 02:01:04 by nsainton         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,8 +15,6 @@ NAME= libftprintf.a
 LIBFT= libft.a
 
 LIBFT_DIR= Libft
-
-LIBFT_OBJS_DIR= $(addprefix $(LIBFT_DIR)/,$(OBJS_DIR))
 
 LIBFT_SRCS_NAMES= ft_atoi.c ft_bzero.c ft_calloc.c ft_isalnum.c \
 		ft_isalpha.c ft_isascii.c ft_isdigit.c ft_isprint.c \
@@ -31,7 +29,7 @@ LIBFT_SRCS_NAMES= ft_atoi.c ft_bzero.c ft_calloc.c ft_isalnum.c \
 
 LIBFT_OBJS_NAMES= $(LIBFT_SRCS_NAMES:.c=.o)
 
-LIBFT_OBJS=$(addprefix $(LIBFT_OBJS_DIR)/, $(LIBFT_OBJS_NAMES))
+LIBFT_OBJS=$(addprefix $(LIBFT_DIR)/, $(LIBFT_OBJS_NAMES))
 
 SRCS_DIR= sources
 
