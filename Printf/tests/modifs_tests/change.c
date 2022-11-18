@@ -6,7 +6,7 @@
 /*   By: nsainton <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/17 00:26:14 by nsainton          #+#    #+#             */
-/*   Updated: 2022/11/17 00:44:36 by nsainton         ###   ########.fr       */
+/*   Updated: 2022/11/18 19:28:38 by nsainton         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,8 +54,8 @@ int	main(void)
 	int		printF;
 	int		ft_printF;
 
-	printF = open("test_printf.c", O_RDONLY);
-	ft_printF = open("test_ftprintf.c", O_CREAT | O_WRONLY);
+	printF = open("../test_printf.c", O_RDONLY);
+	ft_printF = open("../test_ftprintf.c", O_CREAT | O_WRONLY);
 	if (printF == -1 || ft_printF == -1)
 	{
 		ft_putstr_fd("Opening error\n", 1);
