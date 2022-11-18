@@ -6,7 +6,7 @@
 /*   By: nsainton <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/16 23:42:04 by nsainton          #+#    #+#             */
-/*   Updated: 2022/11/17 18:15:55 by nsainton         ###   ########.fr       */
+/*   Updated: 2022/11/18 01:29:34 by nsainton         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ static void test(void)
 	printf("Retour de la fonction : %d\n", i);
 	i = printf("Et avec une chaine vide : %s\n", "");
 	printf("Retour de la fonction : %d\n", i);
-	i = printf("Un hexa negatif : %x\n", -456);
+	i = printf("Un hexa negatif : %x\n", -1);
 	printf("Retour de la fonction : %d\n", i);
 	i = printf("Un entier negatif : %d\n", -456);
 	printf("Retour de la fonction : %d\n", i);

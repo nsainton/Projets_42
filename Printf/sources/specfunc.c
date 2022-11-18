@@ -6,12 +6,11 @@
 /*   By: nsainton <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/16 18:07:47 by nsainton          #+#    #+#             */
-/*   Updated: 2022/11/17 18:10:08 by nsainton         ###   ########.fr       */
+/*   Updated: 2022/11/18 01:34:54 by nsainton         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/libftprintf.h"
-#include <stdio.h>
 
 void	printf_putstr(va_list ap, int *print, int fd, char flag)
 {
@@ -56,8 +55,7 @@ void	printf_puthex_maj(va_list ap, int *print, int fd, char flag)
 	}
 	if (nbr < 0)
 	{
-		number = (long long int)(-1 * nbr);
-		printf("%#x\n", nbr);
+		number = (long long int)(UINT_MAX + nbr + 1);
 	}
 	else
 		number = (long long int)nbr;
@@ -76,7 +74,7 @@ void	printf_puthex_min(va_list ap, int *print, int fd, char flag)
 		*print += 2;
 	}
 	if (nbr < 0)
-		number = (long long int)(-1 * nbr);
+		number = (long long int)(UINT_MAX + nbr + 1);
 	else
 		number = (long long int)nbr;
 	printf_putbase(number, "0123456789abcdef", print, fd);

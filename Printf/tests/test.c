@@ -6,13 +6,14 @@
 /*   By: nsainton <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/16 18:45:18 by nsainton          #+#    #+#             */
-/*   Updated: 2022/11/17 02:09:28 by nsainton         ###   ########.fr       */
+/*   Updated: 2022/11/18 01:50:21 by nsainton         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdio.h>
 #include <limits.h>
 #include <unistd.h>
+#include "../includes/libftprintf.h"
 
 /*
 void	ft_putnbr_dec(int nbr);
@@ -53,6 +54,9 @@ void	ft_putnbr_dec(int nbr)
 
 int	main(void)
 {
-	printf("% p\n", NULL);
+	printf("%p %p\n", LONG_MIN, LONG_MAX);
+	printf("%p %p\n", ULONG_MAX, -ULONG_MAX);
+	ft_printf("%p %p\n", LONG_MIN, LONG_MAX);
+	ft_printf("%p %p\n", ULONG_MAX, -ULONG_MAX);
 	return (0);
 }
