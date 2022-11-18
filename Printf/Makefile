@@ -6,7 +6,7 @@
 #    By: nsainton <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/11 17:44:10 by nsainton          #+#    #+#              #
-#    Updated: 2022/11/18 02:10:50 by nsainton         ###   ########.fr        #
+#    Updated: 2022/11/18 02:22:01 by nsainton         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,7 +31,8 @@ LIBFT_OBJS=$(addprefix $(LIBFT_DIR)/, $(LIBFT_OBJS_NAMES))
 
 SRCS_DIR= sources
 
-SRCS_NAMES= $(subst $(SRCS_DIR)/,, $(wildcard $(SRCS_DIR)/*))
+SRCS_NAMES= ft_dprintf.c ft_vdprintf.c printmemory.c putbase.c specfunc2.c\
+			specfunc.c
 
 SRCS= $(addprefix $(SRCS_DIR)/, $(SRCS_NAME))
 
