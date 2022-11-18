@@ -6,21 +6,21 @@
 /*   By: nsainton <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 16:25:56 by nsainton          #+#    #+#             */
-/*   Updated: 2022/11/17 02:50:47 by nsainton         ###   ########.fr       */
+/*   Updated: 2022/11/18 02:12:58 by nsainton         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIBFT_PRINTF_H
-# define LIBFT_PRINTF_H
+#ifndef LIBFTPRINTF_H
+# define LIBFTPRINTF_H
 # include "../Libft/libft.h"
 # include <limits.h>
 # include <stdarg.h>
 
-int	ft_dprintf(int fd, const char *format, ...);
+int		ft_dprintf(int fd, const char *format, ...);
 
-int	ft_printf(const char *format, ...);
+int		ft_printf(const char *format, ...);
 
-int	ft_vdprintf(int fd, const char *format, va_list ap);
+int		ft_vdprintf(int fd, const char *format, va_list ap);
 
 void	printf_printmemory(va_list ap, int *printed, int fd, char flag);
 

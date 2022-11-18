@@ -6,7 +6,7 @@
 /*   By: nsainton <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/16 23:42:04 by nsainton          #+#    #+#             */
-/*   Updated: 2022/11/18 01:32:53 by nsainton         ###   ########.fr       */
+/*   Updated: 2022/11/18 02:18:10 by nsainton         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,4 +66,11 @@ static void test(void)
 	ft_printf("Retour de la fonction : %d\n", i);
 	i = ft_printf("Un autre entier positif : % d\n", 123);
 	ft_printf("Retour de la fonction : %d\n", i);
+	i = ft_printf("Encore un hexa : %#x\n", 1239123);
+	ft_printf("Retour de la fonction : %d\n", i);
+	i = ft_printf("On mixe les trucs chelous : |%s|, parce que sinon |%#x|, c'est\
+	pas drole %c", "", -1231241, 'P');
+	ft_printf("Retour de la fonction : %d\n", i);
+	i = ft_printf("Une chaine random : %s\n", "Bonjour");
+	ft_printf("Le dernier retour : %d\n", i);
 }
