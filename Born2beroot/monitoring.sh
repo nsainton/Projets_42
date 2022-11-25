@@ -33,7 +33,7 @@ ft_disk()
 
 ft_lvm_status()
 {
-	if [ $1 == "available" ]
+	if [ $1 != 0 ]
 	then
 		lvm_status="yes"
 	else
@@ -56,7 +56,7 @@ available_disk="$(df | awk -F ' ' '{print $4}' | tail -n +2 | tr '\n' '+' | rev 
 last_reboot="$(who -b | awk '{print $3" "$4}')"
 #SET LVM STATUS
 lvm_status="available"
-#lvm_status="$(lvdisplay | grep "LV Status" | uniq | awk '{print $3}')"
+#lvm_status="$(lsblk | grep LVM | wc -l)"
 #tcp_connections="$(netstat | grep ESTABLISHED | wc -l)"
 users_logged="$(w | tail -n+3 | wc -l)"
 #ip_address="$(ip addr | grep "inet " | head -1 | awk '{print $2}')"
