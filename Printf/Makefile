@@ -6,7 +6,7 @@
 #    By: nsainton <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/11 17:44:10 by nsainton          #+#    #+#              #
-#    Updated: 2022/11/18 02:22:01 by nsainton         ###   ########.fr        #
+#    Updated: 2022/11/18 20:28:19 by nsainton         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -47,6 +47,8 @@ INCLUDES= includes
 CC= gcc
 
 CFLAGS= -Wall -Wextra -Werror
+
+RM= shred
 
 all: $(NAME)
 
