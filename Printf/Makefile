@@ -6,7 +6,7 @@
 #    By: nsainton <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/11 17:44:10 by nsainton          #+#    #+#              #
-#    Updated: 2022/11/18 20:28:19 by nsainton         ###   ########.fr        #
+#    Updated: 2022/12/01 22:03:11 by nsainton         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,8 +31,7 @@ LIBFT_OBJS=$(addprefix $(LIBFT_DIR)/, $(LIBFT_OBJS_NAMES))
 
 SRCS_DIR= sources
 
-SRCS_NAMES= ft_dprintf.c ft_vdprintf.c printmemory.c putbase.c specfunc2.c\
-			specfunc.c
+SRCS_NAMES= $(subst $(SRCS_DIR)/,, $(wildcard $(SRCS_DIR)/*))
 
 SRCS= $(addprefix $(SRCS_DIR)/, $(SRCS_NAME))
 
@@ -53,7 +52,7 @@ RM= shred
 all: $(NAME)
 
 $(NAME): $(OBJS)
-	$(MAKE) -C $(LIBFT_DIR)
+	$(MAKE) $(LIBFT_OBJS_NAMES) -C $(LIBFT_DIR)
 	ar -rc $(NAME) $(OBJS) $(LIBFT_OBJS)
 
 $(OBJS_DIR)/%.o: $(SRCS_DIR)/%.c | $(OBJS_DIR)
@@ -72,7 +71,7 @@ clean:
 	rm -rf $(OBJS_DIR)
 
 fclean: clean
-	$(MAKE) fclean -C $(LIBFT_DIR)
+	$(MAKE) clean -C $(LIBFT_DIR)
 	rm -f $(NAME)
 
 re: fclean all
