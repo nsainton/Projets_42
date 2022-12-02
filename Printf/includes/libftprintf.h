@@ -5,39 +5,31 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: nsainton <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/14 16:25:56 by nsainton          #+#    #+#             */
-/*   Updated: 2022/11/18 02:12:58 by nsainton         ###   ########.fr       */
+/*   Created: 2022/12/01 22:23:38 by nsainton          #+#    #+#             */
+/*   Updated: 2022/12/02 09:09:47 by nsainton         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIBFTPRINTF_H
 # define LIBFTPRINTF_H
-# include "../Libft/libft.h"
-# include <limits.h>
-# include <stdarg.h>
+# include "Libft/libft.h"
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE 2000000
+# endif
+# define DEC "0123456789"
+# define HEX "0123456789abcdef"
+# define HEX_MAJ "0123456789ABCDEF"
 
-int		ft_dprintf(int fd, const char *format, ...);
+typedef struct s_buffer
+{
+	char	buffer[BUFFER_SIZE];
+	size_t	line_index;
+	int		width;
+	int		prec;
+}				t_buffer;
 
-int		ft_printf(const char *format, ...);
+typedef long long int			t_ll;
 
-int		ft_vdprintf(int fd, const char *format, va_list ap);
+typedef unsigned long long int	t_ull;
 
-void	printf_printmemory(va_list ap, int *printed, int fd, char flag);
-
-void	printf_putbase(long long int nbr, const char *base, \
-int *printed, int fd);
-
-void	printf_putstr(va_list ap, int *print, int fd, char flag);
-
-void	printf_putchar(va_list ap, int *print, int fd, char flag);
-
-void	printf_puthex_maj(va_list ap, int *print, int fd, char flag);
-
-void	printf_puthex_min(va_list ap, int *print, int fd, char flag);
-
-void	printf_putdec(va_list ap, int *print, int fd, char flag);
-
-void	printf_percent(va_list ap, int *print, int fd, char flag);
-
-void	printf_unsigned(va_list ap, int *print, int fd, char flag);
 #endif

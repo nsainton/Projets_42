@@ -6,7 +6,7 @@
 /*   By: nsainton <nsainton@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/06 19:32:01 by nsainton          #+#    #+#             */
-/*   Updated: 2022/11/08 15:06:45 by nsainton         ###   ########.fr       */
+/*   Updated: 2022/12/01 22:38:17 by nsainton         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,8 @@ size_t	ft_strlen(const char *s);
 size_t	ft_strlcpy(char *dst, const char *src, size_t size);
 
 size_t	ft_strlcat(char	*dst, const char *src, size_t size);
+
+char	*ft_strncat(char *dest, const char *src, size_t n);
 
 char	*ft_strchr(const char *s, int c);
 
