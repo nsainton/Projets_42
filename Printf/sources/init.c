@@ -6,7 +6,7 @@
 /*   By: nsainton <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/04 23:02:41 by nsainton          #+#    #+#             */
-/*   Updated: 2022/12/05 01:38:23 by nsainton         ###   ########.fr       */
+/*   Updated: 2022/12/05 02:43:27 by nsainton         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ void	set_pad(t_pbuffer *buf, char flags[128], t_print *pads)
 	pads->beg = 0;
 	pads->pad = ' ';
 	pads->modifier[0] = 0;
-	pads->align = 0;
+	pads->align = 'r';
 	if (flags[48] && ! buf->prec)
 		pads->pad = 48;
 	if (flags[32])
@@ -49,7 +49,7 @@ void	set_pad(t_pbuffer *buf, char flags[128], t_print *pads)
 	if (flags[(int) 'm'])
 		pads->beg = '-';
 	if (flags[(int) '-'])
-		pads->align = 1;
+		pads->align = 'l';
 }
 
 void	init_func(t_pfunc func[128])

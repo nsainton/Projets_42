@@ -6,14 +6,13 @@
 /*   By: nsainton <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/01 22:23:38 by nsainton          #+#    #+#             */
-/*   Updated: 2022/12/05 02:20:26 by nsainton         ###   ########.fr       */
+/*   Updated: 2022/12/05 02:40:56 by nsainton         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIBFTPRINTF_H
 # define LIBFTPRINTF_H
 # include "../Libft/libft.h"
-# include "debug.h"
 # include <limits.h>
 # include <stdarg.h>
 # ifndef PBUFFER_SIZE
