@@ -6,7 +6,7 @@
 /*   By: nsainton <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/01 22:23:38 by nsainton          #+#    #+#             */
-/*   Updated: 2022/12/05 04:05:55 by nsainton         ###   ########.fr       */
+/*   Updated: 2022/12/05 04:41:27 by nsainton         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,9 +83,11 @@ t_ull	itou(int n);
 t_ull	lltoull(t_ll n);
 
 //Functions from decimal.c
-void	put_unsigned(t_ull nb, char **tab, char *base);
+void	put_pos(t_ull nb, char **tab, char *base);
 
 void	put_dec(t_pbuffer *buf, va_list *ap, char flags[128]);
+
+void	put_unsigned(t_pbuffer *buf, va_list *ap, char flags[128]);
 
 //Functions from char.c
 void	put_char(t_pbuffer *buf, va_list *ap, char flags[128]);

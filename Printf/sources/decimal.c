@@ -6,13 +6,13 @@
 /*   By: nsainton <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/04 23:31:17 by nsainton          #+#    #+#             */
-/*   Updated: 2022/12/05 01:56:35 by nsainton         ###   ########.fr       */
+/*   Updated: 2022/12/05 04:51:49 by nsainton         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/libftprintf.h"
 
-void	put_unsigned(t_ull nb, char **tab, char *base)
+void	put_pos(t_ull nb, char **tab, char *base)
 {
 	t_ull	i;
 
@@ -24,8 +24,8 @@ void	put_unsigned(t_ull nb, char **tab, char *base)
 	}
 	else
 	{
-		put_unsigned(nb / i, tab, base);
-		put_unsigned(nb % i, tab, base);
+		put_pos(nb / i, tab, base);
+		put_pos(nb % i, tab, base);
 	}
 }
 
@@ -33,12 +33,12 @@ void	put_dec(t_pbuffer *buf, va_list *ap, char flags[128])
 {
 	int		len;
 	int		arg;
-	char	nb[66];
+	char	nb[12];
 	char	*tmp;
 
 	tmp = nb;
 	arg = va_arg(*ap, int);
-	put_unsigned(abs_ll((t_ll)arg), &tmp, DEC);
+	put_pos(abs_ll((t_ll)arg), &tmp, DEC);
 	len = (int)(tmp - nb);
 	*tmp = 0;
 	if (!(arg || buf->prec) && flags[(int) '.'])
@@ -50,3 +50,24 @@ void	put_dec(t_pbuffer *buf, va_list *ap, char flags[128])
 		flags[(int) 'm'] = 1;
 	build_res(buf, nb, flags, len);
 }
+
+void	put_unsigned(t_pbuffer *buf, va_list *ap, char flags[128])
+{
+	int				len;
+	unsigned int	arg;
+	char			nb[12];
+	char			*tmp;
+
+	tmp = nb;
+	arg = va_arg(*ap, unsigned int);
+	put_pos(abs_ll((t_ll)arg), &tmp, DEC);
+	len = (int)(tmp - nb);
+	*tmp = 0;
+	if (!(arg || buf->prec) && flags[(int) '.'])
+	{
+		*nb = 0;
+		len = 0;
+	}
+	build_res(buf, nb, flags, len);
+}
+

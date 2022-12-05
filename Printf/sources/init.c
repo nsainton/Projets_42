@@ -6,7 +6,7 @@
 /*   By: nsainton <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/04 23:02:41 by nsainton          #+#    #+#             */
-/*   Updated: 2022/12/05 04:26:30 by nsainton         ###   ########.fr       */
+/*   Updated: 2022/12/05 04:53:44 by nsainton         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,4 +57,5 @@ void	init_func(t_pfunc func[128])
 	func[(int) 'd'] = &put_dec;
 	func[(int) 'i'] = &put_dec;
 	func[(int) 'c'] = &put_char;
+	func[(int) 'u'] = &put_unsigned;
 }
