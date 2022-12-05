@@ -6,7 +6,7 @@
 /*   By: nsainton <nsainton@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/06 19:32:01 by nsainton          #+#    #+#             */
-/*   Updated: 2022/12/04 02:02:55 by nsainton         ###   ########.fr       */
+/*   Updated: 2022/12/05 07:48:19 by nsainton         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,8 @@ int		ft_toupper(int c);
 int		ft_strncmp(const char *s1, const char *s2, size_t n);
 
 size_t	ft_strlen(const char *s);
+
+size_t	ft_strnlen(const char *s, size_t maxlen);
 
 size_t	ft_strlcpy(char *dst, const char *src, size_t size);
 

@@ -6,7 +6,7 @@
 /*   By: nsainton <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/01 22:23:38 by nsainton          #+#    #+#             */
-/*   Updated: 2022/12/05 06:18:31 by nsainton         ###   ########.fr       */
+/*   Updated: 2022/12/05 07:42:14 by nsainton         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@
 # define DEC "0123456789"
 # define HEX "0123456789abcdef"
 # define HEX_MAJ "0123456789ABCDEF"
-# define FLAGS "# +-0."
+# define FLAGS "# +-0"
 # define SPECIFIERS "cspdiuxX%"
 
 typedef struct s_pbuffer
@@ -91,8 +91,10 @@ void	put_dec(t_pbuffer *buf, va_list *ap, char flags[128]);
 
 void	put_unsigned(t_pbuffer *buf, va_list *ap, char flags[128]);
 
-//Functions from char.c
+//Functions from strings.c
 void	put_char(t_pbuffer *buf, va_list *ap, char flags[128]);
+
+void	put_string(t_pbuffer *buf, va_list *ap, char flags[128]);
 
 // Functions from printing.c
 void	build_res(t_pbuffer *buf, char *res, char flags[128], int len);

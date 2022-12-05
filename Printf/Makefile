@@ -6,7 +6,7 @@
 #    By: nsainton <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/11 17:44:10 by nsainton          #+#    #+#              #
-#    Updated: 2022/12/05 04:32:08 by nsainton         ###   ########.fr        #
+#    Updated: 2022/12/05 07:49:30 by nsainton         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,7 +23,7 @@ LIBFT_SRCS_NAMES= ft_atoi.c ft_bzero.c ft_calloc.c ft_isalnum.c \
 		ft_strncmp.c ft_strnstr.c ft_strrchr.c ft_strtrim.c ft_substr.c \
 		ft_tolower.c ft_toupper.c ft_lstadd_back.c ft_lstadd_front.c \
 		ft_lstclear.c ft_lstdelone.c ft_lstiter.c ft_lstlast.c ft_lstmap.c \
-		ft_lstnew.c ft_lstsize.c ft_strncat.c
+		ft_lstnew.c ft_lstsize.c ft_strncat.c ft_strnlen.c
 
 LIBFT_OBJS_NAMES= $(LIBFT_SRCS_NAMES:.c=.o)
 
