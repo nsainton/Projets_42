@@ -1,25 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putstr_fd.c                                     :+:      :+:    :+:   */
+/*   debug.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nsainton <nsainton@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nsainton <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/14 18:05:34 by nsainton          #+#    #+#             */
-/*   Updated: 2022/12/04 02:03:15 by nsainton         ###   ########.fr       */
+/*   Created: 2022/12/05 02:20:36 by nsainton          #+#    #+#             */
+/*   Updated: 2022/12/05 02:25:23 by nsainton         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#ifndef DEBUG_H
+# define DEBUG_H
+# include <stdio.h>
+# include "libftprintf.h"
 
-int	ft_putstr_fd(char *s, int fd)
-{
-	size_t	i;
-	int		written;
+void	print_flags(char flags[128]);
 
-	if (s == NULL)
-		return (0);
-	i = ft_strlen(s);
-	written = (int)write(fd, s, i);
-	return (written);
-}
+void	print_buffer(t_pbuffer *buf);
+
+void	print_pad(t_print *pads);
+
+#endif

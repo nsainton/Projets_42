@@ -6,7 +6,7 @@
 /*   By: nsainton <nsainton@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/14 20:29:07 by nsainton          #+#    #+#             */
-/*   Updated: 2022/10/15 19:42:26 by nsainton         ###   ########.fr       */
+/*   Updated: 2022/12/04 01:59:56 by nsainton         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ static void	ft_fill_string(char *string, int nbr, int *index)
 	}
 }
 
-void	ft_putnbr_fd(int n, int fd)
+int	ft_putnbr_fd(int n, int fd)
 {
 	char	c[12];
 	int		index;
@@ -45,5 +45,5 @@ void	ft_putnbr_fd(int n, int fd)
 	index = 0;
 	ft_fill_string(c, n, &index);
 	*(c + index) = 0;
-	ft_putstr_fd(c, fd);
+	return (ft_putstr_fd(c, fd));
 }
