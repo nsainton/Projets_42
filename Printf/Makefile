@@ -6,7 +6,7 @@
 #    By: nsainton <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/11 17:44:10 by nsainton          #+#    #+#              #
-#    Updated: 2022/12/05 02:05:48 by nsainton         ###   ########.fr        #
+#    Updated: 2022/12/05 04:32:08 by nsainton         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -71,5 +71,10 @@ clean:
 fclean: clean
 	$(MAKE) clean -C $(LIBFT_DIR)
 	rm -f $(NAME)
+
+git:
+	git add --all
+	git commit
+	git push origin dev
 
 re: fclean all
