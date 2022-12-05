@@ -1,48 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   helpers.c                                          :+:      :+:    :+:   */
+/*   pointer_test.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nsainton <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/04 21:58:02 by nsainton          #+#    #+#             */
-/*   Updated: 2022/12/05 06:15:59 by nsainton         ###   ########.fr       */
+/*   Created: 2022/12/05 05:03:22 by nsainton          #+#    #+#             */
+/*   Updated: 2022/12/05 06:51:56 by nsainton         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/libftprintf.h"
+#include <stdio.h>
 
-int	max_int(int a, int b)
+int	main(void)
 {
-	if (a < b)
-		return (b);
-	return (a);
-}
+	char	*s = "bonjour";
+	char	n[7];
+	int		i;
+	int		len;
 
-int	min_int(int a, int b)
-{
-	if (a < b)
-		return (a);
-	return (b);
-}
-
-t_ull	abs_ll(t_ll a)
-{
-	if (a < 0)
-		return ((t_ull)(-1 * a));
-	return ((t_ull)a);
-}
-
-t_ull	itou(int n)
-{
-	if (n < 0)
-		return ((t_ull)(UINT_MAX + n + 1));
-	return ((t_ull)n);
-}
-
-t_ull	lltoull(t_ll n)
-{
-	if (n < 0)
-		return ((t_ull)(ULLONG_MAX + n + 1));
-	return ((t_ull)n);
+	i = printf("%- 12s\n", s);
+	printf("%d\n", i);
+	*n = 0;
+	len = (int)ft_strlcat(n, "(null)", 7);
+	printf("len : %d\n", len);
+	printf("chaine : %s\n", n);
+	return (0);
 }

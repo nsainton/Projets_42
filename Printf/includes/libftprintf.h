@@ -6,7 +6,7 @@
 /*   By: nsainton <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/01 22:23:38 by nsainton          #+#    #+#             */
-/*   Updated: 2022/12/05 04:41:27 by nsainton         ###   ########.fr       */
+/*   Updated: 2022/12/05 06:18:31 by nsainton         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,6 +76,8 @@ void	add_nstr(t_pbuffer *buf, char *str, int n);
 //Functions from helpers.c
 int		max_int(int a, int b);
 
+int		min_int(int a, int b);
+
 t_ull	abs_ll(t_ll a);
 
 t_ull	itou(int n);
@@ -93,9 +95,9 @@ void	put_unsigned(t_pbuffer *buf, va_list *ap, char flags[128]);
 void	put_char(t_pbuffer *buf, va_list *ap, char flags[128]);
 
 // Functions from printing.c
-void	build_res(t_pbuffer *buf, char *nb, char flags[128], int len);
+void	build_res(t_pbuffer *buf, char *res, char flags[128], int len);
 
-void	print_res(t_pbuffer *buf, char *nb, int len, t_print *pads);
+void	print_res(t_pbuffer *buf, char *res, int len, t_print *pads);
 
 //Functions from ft_printf.c
 int		ft_printf(const char *format, ...);

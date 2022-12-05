@@ -6,14 +6,14 @@
 /*   By: nsainton <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/05 02:27:16 by nsainton          #+#    #+#             */
-/*   Updated: 2022/12/05 03:16:12 by nsainton         ###   ########.fr       */
+/*   Updated: 2022/12/05 06:18:15 by nsainton         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/libftprintf.h"
 #include "../includes/debug.h"
 
-void	build_res(t_pbuffer *buf, char *nb, char flags[128], int len)
+void	build_res(t_pbuffer *buf, char *res, char flags[128], int len)
 {
 	t_print	pads;
 	int		tmp;
@@ -24,10 +24,10 @@ void	build_res(t_pbuffer *buf, char *nb, char flags[128], int len)
 		tmp = 1;
 	buf->prec = max_int(buf->prec, len);
 	buf->width = max_int(buf->prec + tmp, buf->width);
-	print_res(buf, nb, len, &pads);
+	print_res(buf, res, len, &pads);
 }
 
-void	print_res(t_pbuffer *buf, char *nb, int len, t_print *pads)
+void	print_res(t_pbuffer *buf, char *res, int len, t_print *pads)
 {
 	int	width;
 	int	prec;
@@ -49,7 +49,7 @@ void	print_res(t_pbuffer *buf, char *nb, int len, t_print *pads)
 	if (pads->align == 'r' && pads->pad == '0')
 		add_nchar(buf, pads->pad, width - prec);
 	add_nchar(buf, '0', prec - len);
-	add_str(buf, nb);
+	add_nstr(buf, res, len);
 	if (pads->align == 'l')
 		add_nchar(buf, ' ', width - prec);
 }

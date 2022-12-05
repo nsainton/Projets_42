@@ -6,7 +6,7 @@
 /*   By: nsainton <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/04 23:31:17 by nsainton          #+#    #+#             */
-/*   Updated: 2022/12/05 04:51:49 by nsainton         ###   ########.fr       */
+/*   Updated: 2022/12/05 06:20:14 by nsainton         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,4 +70,3 @@ void	put_unsigned(t_pbuffer *buf, va_list *ap, char flags[128])
 	}
 	build_res(buf, nb, flags, len);
 }
-
