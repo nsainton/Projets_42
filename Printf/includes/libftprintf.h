@@ -6,7 +6,7 @@
 /*   By: nsainton <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/01 22:23:38 by nsainton          #+#    #+#             */
-/*   Updated: 2022/12/05 02:58:41 by nsainton         ###   ########.fr       */
+/*   Updated: 2022/12/05 04:05:55 by nsainton         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,6 +86,9 @@ t_ull	lltoull(t_ll n);
 void	put_unsigned(t_ull nb, char **tab, char *base);
 
 void	put_dec(t_pbuffer *buf, va_list *ap, char flags[128]);
+
+//Functions from char.c
+void	put_char(t_pbuffer *buf, va_list *ap, char flags[128]);
 
 // Functions from printing.c
 void	build_res(t_pbuffer *buf, char *nb, char flags[128], int len);
