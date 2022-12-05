@@ -6,12 +6,12 @@
 /*   By: nsainton <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/04 23:09:56 by nsainton          #+#    #+#             */
-/*   Updated: 2022/12/05 02:45:02 by nsainton         ###   ########.fr       */
+/*   Updated: 2022/12/05 02:59:42 by nsainton         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/debug.h"
 #include "../includes/libftprintf.h"
+#include "../includes/debug.h"
 
 void	print_flags(char flags[128])
 {
@@ -36,9 +36,9 @@ void	print_buffer(t_pbuffer *buf)
 	printf("buf->fd : %d\n", buf->fd);
 }
 
-void	print_tprint(t_print *p)
+void	print_pad(t_print *pads)
 {
-	printf("print->beg : %c\n", p->beg);
-	printf("print -> align : %c\n", p->align);
-	printf("print->pad : %c\n", p->pad);
+	printf("print->beg : %c\n", pads->beg);
+	printf("print -> align : %c\n", pads->align);
+	printf("print->pad : %c\n", pads->pad);
 }
