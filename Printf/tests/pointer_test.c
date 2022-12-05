@@ -6,7 +6,7 @@
 /*   By: nsainton <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/05 05:03:22 by nsainton          #+#    #+#             */
-/*   Updated: 2022/12/05 06:51:56 by nsainton         ###   ########.fr       */
+/*   Updated: 2022/12/05 08:05:12 by nsainton         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,16 +15,9 @@
 
 int	main(void)
 {
-	char	*s = "bonjour";
-	char	n[7];
 	int		i;
-	int		len;
 
-	i = printf("%- 12s\n", s);
+	i = printf("%p\n", (void *)-1);
 	printf("%d\n", i);
-	*n = 0;
-	len = (int)ft_strlcat(n, "(null)", 7);
-	printf("len : %d\n", len);
-	printf("chaine : %s\n", n);
 	return (0);
 }
