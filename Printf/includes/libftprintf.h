@@ -6,7 +6,7 @@
 /*   By: nsainton <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/01 22:23:38 by nsainton          #+#    #+#             */
-/*   Updated: 2022/12/05 07:42:14 by nsainton         ###   ########.fr       */
+/*   Updated: 2022/12/06 03:02:55 by nsainton         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ typedef struct s_pbuffer
 
 typedef struct s_print
 {
-	char	modifier[2];
+	char	modifier[3];
 	char	beg;
 	char	pad;
 	char	align;
@@ -58,7 +58,7 @@ void	reset_flags(char flags[128]);
 
 void	init_pbuf(t_pbuffer *buf, int fd);
 
-void	set_pad(t_pbuffer *buf, char flags[128], t_print *pads);
+void	set_pad(char flags[128], t_print *pads);
 
 void	init_func(t_pfunc func[128]);
 
@@ -95,6 +95,9 @@ void	put_unsigned(t_pbuffer *buf, va_list *ap, char flags[128]);
 void	put_char(t_pbuffer *buf, va_list *ap, char flags[128]);
 
 void	put_string(t_pbuffer *buf, va_list *ap, char flags[128]);
+
+//Functions from address.c
+void	put_address(t_pbuffer *buf, va_list *ap, char flags[128]);
 
 // Functions from printing.c
 void	build_res(t_pbuffer *buf, char *res, char flags[128], int len);

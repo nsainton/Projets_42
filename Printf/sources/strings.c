@@ -6,7 +6,7 @@
 /*   By: nsainton <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/05 03:57:04 by nsainton          #+#    #+#             */
-/*   Updated: 2022/12/05 07:50:11 by nsainton         ###   ########.fr       */
+/*   Updated: 2022/12/06 02:59:02 by nsainton         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ void	put_string(t_pbuffer *buf, va_list *ap, char flags[128])
 		len = ft_strnlen(arg, (size_t)buf->prec);
 	else
 		len = ft_strlen(arg);
-	set_pad(buf, flags, &pads);
+	set_pad(flags, &pads);
 	buf->prec = len;
 	pads.beg = 0;
 	pads.pad = ' ';

@@ -6,7 +6,7 @@
 /*   By: nsainton <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/04 23:02:41 by nsainton          #+#    #+#             */
-/*   Updated: 2022/12/05 07:05:52 by nsainton         ###   ########.fr       */
+/*   Updated: 2022/12/06 02:58:37 by nsainton         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ void	reset_flags(char flags[128])
 		i ++;
 	}
 	flags[(int) 'm'] = 0;
+	flags[(int) '.'] = 0;
 }
 
 void	init_pbuf(t_pbuffer *buf, int fd)
@@ -34,13 +35,13 @@ void	init_pbuf(t_pbuffer *buf, int fd)
 	buf->prec = 0;
 }
 
-void	set_pad(t_pbuffer *buf, char flags[128], t_print *pads)
+void	set_pad(char flags[128], t_print *pads)
 {
 	pads->beg = 0;
 	pads->pad = ' ';
 	pads->modifier[0] = 0;
 	pads->align = 'r';
-	if (flags[48] && ! buf->prec)
+	if (flags[48] && ! flags[(int) '.'])
 		pads->pad = 48;
 	if (flags[32])
 		pads->beg = 32;
@@ -59,4 +60,5 @@ void	init_func(t_pfunc func[128])
 	func[(int) 'c'] = &put_char;
 	func[(int) 'u'] = &put_unsigned;
 	func[(int) 's'] = &put_string;
+	func[(int) 'p'] = &put_address;
 }

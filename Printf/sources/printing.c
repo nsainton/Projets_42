@@ -6,7 +6,7 @@
 /*   By: nsainton <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/05 02:27:16 by nsainton          #+#    #+#             */
-/*   Updated: 2022/12/05 07:43:00 by nsainton         ###   ########.fr       */
+/*   Updated: 2022/12/06 02:58:51 by nsainton         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	build_res(t_pbuffer *buf, char *res, char flags[128], int len)
 	t_print	pads;
 	int		tmp;
 
-	set_pad(buf, flags, &pads);
+	set_pad(flags, &pads);
 	tmp = 0;
 	if (pads.beg)
 		tmp = 1;
