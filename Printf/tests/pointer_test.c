@@ -6,7 +6,7 @@
 /*   By: nsainton <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/05 05:03:22 by nsainton          #+#    #+#             */
-/*   Updated: 2022/12/06 00:57:51 by nsainton         ###   ########.fr       */
+/*   Updated: 2022/12/06 06:42:14 by nsainton         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,14 @@ int	main(void)
 	printf("Retour de ft_printf : %d\n", j);
 	i = printf("%3p\n", (void *)-145);
 	j = ft_printf("%3p\n", (void *)-145);
+	printf("Retour de printf : %d\n", i);
+	printf("Retour de ft_printf : %d\n", j);
+	i = printf("%3p\n", (void *)2147483647);
+	j = ft_printf("%3p\n", (void *)2147483647);
+	printf("Retour de printf : %d\n", i);
+	printf("Retour de ft_printf : %d\n", j);
+	i = printf("%3p\n", (void *)-2147483648);
+	j = ft_printf("%3p\n", (void *)-2147483648);
 	printf("Retour de printf : %d\n", i);
 	printf("Retour de ft_printf : %d\n", j);
 	return (0);

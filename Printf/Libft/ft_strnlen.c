@@ -6,7 +6,7 @@
 /*   By: nsainton <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/05 07:46:32 by nsainton          #+#    #+#             */
-/*   Updated: 2022/12/05 07:49:00 by nsainton         ###   ########.fr       */
+/*   Updated: 2022/12/06 06:35:36 by nsainton         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ size_t	ft_strnlen(const char *s, size_t maxlen)
 	size_t	i;
 
 	i = 0;
-	while (*(s + i) && i < maxlen)
+	while (i < maxlen && *(s + i))
 		i ++;
 	return (i);
 }

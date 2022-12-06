@@ -6,7 +6,7 @@
 /*   By: nsainton <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/04 21:43:06 by nsainton          #+#    #+#             */
-/*   Updated: 2022/12/04 23:24:13 by nsainton         ###   ########.fr       */
+/*   Updated: 2022/12/06 06:37:52 by nsainton         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ void	add_nstr(t_pbuffer *buf, char *str, int n)
 	if (str == NULL)
 		return ;
 	i = 0;
-	while (*(str + i) && i < n)
+	while (i < n && *(str + i))
 	{
 		add_char(buf, *(str + i));
 		i ++;

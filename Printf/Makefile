@@ -6,7 +6,7 @@
 #    By: nsainton <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/11 17:44:10 by nsainton          #+#    #+#              #
-#    Updated: 2022/12/05 07:49:30 by nsainton         ###   ########.fr        #
+#    Updated: 2022/12/06 06:49:32 by nsainton         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -58,6 +58,8 @@ $(OBJS_DIR)/%.o: $(SRCS_DIR)/%.c | $(OBJS_DIR)
 
 $(OBJS_DIR):
 	mkdir $(OBJS_DIR)
+
+bonus: re
 
 debug: fclean
 	$(MAKE) debug -C $(LIBFT_DIR)
