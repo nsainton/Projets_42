@@ -6,7 +6,7 @@
 /*   By: nsainton <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/01 22:23:38 by nsainton          #+#    #+#             */
-/*   Updated: 2022/12/06 03:02:55 by nsainton         ###   ########.fr       */
+/*   Updated: 2022/12/06 04:56:38 by nsainton         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,6 +98,11 @@ void	put_string(t_pbuffer *buf, va_list *ap, char flags[128]);
 
 //Functions from address.c
 void	put_address(t_pbuffer *buf, va_list *ap, char flags[128]);
+
+//Functions from hexadecimal.c
+void	put_hex_min(t_pbuffer *buf, va_list *ap, char flags[128]);
+
+void	put_hex_maj(t_pbuffer *buf, va_list *ap, char flags[128]);
 
 // Functions from printing.c
 void	build_res(t_pbuffer *buf, char *res, char flags[128], int len);

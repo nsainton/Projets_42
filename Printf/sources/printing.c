@@ -6,7 +6,7 @@
 /*   By: nsainton <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/05 02:27:16 by nsainton          #+#    #+#             */
-/*   Updated: 2022/12/06 02:58:51 by nsainton         ###   ########.fr       */
+/*   Updated: 2022/12/06 03:25:23 by nsainton         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,10 +42,14 @@ void	print_res(t_pbuffer *buf, char *res, int len, t_print *pads)
 	*/
 	if (pads->beg)
 		width -= 1;
+	if (*(pads->modifier))
+		width -= 2;
 	if (pads->align == 'r' && pads->pad == ' ')
 		add_nchar(buf, pads->pad, width - prec);
 	if (pads->beg)
 		add_char(buf, pads->beg);
+	if (*(pads->modifier))
+		add_nstr(buf, pads->modifier, 2);
 	if (pads->align == 'r' && pads->pad == '0')
 		add_nchar(buf, pads->pad, width - prec);
 	add_nchar(buf, '0', prec - len);
