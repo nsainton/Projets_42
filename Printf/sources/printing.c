@@ -6,12 +6,11 @@
 /*   By: nsainton <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/05 02:27:16 by nsainton          #+#    #+#             */
-/*   Updated: 2022/12/06 03:25:23 by nsainton         ###   ########.fr       */
+/*   Updated: 2022/12/06 07:00:35 by nsainton         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/libftprintf.h"
-#include "../includes/debug.h"
 
 void	build_res(t_pbuffer *buf, char *res, char flags[128], int len)
 {
@@ -34,12 +33,6 @@ void	print_res(t_pbuffer *buf, char *res, int len, t_print *pads)
 
 	width = buf->width;
 	prec = buf->prec;
-	/*
-	print_pad(pads);
-	printf("------\n");
-	print_buffer(buf);
-	printf("----\n");
-	*/
 	if (pads->beg)
 		width -= 1;
 	if (*(pads->modifier))
