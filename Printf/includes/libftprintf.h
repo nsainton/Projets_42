@@ -6,7 +6,7 @@
 /*   By: nsainton <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/01 22:23:38 by nsainton          #+#    #+#             */
-/*   Updated: 2022/12/06 04:56:38 by nsainton         ###   ########.fr       */
+/*   Updated: 2022/12/06 05:15:42 by nsainton         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,6 +103,9 @@ void	put_address(t_pbuffer *buf, va_list *ap, char flags[128]);
 void	put_hex_min(t_pbuffer *buf, va_list *ap, char flags[128]);
 
 void	put_hex_maj(t_pbuffer *buf, va_list *ap, char flags[128]);
+
+//Functions from percent.c
+void	put_percent(t_pbuffer *buf, va_list *ap, char flags[128]);
 
 // Functions from printing.c
 void	build_res(t_pbuffer *buf, char *res, char flags[128], int len);

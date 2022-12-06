@@ -6,7 +6,7 @@
 /*   By: nsainton <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/04 23:02:41 by nsainton          #+#    #+#             */
-/*   Updated: 2022/12/06 05:00:07 by nsainton         ###   ########.fr       */
+/*   Updated: 2022/12/06 05:14:48 by nsainton         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,4 +63,5 @@ void	init_func(t_pfunc func[128])
 	func[(int) 'p'] = &put_address;
 	func[(int) 'x'] = &put_hex_min;
 	func[(int) 'X'] = &put_hex_maj;
+	func[(int) '%'] = &put_percent;
 }
