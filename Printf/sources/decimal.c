@@ -6,7 +6,7 @@
 /*   By: nsainton <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/04 23:31:17 by nsainton          #+#    #+#             */
-/*   Updated: 2022/12/05 06:20:14 by nsainton         ###   ########.fr       */
+/*   Updated: 2022/12/07 07:11:42 by nsainton         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,13 +41,13 @@ void	put_dec(t_pbuffer *buf, va_list *ap, char flags[128])
 	put_pos(abs_ll((t_ll)arg), &tmp, DEC);
 	len = (int)(tmp - nb);
 	*tmp = 0;
-	if (!(arg || buf->prec) && flags[(int) '.'])
+	if (!(arg || buf->prec) && flags['.'])
 	{
 		*nb = 0;
 		len = 0;
 	}
 	if (arg < 0)
-		flags[(int) 'm'] = 1;
+		flags['m'] = 1;
 	build_res(buf, nb, flags, len);
 }
 
@@ -63,7 +63,7 @@ void	put_unsigned(t_pbuffer *buf, va_list *ap, char flags[128])
 	put_pos(abs_ll((t_ll)arg), &tmp, DEC);
 	len = (int)(tmp - nb);
 	*tmp = 0;
-	if (!(arg || buf->prec) && flags[(int) '.'])
+	if (!(arg || buf->prec) && flags['.'])
 	{
 		*nb = 0;
 		len = 0;

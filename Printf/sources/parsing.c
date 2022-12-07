@@ -6,7 +6,7 @@
 /*   By: nsainton <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/04 21:33:37 by nsainton          #+#    #+#             */
-/*   Updated: 2022/12/05 07:42:02 by nsainton         ###   ########.fr       */
+/*   Updated: 2022/12/07 07:13:15 by nsainton         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	parse_conv(t_pbuffer *buf, const char **conv, char flags[128])
 {
-	reset_flags(flags);
+	ft_bzero(flags, 128);
 	while (ft_strchr(FLAGS, **conv) != NULL)
 	{
 		flags[(int)**conv] = 1;
@@ -25,11 +25,12 @@ void	parse_conv(t_pbuffer *buf, const char **conv, char flags[128])
 		*conv += 1;
 	if (**conv == '.')
 	{
-		flags[(int) '.'] = 1;
+		flags['.'] = 1;
 		*conv += 1;
 	}
+	if (**conv == '-')
+		conv += 1;
 	buf->prec = ft_atoi(*conv);
-	buf->prec = max_int(buf->prec, -buf->prec);
 	while (ft_strchr(DEC, **conv))
 		*conv += 1;
 }

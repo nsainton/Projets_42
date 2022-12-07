@@ -6,7 +6,7 @@
 /*   By: nsainton <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/01 22:23:38 by nsainton          #+#    #+#             */
-/*   Updated: 2022/12/06 05:15:42 by nsainton         ###   ########.fr       */
+/*   Updated: 2022/12/07 03:35:03 by nsainton         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,8 +54,6 @@ void	parse_conv(t_pbuffer *buf, const char **conv, char flags[128]);
 void	loop(t_pbuffer *buf, const char **conv);
 
 //Functions from init.c
-void	reset_flags(char flags[128]);
-
 void	init_pbuf(t_pbuffer *buf, int fd);
 
 void	set_pad(char flags[128], t_print *pads);

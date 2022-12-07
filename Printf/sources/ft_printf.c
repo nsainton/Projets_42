@@ -6,7 +6,7 @@
 /*   By: nsainton <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/05 01:07:48 by nsainton          #+#    #+#             */
-/*   Updated: 2022/12/05 02:10:01 by nsainton         ###   ########.fr       */
+/*   Updated: 2022/12/07 03:35:46 by nsainton         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,17 +15,23 @@
 int	ft_printf(const char *format, ...)
 {
 	va_list	ap;
+	int		ret;
 
 	va_start(ap, format);
-	return (ft_vdprintf(1, format, ap));
+	ret = ft_vdprintf(1, format, ap);
+	va_end(ap);
+	return (ret);
 }
 
 int	ft_dprintf(int fd, const char *format, ...)
 {
 	va_list	ap;
+	int		ret;
 
 	va_start(ap, format);
-	return (ft_vdprintf(fd, format, ap));
+	ret = ft_vdprintf(fd, format, ap);
+	va_end(ap);
+	return (ret);
 }
 
 int	ft_vdprintf(int fd, const char *format, va_list ap)

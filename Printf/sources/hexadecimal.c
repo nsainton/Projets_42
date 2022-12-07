@@ -6,7 +6,7 @@
 /*   By: nsainton <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/06 04:41:25 by nsainton          #+#    #+#             */
-/*   Updated: 2022/12/06 05:04:50 by nsainton         ###   ########.fr       */
+/*   Updated: 2022/12/07 07:12:32 by nsainton         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,11 +18,11 @@ static void	set_hpad(char res[19], char flags[128], t_print *pads, char min)
 	pads->beg = 0;
 	pads->pad = ' ';
 	pads->align = 'r';
-	if (flags[48] && ! flags[(int) '.'])
+	if (flags[48] && ! flags['.'])
 		pads->pad = 48;
-	if (flags[(int) '-'])
+	if (flags['-'])
 		pads->align = 'l';
-	if (! (flags[(int) '#'] && *res) || *res == 48)
+	if (! (flags['#'] && *res) || *res == 48)
 		return ;
 	if (min)
 		ft_strlcat(pads->modifier, "0x", 3);
@@ -56,7 +56,7 @@ static void	put_hex(t_pbuffer *buf, va_list *ap, char flags[128], char min)
 	else
 		put_pos(arg, &tmp, HEX_MAJ);
 	*tmp = 0;
-	if (!(arg || buf->prec) && flags[(int) '.'])
+	if (!(arg || buf->prec) && flags['.'])
 		*res = 0;
 	build_hres(buf, res, flags, min);
 }

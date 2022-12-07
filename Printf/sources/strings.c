@@ -6,7 +6,7 @@
 /*   By: nsainton <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/05 03:57:04 by nsainton          #+#    #+#             */
-/*   Updated: 2022/12/06 02:59:02 by nsainton         ###   ########.fr       */
+/*   Updated: 2022/12/07 07:14:08 by nsainton         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 static void	set_len(t_pbuffer *buf, char flags[128], int *len, char *res)
 {
-	if (flags[(int) '.'] && buf->prec < 6)
+	if (flags['.'] && buf->prec < 6)
 		*len = 0;
 	else
 		*len = ft_strlcat(res, "(null)", 7);
@@ -27,7 +27,7 @@ void	put_char(t_pbuffer *buf, va_list *ap, char flags[128])
 
 	arg = (char)va_arg(*ap, int);
 	align = 'r';
-	if (flags[(int) '-'])
+	if (flags['-'])
 		align = 'l';
 	if (align == 'r')
 		add_nchar(buf, ' ', buf->width - 1);
@@ -47,7 +47,7 @@ void	put_string(t_pbuffer *buf, va_list *ap, char flags[128])
 	*null = 0;
 	if (arg == NULL)
 		set_len(buf, flags, &len, null);
-	else if (flags[(int) '.'])
+	else if (flags['.'])
 		len = ft_strnlen(arg, (size_t)buf->prec);
 	else
 		len = ft_strlen(arg);
