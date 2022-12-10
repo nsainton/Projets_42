@@ -5,51 +5,32 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: nsainton <nsainton@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/17 21:27:02 by nsainton          #+#    #+#             */
-/*   Updated: 2022/10/18 21:57:10 by nsainton         ###   ########.fr       */
+/*   Created: 2022/10/22 11:28:13 by nsainton          #+#    #+#             */
+/*   Updated: 2022/11/10 17:03:59 by nsainton         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-static void	ft_read(t_buffer *buff, int fd)
+static void	ft_flush(char buff[BUFF_SIZE], size_t index)
 {
-	ssize_t	n_read;
+	size_t	i;
 
-	n_read = buff->n_read;
-	if (n_read < 1)
-		return ;
-	if (buff->index < (size_t)n_read)
-		return ;
-	n_read = read(fd, buff->buffer, BUFF_SIZE);
-	buff->n_read = n_read;
-	buff->index = 0;
-}
-
-static void	ft_fill_line(char *line, t_buffer *buff)
-{
-	size_t		line_index;
-	size_t		index;
-	size_t		n_read;
-	const char	*buffer;
-
-	n_read = (size_t)buff->n_read;
-	index = buff->index;
-	line_index = buff->line_index;
-	buffer = buff->buffer;
-	while (index < n_read)
+	i = index;
+	while (i < BUFF_SIZE)
 	{
-		*(line + line_index) = *(buffer + index);
-		line_index ++;
-		index ++;
-		if (*(buffer + index - 1) == 10)
-			break ;
+		buff[i - index] = buff[i];
+		i ++;
 	}
-	buff->line_index = line_index;
-	buff->index = index;
+	i = BUFF_SIZE - index;
+	while (i < BUFF_SIZE)
+	{
+		buff[i] = 0;
+		i ++;
+	}
 }
 
-char	*ft_realloc(char *str, size_t size)
+static char	*ft_realloc(char *str, size_t size, size_t base_size)
 {
 	size_t	i;
 	char	*ns;
@@ -63,7 +44,7 @@ char	*ft_realloc(char *str, size_t size)
 		return (NULL);
 	}
 	i = 0;
-	while (i < size)
+	while (i < base_size)
 	{
 		*(ns + i) = *(str + i);
 		i ++;
@@ -73,35 +54,49 @@ char	*ft_realloc(char *str, size_t size)
 	return (ns);
 }
 
-char	*ft_get_line(char *line, t_buffer *t_buff, int fd, size_t *length)
+static int	ft_fill_line(char *line, char buff[BUFF_SIZE], size_t *end_of_line)
 {
-	ft_read(t_buff, fd);
-	while (t_buff->n_read > 0)
+	size_t	line_index;
+	size_t	buffer_index;
+	int		new_line;
+
+	line_index = *end_of_line;
+	buffer_index = 0;
+	new_line = 0;
+	while (buff[buffer_index] && buffer_index < BUFF_SIZE && ! new_line)
 	{
-		*length = *length + (size_t)t_buff->n_read;
-		line = ft_realloc(line, *length);
-		if (line == NULL)
-			break ;
-		ft_fill_line(line, t_buff);
-		if (*(line + t_buff->line_index - 1) == 10)
-		{
-			break ;
-		}
-		ft_read(t_buff, fd);
+		*(line + line_index) = buff[buffer_index];
+		line_index ++;
+		buffer_index ++;
+		if (buff[buffer_index - 1] == 10)
+			new_line = 1;
 	}
-	if (t_buff->n_read == -1)
+	ft_flush(buff, buffer_index);
+	*end_of_line = line_index;
+	return (new_line);
+}
+
+char	*ft_get_line(char *line, char buff[BUFF_SIZE], int fd, \
+size_t *end_of_line)
+{
+	ssize_t	n_read;
+
+	if (ft_fill_line(line, buff, end_of_line))
+		return (ft_realloc(line, *end_of_line, *end_of_line));
+	n_read = read(fd, buff, BUFF_SIZE);
+	while (n_read > 0)
+	{
+		line = ft_realloc(line, *end_of_line + (size_t)n_read, *end_of_line);
+		if (line == NULL)
+			return (NULL);
+		if (ft_fill_line(line, buff, end_of_line))
+			return (ft_realloc(line, *end_of_line, *end_of_line));
+		n_read = read(fd, buff, BUFF_SIZE);
+	}
+	if (n_read == -1 || ! *line)
 	{
 		free(line);
 		return (NULL);
 	}
-	return (line);
-}
-
-void	ft_reinit(t_buffer *t_buff)
-{
-	if (t_buff == NULL)
-		return ;
-	t_buff->n_read = BUFF_SIZE;
-	t_buff->index = BUFF_SIZE;
-	t_buff->line_index = 0;
+	return (ft_realloc(line, *end_of_line, *end_of_line));
 }

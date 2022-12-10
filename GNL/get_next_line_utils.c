@@ -3,100 +3,82 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line_utils.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nsainton <nsainton@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nsainton <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/22 11:28:13 by nsainton          #+#    #+#             */
-/*   Updated: 2022/11/10 17:03:59 by nsainton         ###   ########.fr       */
+/*   Created: 2022/12/08 06:29:18 by nsainton          #+#    #+#             */
+/*   Updated: 2022/12/08 07:16:38 by nsainton         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-static void	ft_flush(char buff[BUFF_SIZE], size_t index)
+char	*ft_realloc(char *str, size_t old_size, size_t new_size)
 {
-	size_t	i;
+	size_t	end_of_copy;
+	size_t	index;
+	char	*new_string;
 
-	i = index;
-	while (i < BUFF_SIZE)
-	{
-		buff[i - index] = buff[i];
-		i ++;
-	}
-	i = BUFF_SIZE - index;
-	while (i < BUFF_SIZE)
-	{
-		buff[i] = 0;
-		i ++;
-	}
-}
-
-static char	*ft_realloc(char *str, size_t size, size_t base_size)
-{
-	size_t	i;
-	char	*ns;
-
-	if (str == NULL)
-		return (NULL);
-	ns = (char *)malloc((size + 1) * sizeof(char));
-	if (ns == NULL)
+	if (old_size < new_size)
+		end_of_copy = old_size;
+	else
+		end_of_copy = new_size;
+	new_string = malloc(sizeof *new_string * (new_size));
+	if (new_string == NULL)
 	{
 		free(str);
 		return (NULL);
 	}
-	i = 0;
-	while (i < base_size)
+	index = 0;
+	while (index < end_of_copy)
 	{
-		*(ns + i) = *(str + i);
-		i ++;
+		*(new_string + index) = *(str + index);
+		index ++;
 	}
-	*(ns + i) = 0;
 	free(str);
-	return (ns);
+	return (new_string);
 }
 
-static int	ft_fill_line(char *line, char buff[BUFF_SIZE], size_t *end_of_line)
+void	ft_bzero(void *ptr, size_t bytes)
 {
-	size_t	line_index;
-	size_t	buffer_index;
-	int		new_line;
+	char	*tmp_ptr;
+	size_t	count;
 
-	line_index = *end_of_line;
-	buffer_index = 0;
-	new_line = 0;
-	while (buff[buffer_index] && buffer_index < BUFF_SIZE && ! new_line)
+	tmp_ptr = (char *)ptr;
+	count = 0;
+	while (count < bytes)
 	{
-		*(line + line_index) = buff[buffer_index];
-		line_index ++;
-		buffer_index ++;
-		if (buff[buffer_index - 1] == 10)
-			new_line = 1;
+		*(tmp_ptr + count) = 0;
+		count ++;
 	}
-	ft_flush(buff, buffer_index);
-	*end_of_line = line_index;
-	return (new_line);
 }
 
-char	*ft_get_line(char *line, char buff[BUFF_SIZE], int fd, \
-size_t *end_of_line)
+void	ft_memmove(void *destination, void *source, size_t bytes)
 {
-	ssize_t	n_read;
-
-	if (ft_fill_line(line, buff, end_of_line))
-		return (ft_realloc(line, *end_of_line, *end_of_line));
-	n_read = read(fd, buff, BUFF_SIZE);
-	while (n_read > 0)
+	size_t	count;
+	int		direction;
+	char	*dst;
+	char	*src;
+	
+	count = 0;
+	direction = 1;
+	dst = (char *)destination;
+	src = (char *)source;
+	if (!bytes)
+		return ;
+	if (dst > src)
 	{
-		line = ft_realloc(line, *end_of_line + (size_t)n_read, *end_of_line);
-		if (line == NULL)
-			return (NULL);
-		if (ft_fill_line(line, buff, end_of_line))
-			return (ft_realloc(line, *end_of_line, *end_of_line));
-		n_read = read(fd, buff, BUFF_SIZE);
+		count = bytes - 1;
+		direction = -1;
 	}
-	if (n_read == -1 || ! *line)
+	while (bytes > 0)
 	{
-		free(line);
-		return (NULL);
+		*(dst + count) = *(src + count);
+		count += direction;
 	}
-	return (ft_realloc(line, *end_of_line, *end_of_line));
+}
+	
+void	ft_empty_buffer(char buf[BUFFER_SIZE], size_t index)
+{
+	ft_memmove(buf, buf + index, BUFFER_SIZE - index);
+	ft_bzero(buf + BUFFER_SIZE - index, index);
 }

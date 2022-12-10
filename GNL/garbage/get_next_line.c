@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: nsainton <nsainton@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/17 19:28:29 by nsainton          #+#    #+#             */
-/*   Updated: 2022/10/18 20:03:36 by nsainton         ###   ########.fr       */
+/*   Created: 2022/10/22 14:06:27 by nsainton          #+#    #+#             */
+/*   Updated: 2022/11/10 15:27:03 by nsainton         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,25 +14,24 @@
 
 char	*ft_get_next_line(int fd)
 {
-	static t_buffer	buff = {{0}, BUFF_SIZE, BUFF_SIZE, 0};
-	char			*line;
-	size_t			length;
+	static char	buff[FILES][BUFF_SIZE] = {{0}, {0}};
+	char		*line;
+	size_t		line_length;
 
-	length = 1;
-	line = (char *)malloc(sizeof(char));
+	if (fd < 0 || fd > FILES - 1)
+		return (NULL);
+	if (BUFF_SIZE < 1 || BUFF_SIZE > SIZE_MAX)
+		return (NULL);
+	line = (char *)malloc(BUFF_SIZE * sizeof(char));
 	if (line == NULL)
 		return (NULL);
+	line_length = 0;
 	*line = 0;
-	buff.line_index = 0;
-	line = ft_get_line(line, &buff, fd, &length);
-	if (line != NULL && length > 1)
-		line = ft_realloc(line, buff.line_index);
-	if (length == 1)
+	line = ft_get_line(line, buff[fd], fd, &line_length);
+	if (line != NULL && ! *line)
 	{
 		free(line);
-		line = NULL;
+		return (NULL);
 	}
-	if (line == NULL)
-		ft_reinit(&buff);
 	return (line);
 }
