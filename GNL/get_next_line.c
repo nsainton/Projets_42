@@ -6,14 +6,14 @@
 /*   By: nsainton <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/08 06:11:30 by nsainton          #+#    #+#             */
-/*   Updated: 2022/12/10 05:11:15 by nsainton         ###   ########.fr       */
+/*   Updated: 2022/12/12 00:24:52 by nsainton         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 #include "debug.h"
 
-static int	parse_line(t_gline *line, char buf[BUFFER_SIZE + 1], const size_t bytes)
+int	parse_line(t_gline *line, char buf[BUFFER_SIZE + 1], const size_t bytes)
 {
 	size_t	index;
 	char	*parser;

@@ -6,7 +6,7 @@
 /*   By: nsainton <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/08 06:12:33 by nsainton          #+#    #+#             */
-/*   Updated: 2022/12/10 04:45:52 by nsainton         ###   ########.fr       */
+/*   Updated: 2022/12/12 00:25:35 by nsainton         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,4 +35,6 @@ void	ft_memmove(void *destination, void *source, size_t bytes);
 int		ft_check_line(char buf[BUFFER_SIZE + 1], char *line, ssize_t n_read);
 
 char	*get_next_line(int fd);
+
+int	parse_line(t_gline *line, char buf[BUFFER_SIZE + 1], const size_t bytes);
 #endif
