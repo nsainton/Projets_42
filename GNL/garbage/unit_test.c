@@ -6,7 +6,7 @@
 /*   By: nsainton <nsainton@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/17 12:00:56 by nsainton          #+#    #+#             */
-/*   Updated: 2022/12/10 04:49:12 by nsainton         ###   ########.fr       */
+/*   Updated: 2022/12/13 05:31:15 by nsainton         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ static void	ft_test(char *test)
 	int		i;
 	char	*line;
 
+	printf("FILE : %s\n", test);
 	fd = open(test, O_RDONLY);
 	if (! (test && *test))
 	{
@@ -29,13 +30,19 @@ static void	ft_test(char *test)
 		printf("You may now enter characters : press ^D to finish input\n");
 	}
 	if (fd > -1 && fd != 1)
+	{
 		printf("File : %s has been oppened\n", test);
+		printf("Its fd is : %d\n", fd);
+	}
+	else
+		printf("FD: %d\n", fd);
 	line = get_next_line(fd);
 	i = 0;
 	while (line != NULL)
 	{
 		printf("%s", line);
 		i ++;
+		free(line);
 		line = get_next_line(fd);
 	}
 	if (fd > -1)
@@ -66,8 +73,8 @@ static void	ft_time(char *test)
 
 int	main(void)
 {
-	ft_time("test.c");
-	ft_time("get_next_line.c");
+	ft_time("unit_test.c");
+	ft_time("test.txt");
 	ft_time("Bonjour");
 	return (0);
 }

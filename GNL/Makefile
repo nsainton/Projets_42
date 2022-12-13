@@ -6,15 +6,19 @@
 #    By: nsainton <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/08 07:00:14 by nsainton          #+#    #+#              #
-#    Updated: 2022/12/10 05:07:36 by nsainton         ###   ########.fr        #
+#    Updated: 2022/12/13 08:29:29 by nsainton         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME=gnl
 
-SRCS= get_next_line.c get_next_line_utils.c debug.c
+SRCS= get_next_line.c get_next_line_utils.c
+
+BONUS_SRCS= get_next_line_bonus.c get_next_line_utils_bonus.c
 
 OBJS= $(SRCS:.c=.o)
+
+BONUS_OBJS= $(BONUS_SRCS:.c=.o)
 
 CC= gcc
 
@@ -28,7 +32,9 @@ CFLAGS= -Wall -Wextra -Werror
 all: $(OBJS)
 
 clean:
-	rm -f $(OBJS)
+	rm -f $(OBJS) $(BONUS_OBJS)
+
+bonus: $(BONUS_OBJS)
 
 re: clean all
 
