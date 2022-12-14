@@ -6,7 +6,7 @@
 /*   By: nsainton <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/05 01:07:48 by nsainton          #+#    #+#             */
-/*   Updated: 2022/12/07 03:35:46 by nsainton         ###   ########.fr       */
+/*   Updated: 2022/12/14 08:10:55 by nsainton         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int	ft_printf(const char *format, ...)
 	int		ret;
 
 	va_start(ap, format);
-	ret = ft_vdprintf(1, format, ap);
+	ret = ft_vdprintf(STDOUT_FILENO, format, ap);
 	va_end(ap);
 	return (ret);
 }
