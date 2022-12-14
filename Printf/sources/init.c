@@ -6,19 +6,20 @@
 /*   By: nsainton <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/04 23:02:41 by nsainton          #+#    #+#             */
-/*   Updated: 2022/12/07 07:13:02 by nsainton         ###   ########.fr       */
+/*   Updated: 2022/12/14 09:40:14 by nsainton         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/libftprintf.h"
 
-void	init_pbuf(t_pbuffer *buf, int fd)
+void	init_pbuf_fd(t_pbuffer *buf, int fd)
 {
 	buf->fd = fd;
 	buf->len = 0;
 	buf->printed = 0;
 	buf->width = 0;
 	buf->prec = 0;
+	buf->str = 0;
 }
 
 void	set_pad(char flags[128], t_print *pads)

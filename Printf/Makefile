@@ -6,7 +6,7 @@
 #    By: nsainton <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/11 17:44:10 by nsainton          #+#    #+#              #
-#    Updated: 2022/12/06 07:08:10 by nsainton         ###   ########.fr        #
+#    Updated: 2022/12/14 10:11:06 by nsainton         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,7 +32,7 @@ LIBFT_OBJS=$(addprefix $(LIBFT_DIR)/, $(LIBFT_OBJS_NAMES))
 SRCS_DIR= sources
 
 SRCS_NAMES= address.c decimal.c ft_printf.c helpers.c hexadecimal.c init.c \
-			parsing.c pbuffer.c percent.c printing.c strings.c
+			parsing.c pbuffer.c percent.c printing.c strings.c flush.c
 
 SRCS= $(addprefix $(SRCS_DIR)/, $(SRCS_NAMES))
 

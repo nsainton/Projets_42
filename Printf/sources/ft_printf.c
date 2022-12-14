@@ -6,7 +6,7 @@
 /*   By: nsainton <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/05 01:07:48 by nsainton          #+#    #+#             */
-/*   Updated: 2022/12/14 08:10:55 by nsainton         ###   ########.fr       */
+/*   Updated: 2022/12/14 09:40:35 by nsainton         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ int	ft_vdprintf(int fd, const char *format, va_list ap)
 
 	va_copy(cpy, ap);
 	s = format;
-	init_pbuf(&buf, fd);
+	init_pbuf_fd(&buf, fd);
 	init_func(func);
 	while (*s)
 	{
