@@ -1,6 +1,6 @@
 #!/bin/bash
-includes=../includes
-sources=../sources
+includes=$1/includes
+sources=$1/sources
 name=header
 ext=th
 file="$includes/$name.$ext"
