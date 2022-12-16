@@ -1,4 +1,5 @@
 #!/bin/bash
+#Use the script as follows : ./header.sh path/to/project/dir
 includes=$1/includes
 sources=$1/sources
 name=header
