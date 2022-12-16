@@ -6,7 +6,7 @@
 /*   By: nsainton <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/01 22:23:38 by nsainton          #+#    #+#             */
-/*   Updated: 2022/12/16 18:11:11 by nsainton         ###   ########.fr       */
+/*   Updated: 2022/12/16 18:57:32 by nsainton         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,16 @@
 typedef long long int			t_ll;
 
 typedef unsigned long long int	t_ull;
+
+typedef enum e_pflags
+{
+	SHARP = 1 << 0,
+	SPACE = 1 << 1,
+	PLUS = 1 << 2,
+	DASH = 1 << 3,
+	ZERO = 1 << 4,
+	DOT = 1 << 5
+}				t_pflags;
 
 typedef struct s_pbuffer
 {
