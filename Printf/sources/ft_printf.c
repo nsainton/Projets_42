@@ -6,7 +6,7 @@
 /*   By: nsainton <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/05 01:07:48 by nsainton          #+#    #+#             */
-/*   Updated: 2022/12/14 09:40:35 by nsainton         ###   ########.fr       */
+/*   Updated: 2022/12/16 18:11:41 by nsainton         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ int	ft_vdprintf(int fd, const char *format, va_list ap)
 		loop(&buf, &s);
 		if (! *s)
 			break ;
-		parse_conv(&buf, &s, flags);
+		parse_conv(&buf.width, &buf.prec, &s, flags);
 		func[(int)*s](&buf, &cpy, flags);
 		s ++;
 		if (buf.printed == -1)

@@ -6,7 +6,7 @@
 /*   By: nsainton <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/01 22:23:38 by nsainton          #+#    #+#             */
-/*   Updated: 2022/12/14 10:11:39 by nsainton         ###   ########.fr       */
+/*   Updated: 2022/12/16 18:11:11 by nsainton         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ typedef struct s_print
 typedef void					(*t_pfunc)(t_pbuffer *, va_list *, char[128]);
 
 //Functions from parsing.c
-void	parse_conv(t_pbuffer *buf, const char **conv, char flags[128]);
+void	parse_conv(int *width, int *prec, const char **conv, char flags[128]);
 
 void	loop(t_pbuffer *buf, const char **conv);
 
