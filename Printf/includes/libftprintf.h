@@ -6,7 +6,7 @@
 /*   By: nsainton <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/01 22:23:38 by nsainton          #+#    #+#             */
-/*   Updated: 2022/12/16 18:57:32 by nsainton         ###   ########.fr       */
+/*   Updated: 2022/12/17 09:53:53 by nsainton         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,11 @@
 # include "../Libft/libft.h"
 # include <limits.h>
 # include <stdarg.h>
-# ifndef PBUFFER_SIZE
-#  define PBUFFER_SIZE 1000
+# include <stdint.h>
+# ifdef PBUFFER_SIZE
+#  undef PBUFFER_SIZE
 # endif
+# define PBUFFER_SIZE 1000
 # define DEC "0123456789"
 # define HEX "0123456789abcdef"
 # define HEX_MAJ "0123456789ABCDEF"
@@ -40,13 +42,13 @@ typedef enum e_pflags
 
 typedef struct s_pbuffer
 {
-	char	buffer[PBUFFER_SIZE];
-	int		len;
-	int		width;
-	int		prec;
-	t_ll	fd;
-	int		printed;
-	char	str;
+	char		buffer[PBUFFER_SIZE];
+	int			len;
+	int			width;
+	int			prec;
+	intptr_t	fd;
+	int			printed;
+	char		str;
 }				t_pbuffer;
 
 typedef struct s_print
