@@ -1,35 +1,51 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   loops.c                                            :+:      :+:    :+:   */
+/*   static.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nsainton <nsainton@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/20 12:54:19 by nsainton          #+#    #+#             */
-/*   Updated: 2022/12/20 14:45:54 by nsainton         ###   ########.fr       */
+/*   Created: 2022/12/21 01:01:35 by nsainton          #+#    #+#             */
+/*   Updated: 2022/12/21 02:10:13 by nsainton         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
+
+/*Doesn't work
+typedef struct s_test
+{
+	static struct s_test	*test;
+	int						i;
+	char					c;
+}				t_test;
+*/
+/* Doesn't worl
+void	static_increment(void);
 
 int	main(void)
 {
-	int		i;
-	char	*s;
+	static int	x = 0;
 
-	i = 0;
-	while (s = malloc(1), i < 10) //Does not comply with 42 norm
-	{
-		printf("%d\n", i++);
-		free(s);
-	}
-	if (s)
-		free(s);
-	if (i > 0)
-	if (i % 2)
-	printf("Positive and Odd\n");
-	else
-	printf("Positive and Even\n");
+	static_increment();
+	printf("%d\n", 0);
+	return (0);
+}
+
+void	static_increment(void)
+{
+	x ++;
+}
+*/
+
+int	main(void)
+{
+	int	x;
+
+	x = 0;
+	printf("%d\n", (++x, x ++, 2));
+	printf("%d\n", x);
 	return (0);
 }

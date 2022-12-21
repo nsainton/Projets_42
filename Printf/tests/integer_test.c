@@ -6,11 +6,12 @@
 /*   By: nsainton <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/05 02:03:24 by nsainton          #+#    #+#             */
-/*   Updated: 2022/12/05 03:53:39 by nsainton         ###   ########.fr       */
+/*   Updated: 2022/12/20 14:58:10 by nsainton         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "test.h"
+#include "../includes/libftprintf.h"
+#include <stdio.h>
 
 int	main(int ac, char **av)
 {
