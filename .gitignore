@@ -16,3 +16,6 @@ main.c
 
 # Archive files #
 *.a
+
+# Temporary header files #
+*.th

@@ -6,7 +6,7 @@
 /*   By: nsainton <nsainton@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/12 17:50:55 by nsainton          #+#    #+#             */
-/*   Updated: 2022/12/23 19:23:29 by nsainton         ###   ########.fr       */
+/*   Updated: 2022/12/23 21:34:54 by nsainton         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,4 +47,3 @@ void	*ft_realloc(void *memzone, size_t old_size, size_t new_size)
 	free(memzone);
 	return (newzone);
 }
-

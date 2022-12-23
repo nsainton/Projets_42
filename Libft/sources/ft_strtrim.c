@@ -6,13 +6,13 @@
 /*   By: nsainton <nsainton@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/13 13:13:44 by nsainton          #+#    #+#             */
-/*   Updated: 2022/10/13 14:11:55 by nsainton         ###   ########.fr       */
+/*   Updated: 2022/12/23 21:34:40 by nsainton         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static	int	ft_in(char c, char const *set)
+static int	ft_in(char c, char const *set)
 {
 	size_t	i;
 	char	test;
