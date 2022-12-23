@@ -6,11 +6,25 @@
 /*   By: nsainton <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/04 21:43:06 by nsainton          #+#    #+#             */
-/*   Updated: 2022/12/14 09:55:54 by nsainton         ###   ########.fr       */
+/*   Updated: 2022/12/06 06:37:52 by nsainton         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/libftprintf.h"
+
+void	flush(t_pbuffer *buf)
+{
+	int	printed;
+
+	if (buf->printed == -1)
+		return ;
+	printed = (int)write(buf->fd, buf->buffer, buf->len);
+	if (printed < 0)
+		buf->printed = -1;
+	else
+		buf->printed += printed;
+	buf->len = 0;
+}
 
 void	add_char(t_pbuffer *buf, char c)
 {

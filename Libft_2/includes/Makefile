@@ -5,16 +5,14 @@
 #                                                     +:+ +:+         +:+      #
 #    By: nsainton <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2022/11/11 17:44:10 by nsainton          #+#    #+#              #
-#    Updated: 2022/12/14 10:11:06 by nsainton         ###   ########.fr        #
+#    Created: 2022/11/07 11:56:11 by nsainton          #+#    #+#              #
+#    Updated: 2022/12/05 07:48:42 by nsainton         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME= libftprintf.a
+NAME= libft.a
 
-LIBFT_DIR= Libft
-
-LIBFT_SRCS_NAMES= ft_atoi.c ft_bzero.c ft_calloc.c ft_isalnum.c \
+SOURCES= ft_atoi.c ft_bzero.c ft_calloc.c ft_isalnum.c \
 		ft_isalpha.c ft_isascii.c ft_isdigit.c ft_isprint.c \
 		ft_itoa.c ft_memchr.c ft_memcmp.c ft_memcpy.c ft_memmove.c \
 		ft_memset.c ft_putchar_fd.c ft_putendl_fd.c ft_putnbr_fd.c \
@@ -25,24 +23,7 @@ LIBFT_SRCS_NAMES= ft_atoi.c ft_bzero.c ft_calloc.c ft_isalnum.c \
 		ft_lstclear.c ft_lstdelone.c ft_lstiter.c ft_lstlast.c ft_lstmap.c \
 		ft_lstnew.c ft_lstsize.c ft_strncat.c ft_strnlen.c
 
-LIBFT_OBJS_NAMES= $(LIBFT_SRCS_NAMES:.c=.o)
-
-LIBFT_OBJS=$(addprefix $(LIBFT_DIR)/, $(LIBFT_OBJS_NAMES))
-
-SRCS_DIR= sources
-
-SRCS_NAMES= address.c decimal.c ft_printf.c helpers.c hexadecimal.c init.c \
-			parsing.c pbuffer.c percent.c printing.c strings.c flush.c
-
-SRCS= $(addprefix $(SRCS_DIR)/, $(SRCS_NAMES))
-
-OBJS_DIR= objects
-
-OBJS_NAMES= $(SRCS_NAMES:.c=.o)
-
-OBJS= $(addprefix $(OBJS_DIR)/, $(OBJS_NAMES))
-
-INCLUDES= includes
+OBJS= $(SOURCES:.c=.o)
 
 CC= gcc
 
@@ -51,33 +32,22 @@ CFLAGS= -Wall -Wextra -Werror
 all: $(NAME)
 
 $(NAME): $(OBJS)
-	$(MAKE) $(LIBFT_OBJS_NAMES) -C $(LIBFT_DIR)
-	ar -rc $(NAME) $(OBJS) $(LIBFT_OBJS)
+	ar -rc $(NAME) $(OBJS)
 
-$(OBJS_DIR)/%.o: $(SRCS_DIR)/%.c | $(OBJS_DIR)
-	$(CC) $(CFLAGS) $(GG) -c $< -o $@ -I $(INCLUDES)
-
-$(OBJS_DIR):
-	mkdir $(OBJS_DIR)
-
-bonus: re
+%.o: %.c libft.h
+	$(CC) $(CFLAGS) $(GG) -c $< -o $@
 
 debug: fclean
-	$(MAKE) debug -C $(LIBFT_DIR)
 	$(MAKE) GG=-g3 $(OBJS)
-	ar -rc $(NAME) $(OBJS) $(LIBFT_OBJS)
+	ar -rc $(NAME) $(OBJS)
 
 clean:
-	$(MAKE) clean -C $(LIBFT_DIR)
-	rm -rf $(OBJS_DIR)
+	rm -f $(OBJS)
 
 fclean: clean
-	$(MAKE) clean -C $(LIBFT_DIR)
 	rm -f $(NAME)
 
-git:
-	git add --all
-	git commit
-	git push origin dev
-
 re: fclean all
+
+.PHONY: all clean fclean re
+.SILENT:

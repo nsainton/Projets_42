@@ -6,7 +6,7 @@
 /*   By: nsainton <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/01 22:23:38 by nsainton          #+#    #+#             */
-/*   Updated: 2022/12/17 09:53:53 by nsainton         ###   ########.fr       */
+/*   Updated: 2022/12/07 03:35:03 by nsainton         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,40 +15,23 @@
 # include "../Libft/libft.h"
 # include <limits.h>
 # include <stdarg.h>
-# include <stdint.h>
-# ifdef PBUFFER_SIZE
-#  undef PBUFFER_SIZE
+# ifndef PBUFFER_SIZE
+#  define PBUFFER_SIZE 1000
 # endif
-# define PBUFFER_SIZE 1000
 # define DEC "0123456789"
 # define HEX "0123456789abcdef"
 # define HEX_MAJ "0123456789ABCDEF"
 # define FLAGS "# +-0"
 # define SPECIFIERS "cspdiuxX%"
 
-typedef long long int			t_ll;
-
-typedef unsigned long long int	t_ull;
-
-typedef enum e_pflags
-{
-	SHARP = 1 << 0,
-	SPACE = 1 << 1,
-	PLUS = 1 << 2,
-	DASH = 1 << 3,
-	ZERO = 1 << 4,
-	DOT = 1 << 5
-}				t_pflags;
-
 typedef struct s_pbuffer
 {
-	char		buffer[PBUFFER_SIZE];
-	int			len;
-	int			width;
-	int			prec;
-	intptr_t	fd;
-	int			printed;
-	char		str;
+	char	buffer[PBUFFER_SIZE];
+	int		len;
+	int		width;
+	int		prec;
+	int		fd;
+	int		printed;
 }				t_pbuffer;
 
 typedef struct s_print
@@ -59,21 +42,27 @@ typedef struct s_print
 	char	align;
 }				t_print;
 
+typedef long long int			t_ll;
+
+typedef unsigned long long int	t_ull;
+
 typedef void					(*t_pfunc)(t_pbuffer *, va_list *, char[128]);
 
 //Functions from parsing.c
-void	parse_conv(int *width, int *prec, const char **conv, char flags[128]);
+void	parse_conv(t_pbuffer *buf, const char **conv, char flags[128]);
 
 void	loop(t_pbuffer *buf, const char **conv);
 
 //Functions from init.c
-void	init_pbuf_fd(t_pbuffer *buf, int fd);
+void	init_pbuf(t_pbuffer *buf, int fd);
 
 void	set_pad(char flags[128], t_print *pads);
 
 void	init_func(t_pfunc func[128]);
 
 //Functions from pbuffer.c
+void	flush(t_pbuffer *buf);
+
 void	add_char(t_pbuffer *buf, char c);
 
 void	add_nchar(t_pbuffer *buf, char c, int n);
@@ -81,13 +70,6 @@ void	add_nchar(t_pbuffer *buf, char c, int n);
 void	add_str(t_pbuffer *buf, char *str);
 
 void	add_nstr(t_pbuffer *buf, char *str, int n);
-
-//Functions from flush.c
-void	flush(t_pbuffer *buf);
-
-void	flush_fd(t_pbuffer *buf);
-
-void	flush_str(t_pbuffer *buf);
 
 //Functions from helpers.c
 int		max_int(int a, int b);
