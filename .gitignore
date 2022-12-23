@@ -13,3 +13,6 @@
 
 # Test file #
 main.c
+
+# Archive files #
+*.a

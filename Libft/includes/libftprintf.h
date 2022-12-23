@@ -6,13 +6,13 @@
 /*   By: nsainton <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/01 22:23:38 by nsainton          #+#    #+#             */
-/*   Updated: 2022/12/17 09:53:53 by nsainton         ###   ########.fr       */
+/*   Updated: 2022/12/23 07:51:43 by nsainton         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIBFTPRINTF_H
 # define LIBFTPRINTF_H
-# include "../Libft/libft.h"
+# include "libft.h"
 # include <limits.h>
 # include <stdarg.h>
 # include <stdint.h>
