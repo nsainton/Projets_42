@@ -6,7 +6,7 @@
 /*   By: nsainton <nsainton@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/12 14:39:04 by nsainton          #+#    #+#             */
-/*   Updated: 2022/10/12 14:53:11 by nsainton         ###   ########.fr       */
+/*   Updated: 2022/12/23 20:20:54 by nsainton         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,6 @@ void	*ft_memchr(const void *s, int c, size_t n)
 	const unsigned char	*ns;
 	size_t				i;
 
-	if (s == NULL)
-		return (NULL);
 	ns = (const unsigned char *)s;
 	i = 0;
 	while (i < n)

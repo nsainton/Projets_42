@@ -6,7 +6,7 @@
 /*   By: nsainton <nsainton@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/09 13:44:46 by nsainton          #+#    #+#             */
-/*   Updated: 2022/11/15 23:42:16 by nsainton         ###   ########.fr       */
+/*   Updated: 2022/12/23 20:21:33 by nsainton         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,6 @@ void	*ft_memcpy(void *dest, const void *src, size_t n)
 {
 	size_t				i;
 
-	if (dest == NULL || src == NULL)
-		return (dest);
 	i = 0;
 	while (i < n)
 	{

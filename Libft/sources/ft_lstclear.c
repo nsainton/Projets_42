@@ -6,7 +6,7 @@
 /*   By: nsainton <nsainton@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/15 20:18:15 by nsainton          #+#    #+#             */
-/*   Updated: 2022/10/16 09:25:16 by nsainton         ###   ########.fr       */
+/*   Updated: 2022/12/23 20:19:03 by nsainton         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,6 @@ void	ft_lstclear(t_list **lst, void (*del) (void *))
 	t_list	*p;
 	t_list	*q;
 
-	if (lst == NULL)
-		return ;
 	p = *lst;
 	while (p->next != NULL)
 	{

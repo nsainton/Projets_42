@@ -6,7 +6,7 @@
 /*   By: nsainton <nsainton@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/12 17:16:04 by nsainton          #+#    #+#             */
-/*   Updated: 2022/10/12 17:33:45 by nsainton         ###   ########.fr       */
+/*   Updated: 2022/12/23 20:16:40 by nsainton         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,6 @@ int	ft_atoi(const char *nptr)
 	int	i;
 	int	minus;
 
-	if (nptr == NULL)
-		return (0);
 	nbr = 0;
 	i = 0;
 	minus = 1;
