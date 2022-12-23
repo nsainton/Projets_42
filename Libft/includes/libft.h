@@ -6,20 +6,13 @@
 /*   By: nsainton <nsainton@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/06 19:32:01 by nsainton          #+#    #+#             */
-/*   Updated: 2022/12/05 07:48:19 by nsainton         ###   ########.fr       */
+/*   Updated: 2022/12/23 19:07:00 by nsainton         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIBFT_H
 # define LIBFT_H
-# include <stdlib.h>
-# include <unistd.h>
-
-typedef struct s_list
-{
-	void			*content;
-	struct s_list	*next;
-}				t_list;
+# include "functions.h"
 
 int		ft_isalpha(int c);
 

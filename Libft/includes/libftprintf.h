@@ -6,60 +6,13 @@
 /*   By: nsainton <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/01 22:23:38 by nsainton          #+#    #+#             */
-/*   Updated: 2022/12/23 07:51:43 by nsainton         ###   ########.fr       */
+/*   Updated: 2022/12/23 18:38:05 by nsainton         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIBFTPRINTF_H
 # define LIBFTPRINTF_H
 # include "libft.h"
-# include <limits.h>
-# include <stdarg.h>
-# include <stdint.h>
-# ifdef PBUFFER_SIZE
-#  undef PBUFFER_SIZE
-# endif
-# define PBUFFER_SIZE 1000
-# define DEC "0123456789"
-# define HEX "0123456789abcdef"
-# define HEX_MAJ "0123456789ABCDEF"
-# define FLAGS "# +-0"
-# define SPECIFIERS "cspdiuxX%"
-
-typedef long long int			t_ll;
-
-typedef unsigned long long int	t_ull;
-
-typedef enum e_pflags
-{
-	SHARP = 1 << 0,
-	SPACE = 1 << 1,
-	PLUS = 1 << 2,
-	DASH = 1 << 3,
-	ZERO = 1 << 4,
-	DOT = 1 << 5
-}				t_pflags;
-
-typedef struct s_pbuffer
-{
-	char		buffer[PBUFFER_SIZE];
-	int			len;
-	int			width;
-	int			prec;
-	intptr_t	fd;
-	int			printed;
-	char		str;
-}				t_pbuffer;
-
-typedef struct s_print
-{
-	char	modifier[3];
-	char	beg;
-	char	pad;
-	char	align;
-}				t_print;
-
-typedef void					(*t_pfunc)(t_pbuffer *, va_list *, char[128]);
 
 //Functions from parsing.c
 void	parse_conv(int *width, int *prec, const char **conv, char flags[128]);

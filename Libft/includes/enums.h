@@ -1,29 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_calloc.c                                        :+:      :+:    :+:   */
+/*   enums.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nsainton <nsainton@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/12 17:50:55 by nsainton          #+#    #+#             */
-/*   Updated: 2022/11/10 13:14:42 by nsainton         ###   ########.fr       */
+/*   Created: 2022/12/23 18:35:26 by nsainton          #+#    #+#             */
+/*   Updated: 2022/12/23 18:36:11 by nsainton         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-#include <stdint.h>
+#ifndef ENUMS_H
+# define ENUMS_H
 
-void	*ft_calloc(size_t nmemb, size_t size)
+typedef enum e_pflags
 {
-	void	*nptr;
+	SHARP = 1 << 0,
+	SPACE = 1 << 1,
+	PLUS = 1 << 2,
+	DASH = 1 << 3,
+	ZERO = 1 << 4,
+	DOT = 1 << 5
+}				t_pflags;
 
-	if (!(nmemb && size))
-		return (malloc(0));
-	if (size > SIZE_MAX / nmemb)
-		return (NULL);
-	nptr = malloc(nmemb * size);
-	if (nptr == NULL)
-		return (NULL);
-	ft_memset(nptr, 0, nmemb * size);
-	return (nptr);
-}
+#endif
