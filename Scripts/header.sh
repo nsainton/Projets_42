@@ -11,7 +11,8 @@ for i in $sources/*.c
 do
 	echo "//Functions from $(basename $i) " >> $file
 	echo "" >> $file
-	egrep '^([a-z])+' $i | awk 'BEGIN {FS="\n"; RS=""} {for (i = 1; i <= NF; i ++)\
+	egrep '^[a-z]' $i | egrep '^(?:[^s]|s[^t])' \
+	| awk 'BEGIN {FS="\n"; RS=""} {for (i = 1; i <= NF; i ++)\
 	print $i";\n\n"}' >> $file
 	echo "" >> $file
 done
