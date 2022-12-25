@@ -4,9 +4,10 @@ includes=$1/includes
 sources=$1/sources
 name=header
 ext=th
+hardware="$(uname -s)"
 file="$includes/$name.$ext"
 tmp_file="/tmp/tmp_file"
-rm -f $file; touch $file
+rm -f $file && echo "" > $file
 for i in $sources/*.c
 do
 	echo "//Functions from $(basename $i) " >> $file
@@ -16,4 +17,10 @@ do
 	print $i";\n\n"}' >> $file
 	echo "" >> $file
 done
-rm -f $tmp_file
+if [ $hardware == "Darwin" ]
+then
+column -s $'\t' -t $file > $tmp_file
+else
+column -s $'\t' -t -L -o $'\t' $file > $tmp_file
+fi
+mv $tmp_file $file
