@@ -12,8 +12,7 @@ do
 	echo "//Functions from $(basename $i) " >> $file
 	echo "" >> $file
 	egrep '^([a-z])+' $i | awk 'BEGIN {FS="\n"; RS=""} {for (i = 1; i <= NF; i ++)\
-	print $i";\n\n"}' > ${tmp_file}
-	egrep '^(?!static.*).*' $tmp_file >> $file
+	print $i";\n\n"}' >> $file
 	echo "" >> $file
 done
 rm -f $tmp_file
