@@ -11,19 +11,21 @@ hardware="$(uname -s)"
 file="$includes/$name.$ext"
 tmp_file="/tmp/tmp_file"
 rm -f $file && echo "" > $file
+echo "#ifndef HEADER_H" >> $file
+echo "# define HEADER_H" >> $file
 for i in $sources/*.c
 do
-	echo "//Functions from $(basename $i) " >> $file
+	echo "//Functions from $(basename $i)" >> $file
 	echo "" >> $file
-	egrep '^[a-z]' $i | egrep '^(?:[^s]|s[^t])' \
-	| awk 'BEGIN {FS="\n"; RS=""} {for (i = 1; i <= NF; i ++)\
-	print $i";\n\n"}' >> $file
-	echo "" >> $file
+	if [ $hardware == "Darwin" ]
+	then
+		egrep '^[a-z]' $i | egrep '^(?:[^s]|s[^t])' \
+		| awk 'BEGIN {FS="\n"; RS=""} {for (i = 1; i <= NF; i ++)\
+		print $i";\n"}' >> $file
+	else
+		egrep '^[a-z]' $i |awk 'BEGIN {FS="\n"; RS=""} \
+		{for (i = 1; i <= NF; i ++) print $i";\n"}' >> $file
+	fi
 done
-if [ $hardware == "Darwin" ]
-then
-column -s $'\t' -t $file > $tmp_file
-else
-column -s $'\t' -t -L -o $'\t' $file > $tmp_file
-fi
-mv $tmp_file $file
+echo -n "#endif" >> $file
+#mv $tmp_file $file
