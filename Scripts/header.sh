@@ -1,5 +1,8 @@
 #!/bin/bash
 #Use the script as follows : ./header.sh path/to/project/dir
+#The .th file that is created corresponds to a "temporary header"
+#extension. This is to ensure that no conflict occurs between
+#the files that were previously there and the new file
 includes=$1/includes
 sources=$1/sources
 name=header
