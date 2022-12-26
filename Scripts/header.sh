@@ -7,20 +7,23 @@ includes=$1/includes
 sources=$1/sources
 name=header
 ext=th
+final_name=functions
+final_ext=h
 hardware="$(uname -s)"
 file="$includes/$name.$ext"
+final_file="$includes/$final_name.$final_ext"
 tmp_file="/tmp/tmp_file"
 rm -f $file && echo "" > $file
 echo "#ifndef FUNCTIONS_H" >> $file
 echo "# define FUNCTIONS_H" >> $file
-echo "# include \"defincs.h\"" >> $file
+echo "# include \"librairies.h\"" >> $file
 echo "# include \"structures.h\"" >> $file
 echo "# include \"enums.h\"" >> $file
 echo "# include \"typedefs.h\"" >> $file
 echo "" >> $file
 for i in $sources/*.c
 do
-	nb_func="$(egrep '^[a-z]' $i | wc -l)"
+	nb_func="$(egrep '^[a-z\s_ ]+\t+' $i | wc -l)"
 	echo "//Functions from $(basename $i) [$nb_func functions]" >> $file
 	echo "" >> $file
 	if [ $hardware == "Darwin" ]
@@ -34,4 +37,4 @@ do
 	fi
 done
 echo -n "#endif" >> $file
-#mv $tmp_file $file
+mv $file $final_file

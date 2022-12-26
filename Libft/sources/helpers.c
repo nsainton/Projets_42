@@ -6,11 +6,11 @@
 /*   By: nsainton <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/04 21:58:02 by nsainton          #+#    #+#             */
-/*   Updated: 2022/12/05 06:15:59 by nsainton         ###   ########.fr       */
+/*   Updated: 2022/12/26 21:04:33 by nsainton         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/libftprintf.h"
+#include "../includes/libft.h"
 
 int	max_int(int a, int b)
 {

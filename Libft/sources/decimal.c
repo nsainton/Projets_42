@@ -6,11 +6,11 @@
 /*   By: nsainton <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/04 23:31:17 by nsainton          #+#    #+#             */
-/*   Updated: 2022/12/07 07:11:42 by nsainton         ###   ########.fr       */
+/*   Updated: 2022/12/26 21:03:54 by nsainton         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/libftprintf.h"
+#include "../includes/libft.h"
 
 void	put_pos(t_ull nb, char **tab, char *base)
 {

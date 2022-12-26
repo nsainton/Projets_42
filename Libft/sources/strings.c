@@ -6,11 +6,11 @@
 /*   By: nsainton <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/05 03:57:04 by nsainton          #+#    #+#             */
-/*   Updated: 2022/12/07 07:14:08 by nsainton         ###   ########.fr       */
+/*   Updated: 2022/12/26 21:05:44 by nsainton         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/libftprintf.h"
+#include "../includes/libft.h"
 
 static void	set_len(t_pbuffer *buf, char flags[128], int *len, char *res)
 {

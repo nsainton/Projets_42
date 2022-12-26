@@ -6,11 +6,11 @@
 /*   By: nsainton <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/04 23:02:41 by nsainton          #+#    #+#             */
-/*   Updated: 2022/12/17 09:59:54 by nsainton         ###   ########.fr       */
+/*   Updated: 2022/12/26 21:04:54 by nsainton         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/libftprintf.h"
+#include "../includes/libft.h"
 
 void	init_pbuf_fd(t_pbuffer *buf, int fd)
 {

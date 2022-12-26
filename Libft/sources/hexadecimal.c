@@ -6,11 +6,11 @@
 /*   By: nsainton <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/06 04:41:25 by nsainton          #+#    #+#             */
-/*   Updated: 2022/12/07 07:12:32 by nsainton         ###   ########.fr       */
+/*   Updated: 2022/12/26 21:04:45 by nsainton         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/libftprintf.h"
+#include "../includes/libft.h"
 
 static void	set_hpad(char res[19], char flags[128], t_print *pads, char min)
 {

@@ -6,11 +6,11 @@
 /*   By: nsainton <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/04 21:43:06 by nsainton          #+#    #+#             */
-/*   Updated: 2022/12/14 09:55:54 by nsainton         ###   ########.fr       */
+/*   Updated: 2022/12/26 21:05:12 by nsainton         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/libftprintf.h"
+#include "../includes/libft.h"
 
 void	add_char(t_pbuffer *buf, char c)
 {

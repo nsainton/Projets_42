@@ -6,11 +6,11 @@
 /*   By: nsainton <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/04 21:33:37 by nsainton          #+#    #+#             */
-/*   Updated: 2022/12/16 18:10:30 by nsainton         ###   ########.fr       */
+/*   Updated: 2022/12/26 21:05:03 by nsainton         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/libftprintf.h"
+#include "../includes/libft.h"
 
 void	parse_conv(int *width, int *prec, const char **conv, char flags[128])
 {

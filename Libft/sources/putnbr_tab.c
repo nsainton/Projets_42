@@ -1,35 +1,44 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   flush.c                                            :+:      :+:    :+:   */
+/*   putnbr_tab.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nsainton <nsainton@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/14 09:38:01 by nsainton          #+#    #+#             */
-/*   Updated: 2022/12/26 21:04:10 by nsainton         ###   ########.fr       */
+/*   Created: 2022/12/26 22:30:47 by nsainton          #+#    #+#             */
+/*   Updated: 2022/12/26 22:45:55 by nsainton         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/libft.h"
 
-void	flush(t_pbuffer *buf)
+void	put_uns_tab(t_ull nb, char **tab, char *base, size_t len)
 {
-	if (buf->str)
-		return ;
+	if (nb < len)
+	{
+		**tab = *(base + nb);
+		*tab += 1;
+		**tab = 0;
+	}
 	else
-		flush_fd(buf);
+	{
+		put_uns_tab(nb / len, tab, base, len);
+		put_uns_tab(nb % len, tab, base, len);
+	}
 }
 
-void	flush_fd(t_pbuffer *buf)
+void	put_nb_tab(t_ll nb, char **tab, char *base)
 {
-	int	printed;
+	size_t	len;
+	char	**tmp;
 
-	if (buf->printed == -1)
-		return ;
-	printed = (int)write(buf->fd, buf->buffer, buf->len);
-	if (printed < 0)
-		buf->printed = -1;
+	len = ft_strlen(base);
+	if (nb < 0)
+	{
+		**tmp = '-'
+		*tmp += 1;
+		put_uns_tab((t_ull)(-1 * nb), tab, base, len);
+	}
 	else
-		buf->printed += printed;
-	buf->len = 0;
+		put_uns_tab(nb, tab, base, len);
 }

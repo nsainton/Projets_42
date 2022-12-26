@@ -6,11 +6,11 @@
 /*   By: nsainton <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/05 02:27:16 by nsainton          #+#    #+#             */
-/*   Updated: 2022/12/06 07:00:35 by nsainton         ###   ########.fr       */
+/*   Updated: 2022/12/26 21:05:31 by nsainton         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/libftprintf.h"
+#include "../includes/libft.h"
 
 void	build_res(t_pbuffer *buf, char *res, char flags[128], int len)
 {

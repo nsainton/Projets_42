@@ -1,32 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isalpha.c                                       :+:      :+:    :+:   */
+/*   minimum.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nsainton <nsainton@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/06 19:33:00 by nsainton          #+#    #+#             */
-/*   Updated: 2022/10/06 19:39:46 by nsainton         ###   ########.fr       */
+/*   Created: 2022/12/26 21:22:56 by nsainton          #+#    #+#             */
+/*   Updated: 2022/12/26 21:53:26 by nsainton         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../includes/libft.h"
 
-static int	ft_isupper(int c)
+signed int	ft_minint(signed int a, int signed b)
 {
-	if (c > 64 && c < 91)
-		return (1);
-	return (0);
+	if (a < b)
+		return (a);
+	return (b);
 }
 
-static int	ft_islower(int c)
+unsigned int	ft_minuint(unsigned int a, unsigned int b)
 {
-	if (c > 96 && c < 123)
-		return (1);
-	return (0);
+	if (a < b)
+		return (a);
+	return (b);
 }
 
-int	ft_isalpha(int c)
+size_t	ft_minst(size_t a, size_t b)
 {
-	return (ft_isupper(c) || ft_islower(c));
+	if (a < b)
+		return (a);
+	return (b);
 }
