@@ -15,7 +15,8 @@ echo "#ifndef HEADER_H" >> $file
 echo "# define HEADER_H" >> $file
 for i in $sources/*.c
 do
-	echo "//Functions from $(basename $i)" >> $file
+	nb_func="$(egrep '^[a-z]' $i | wc -l)"
+	echo "//Functions from $(basename $i) [$nb_func functions]" >> $file
 	echo "" >> $file
 	if [ $hardware == "Darwin" ]
 	then
