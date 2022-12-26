@@ -11,8 +11,13 @@ hardware="$(uname -s)"
 file="$includes/$name.$ext"
 tmp_file="/tmp/tmp_file"
 rm -f $file && echo "" > $file
-echo "#ifndef HEADER_H" >> $file
-echo "# define HEADER_H" >> $file
+echo "#ifndef FUNCTIONS_H" >> $file
+echo "# define FUNCTIONS_H" >> $file
+echo "# include \"defincs.h\"" >> $file
+echo "# include \"structures.h\"" >> $file
+echo "# include \"enums.h\"" >> $file
+echo "# include \"typedefs.h\"" >> $file
+echo "" >> $file
 for i in $sources/*.c
 do
 	nb_func="$(egrep '^[a-z]' $i | wc -l)"
