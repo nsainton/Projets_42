@@ -6,7 +6,7 @@
 /*   By: nsainton <nsainton@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/14 17:46:24 by nsainton          #+#    #+#             */
-/*   Updated: 2022/12/27 02:03:56 by nsainton         ###   ########.fr       */
+/*   Updated: 2022/12/27 03:52:55 by nsainton         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,6 @@ int	ft_putnbr_fd(int n, int fd)
 {
 	char	c[12];
 
-	put_nb_tab((t_ll)n, (char **)&c, DEC);
+	put_nb_tab((t_ll)n, c, DEC);
 	return (ft_putstr_fd(c, fd));
 }

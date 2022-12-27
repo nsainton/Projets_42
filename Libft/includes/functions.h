@@ -1,14 +1,3 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   functions.h                                        :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: nsainton <nsainton@student.42.fr>          +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/27 02:16:30 by nsainton          #+#    #+#             */
-/*   Updated: 2022/12/27 02:17:19 by nsainton         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
 
 #ifndef FUNCTIONS_H
 # define FUNCTIONS_H
@@ -261,7 +250,7 @@ void	print_res(t_pbuffer *buf, char *res, int len, t_print *pads);
 
 void	put_uns_tab(t_ull nb, char **tab, char *base, size_t len);
 
-void	put_nb_tab(t_ll nb, char **tab, char *base);
+void	put_nb_tab(t_ll nb, char *tab, char *base);
 
 //Functions from strings.c [       3 functions]
 
