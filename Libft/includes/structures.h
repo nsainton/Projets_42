@@ -6,7 +6,7 @@
 /*   By: nsainton <nsainton@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/23 18:32:51 by nsainton          #+#    #+#             */
-/*   Updated: 2022/12/23 19:16:41 by nsainton         ###   ########.fr       */
+/*   Updated: 2022/12/27 04:44:19 by nsainton         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,5 +43,12 @@ typedef struct s_gline
 	char	*line;
 	size_t	line_index;
 }				t_gline;
+
+typedef struct s_str
+{
+	char	*str;
+	size_t	len;
+	size_t	size;
+}				t_str;
 
 #endif

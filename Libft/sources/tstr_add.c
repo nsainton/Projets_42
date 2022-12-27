@@ -1,31 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
+/*   tstr_add.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nsainton <nsainton@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/11 13:06:55 by nsainton          #+#    #+#             */
-/*   Updated: 2022/12/27 04:55:31 by nsainton         ###   ########.fr       */
+/*   Created: 2022/12/27 04:34:33 by nsainton          #+#    #+#             */
+/*   Updated: 2022/12/27 04:47:02 by nsainton         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../includes/libft.h"
 
-size_t	ft_strlcpy(char *dst, const char *src, size_t size)
+int	tstr_addchar(t_str *str, char c)
 {
-	size_t	i;
+	if (str->len >= str->size)
+		return (1);
+	*(str->str + str->len) = c;
+	str->len += 1;
+	return (0);
+}
 
-	if (! size)
-		return (ft_strlen(src));
-	i = 0;
-	while (i < size - 1 && *(src + i))
-	{
-		*(dst + i) = *(src + i);
-		i ++;
-	}
-	*(dst + i) = 0;
-	while (*(src + i))
-		i ++;
-	return (i);
+int	tstr_addstr(t_str *str, const t_str *toadd)
+{
+	if (str->len + toadd->len >= str->size)
+		return (str->len + toadd->len - str->size + 1);
+	ft_strlcat(str->str, toadd->str, str->size);
+	str->len += toadd->len;
+	return (0);
 }
