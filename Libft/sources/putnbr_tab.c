@@ -6,7 +6,7 @@
 /*   By: nsainton <nsainton@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/26 22:30:47 by nsainton          #+#    #+#             */
-/*   Updated: 2022/12/26 22:45:55 by nsainton         ###   ########.fr       */
+/*   Updated: 2022/12/27 02:06:09 by nsainton         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,9 +33,10 @@ void	put_nb_tab(t_ll nb, char **tab, char *base)
 	char	**tmp;
 
 	len = ft_strlen(base);
+	tmp = tab;
 	if (nb < 0)
 	{
-		**tmp = '-'
+		**tmp = '-';
 		*tmp += 1;
 		put_uns_tab((t_ull)(-1 * nb), tab, base, len);
 	}

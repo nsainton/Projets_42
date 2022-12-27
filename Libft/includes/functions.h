@@ -28,13 +28,17 @@ int	ft_isprint(int c);
 
 int	ft_isspace(int c);
 
-//Functions from ascii2.c [       3 functions]
+//Functions from ascii2.c [       5 functions]
 
 int	ft_isupper(int c);
 
 int	ft_islower(int c);
 
 int	ft_isalpha(int c);
+
+int	ft_tolower(int c);
+
+int	ft_toupper(int c);
 
 //Functions from decimal.c [       3 functions]
 
@@ -61,26 +65,6 @@ void	ft_bzero(void *s, size_t n);
 //Functions from ft_itoa.c [       3 functions]
 
 char	*ft_itoa(int n);
-
-//Functions from ft_memchr.c [       1 functions]
-
-void	*ft_memchr(const void *s, int c, size_t n);
-
-//Functions from ft_memcmp.c [       1 functions]
-
-int	ft_memcmp(const void *s1, const void *s2, size_t n);
-
-//Functions from ft_memcpy.c [       1 functions]
-
-void	*ft_memcpy(void *dest, const void *src, size_t n);
-
-//Functions from ft_memmove.c [       1 functions]
-
-void	*ft_memmove(void *dest, const void *src, size_t n);
-
-//Functions from ft_memset.c [       1 functions]
-
-void	*ft_memset(void *b, int c, size_t len);
 
 //Functions from ft_printf.c [       3 functions]
 
@@ -118,10 +102,6 @@ size_t	ft_strlcat(char *dst, const char *src, size_t size);
 
 size_t	ft_strlcpy(char *dst, const char *src, size_t size);
 
-//Functions from ft_strlen.c [       1 functions]
-
-size_t	ft_strlen(const char *s);
-
 //Functions from ft_strmapi.c [       1 functions]
 
 char	*ft_strmapi(char const *s, char (*f) (unsigned int, char));
@@ -133,10 +113,6 @@ char	*ft_strncat(char *dest, const char *src, size_t n);
 //Functions from ft_strncmp.c [       1 functions]
 
 int	ft_strncmp(const char *s1, const char *s2, size_t n);
-
-//Functions from ft_strnlen.c [       1 functions]
-
-size_t	ft_strnlen(const char *s, size_t maxlen);
 
 //Functions from ft_strnstr.c [       2 functions]
 
@@ -153,14 +129,6 @@ char	*ft_strtrim(char const *s1, char const *set);
 //Functions from ft_substr.c [       2 functions]
 
 char	*ft_substr(char const *s, unsigned int start, size_t len);
-
-//Functions from ft_tolower.c [       1 functions]
-
-int	ft_tolower(int c);
-
-//Functions from ft_toupper.c [       1 functions]
-
-int	ft_toupper(int c);
 
 //Functions from get_next_line.c [       5 functions]
 
@@ -222,6 +190,18 @@ void	ft_lstiter(t_list *lst, void (*f) (void *));
 
 t_list	*ft_lstmap(t_list *lst, void *(*f) (void *), void (*del) (void *));
 
+//Functions from memfuncs.c [       5 functions]
+
+void	*ft_memchr(const void *s, int c, size_t n);
+
+int	ft_memcmp(const void *s1, const void *s2, size_t n);
+
+void	*ft_memcpy(void *dest, const void *src, size_t n);
+
+void	*ft_memmove(void *dest, const void *src, size_t n);
+
+void	*ft_memset(void *b, int c, size_t len);
+
 //Functions from minimum.c [       3 functions]
 
 signed int	ft_minint(signed int a, int signed b);
@@ -277,5 +257,11 @@ void	put_nb_tab(t_ll nb, char **tab, char *base);
 void	put_char(t_pbuffer *buf, va_list *ap, char flags[128]);
 
 void	put_string(t_pbuffer *buf, va_list *ap, char flags[128]);
+
+//Functions from strlength.c [       2 functions]
+
+size_t	ft_strlen(const char *s);
+
+size_t	ft_strnlen(const char *s, size_t maxlen);
 
 #endif

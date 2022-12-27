@@ -6,7 +6,7 @@
 /*   By: nsainton <nsainton@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/14 17:46:24 by nsainton          #+#    #+#             */
-/*   Updated: 2022/12/26 23:23:27 by nsainton         ###   ########.fr       */
+/*   Updated: 2022/12/27 02:03:56 by nsainton         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,8 +40,7 @@ int	ft_putendl_fd(char *s, int fd)
 int	ft_putnbr_fd(int n, int fd)
 {
 	char	c[12];
-	int		index;
 
-	put_nb_tab((t_ll)n, &c, DEC);
+	put_nb_tab((t_ll)n, (char **)&c, DEC);
 	return (ft_putstr_fd(c, fd));
 }
