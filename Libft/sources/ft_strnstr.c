@@ -6,7 +6,7 @@
 /*   By: nsainton <nsainton@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/12 16:30:10 by nsainton          #+#    #+#             */
-/*   Updated: 2022/10/12 17:33:20 by nsainton         ###   ########.fr       */
+/*   Updated: 2022/12/27 02:26:30 by nsainton         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,10 +33,8 @@ char	*ft_strnstr(const char *s1, const char *s2, size_t n)
 {
 	size_t	i;
 
-	if (s2 == NULL || *s2 == 0)
+	if (*s2 == 0)
 		return ((char *)(s1));
-	if (s1 == NULL)
-		return (NULL);
 	i = 0;
 	while (*(s1 + i))
 	{

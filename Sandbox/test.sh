@@ -8,3 +8,10 @@ then
 else
 	echo Else
 fi
+
+if [ $1 == ""]
+then
+	echo Empty
+else
+	echo Something
+fi
