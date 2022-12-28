@@ -168,7 +168,7 @@ void	put_hex_min(t_pbuffer *buf, va_list *ap, char flags[128]);
 
 void	put_hex_maj(t_pbuffer *buf, va_list *ap, char flags[128]);
 
-//Functions from init.c [       4 functions]
+//Functions from init.c [       5 functions]
 
 void	init_pbuf_fd(t_pbuffer *buf, int fd);
 
@@ -176,7 +176,7 @@ void	init_pbuf_str(t_pbuffer *buf, t_str *str);
 
 void	set_pad(char flags[128], t_print *pads);
 
-void	init_func(t_pfunc func[128]);
+t_pfunc	*get_funcs(void);
 
 //Functions from lst_addelem.c [       3 functions]
 

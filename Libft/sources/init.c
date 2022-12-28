@@ -6,7 +6,7 @@
 /*   By: nsainton <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/04 23:02:41 by nsainton          #+#    #+#             */
-/*   Updated: 2022/12/28 08:13:12 by nsainton         ###   ########.fr       */
+/*   Updated: 2022/12/28 18:15:36 by nsainton         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ void	set_pad(char flags[128], t_print *pads)
 		pads->align = 'l';
 }
 
-void	init_func(t_pfunc func[128])
+static void	init_func(t_pfunc func[128])
 {
 	func['d'] = &put_dec;
 	func['i'] = &put_dec;
@@ -61,4 +61,13 @@ void	init_func(t_pfunc func[128])
 	func['x'] = &put_hex_min;
 	func['X'] = &put_hex_maj;
 	func['%'] = &put_percent;
+}
+
+t_pfunc	*get_funcs(void)
+{
+	static t_pfunc	functions[128] = {0};
+
+	if (functions['d'] == NULL)
+		init_func(functions);
+	return (functions);
 }

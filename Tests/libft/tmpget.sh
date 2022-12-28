@@ -6,4 +6,4 @@ then
 	exit 2
 fi
 ../../Scripts/getlib.sh ../../Libft libft.a && gcc -Wall -Wextra\
- -Werror -g3 $1 libft.a -o $o_file
+ -Werror -g3 $1 libft.a -o $o_file 

@@ -6,7 +6,7 @@
 /*   By: nsainton <nsainton@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/28 03:18:11 by nsainton          #+#    #+#             */
-/*   Updated: 2022/12/28 08:14:10 by nsainton         ###   ########.fr       */
+/*   Updated: 2022/12/28 18:12:47 by nsainton         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,13 +41,13 @@ int	ft_vsnprintf(t_str *str, const char *format, va_list ap)
 	t_pbuffer	buf;
 	const char	*s;
 	char		flags[128];
-	t_pfunc		func[128];
+	t_pfunc		*func;
 	va_list		cpy;
 
 	va_copy(cpy, ap);
 	s = format;
 	init_pbuf_str(&buf, str);
-	init_func(func);
+	func = get_funcs();
 	while (*s)
 	{
 		loop(&buf, &s);
