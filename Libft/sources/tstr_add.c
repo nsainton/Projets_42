@@ -6,7 +6,7 @@
 /*   By: nsainton <nsainton@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/27 04:34:33 by nsainton          #+#    #+#             */
-/*   Updated: 2022/12/28 20:36:09 by nsainton         ###   ########.fr       */
+/*   Updated: 2022/12/28 21:48:05 by nsainton         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,16 +36,8 @@ size_t	tstrncat(t_str *str, const char *s, size_t bytes)
 		*(str->str + str->len) = *s;
 		s ++;
 		str->len += 1;
+		bytes --;
 	}
 	*(str->str + str->len) = 0;
 	return (added);
-}
-
-int	tstr_addstr(t_str *str, const t_str *toadd)
-{
-	if (str->len + toadd->len >= str->size)
-		return (str->len + toadd->len - str->size + 1);
-	ft_strlcat(str->str, toadd->str, str->size);
-	str->len += toadd->len;
-	return (0);
 }
