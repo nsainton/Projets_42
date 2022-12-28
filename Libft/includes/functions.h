@@ -80,9 +80,11 @@ int	ft_vdprintf(int fd, const char *format, va_list ap);
 
 char	**ft_split(char const *s, char c);
 
-//Functions from ft_sprintf.c [       2 functions]
+//Functions from ft_sprintf.c [       3 functions]
 
 int	ft_snprintf(char *str, size_t size, const char *format, ...);
+
+int	ft_sprintf(t_str *str, const char *format, ...);
 
 int	ft_vsnprintf(t_str *str, const char *format, va_list ap);
 
