@@ -6,7 +6,7 @@
 /*   By: nsainton <nsainton@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/23 18:32:51 by nsainton          #+#    #+#             */
-/*   Updated: 2022/12/27 04:44:19 by nsainton         ###   ########.fr       */
+/*   Updated: 2022/12/27 21:08:22 by nsainton         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@ typedef struct s_list
 {
 	void			*content;
 	struct s_list	*next;
+	int				priority;
 }				t_list;
 
 typedef struct s_pbuffer
