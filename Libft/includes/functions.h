@@ -276,6 +276,10 @@ size_t	ft_strlen(const char *s);
 
 size_t	ft_strnlen(const char *s, size_t maxlen);
 
+//Functions from tstr.c [       1 functions]
+
+void	tstr_print(t_str *str);
+
 //Functions from tstr_add.c [       2 functions]
 
 int	tstr_addchar(t_str *str, char c);

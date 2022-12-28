@@ -6,7 +6,7 @@
 #    By: nsainton <nsainton@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/23 06:01:21 by nsainton          #+#    #+#              #
-#    Updated: 2022/12/28 06:32:29 by nsainton         ###   ########.fr        #
+#    Updated: 2022/12/28 07:32:53 by nsainton         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -88,7 +88,7 @@ $(OBJS_DIR)/%.o: $(SRCS_DIR)/%.c $(wildcard $(INC_DIR)/*.h) | $(OBJS_DIR)
 $(OBJS_DIR):
 	mkdir -p $(OBJS_DIR)
 debug:
-	make re GG=-g3
+	make re GG=-g3 OPT=-O0
 
 clean:
 	rm -rf $(OBJS_DIR)
