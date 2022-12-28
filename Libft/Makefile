@@ -6,7 +6,7 @@
 #    By: nsainton <nsainton@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/23 06:01:21 by nsainton          #+#    #+#              #
-#    Updated: 2022/12/28 06:24:18 by nsainton         ###   ########.fr        #
+#    Updated: 2022/12/28 06:32:29 by nsainton         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -92,9 +92,12 @@ debug:
 
 clean:
 	rm -rf $(OBJS_DIR)
+	echo "$(BEGIN)$(RED)mObjects have been successfully removed$(END)"
 
 fclean: clean
 	rm -f $(NAME)
+	echo "$(BEGIN)$(RED);$(UNDERLINED)m$(NAME)\
+	$(BEGIN)$(NORMAL);$(CYAN)m has been successfully removed$(END)"
 
 re: fclean all
 
