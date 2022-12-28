@@ -280,9 +280,11 @@ size_t	ft_strnlen(const char *s, size_t maxlen);
 
 void	tstr_print(t_str *str);
 
-//Functions from tstr_add.c [       2 functions]
+//Functions from tstr_add.c [       3 functions]
 
 int	tstr_addchar(t_str *str, char c);
+
+size_t	tstrncat(t_str *str, const char *s, size_t bytes);
 
 int	tstr_addstr(t_str *str, const t_str *toadd);
 

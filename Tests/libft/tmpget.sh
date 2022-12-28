@@ -1,5 +1,7 @@
+#!/bin/bash
 #Use the script like : ./Script test_file.c
 o_file="$(basename $1 .c)"
+hardware="$(uname -s)"
 if [ "$1" == "" ]
 then
 	echo Script is meant to be used by running ./tmpget.sh test_file.c
@@ -7,3 +9,7 @@ then
 fi
 ../../Scripts/getlib.sh ../../Libft libft.a && gcc -Wall -Wextra\
  -Werror -g3 $1 libft.a -o $o_file 
+ if [ "$hardware" == "Darwin" ]
+ then
+ 	rm -rf *.dSYM
+fi
