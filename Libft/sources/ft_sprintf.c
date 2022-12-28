@@ -1,40 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.c                                        :+:      :+:    :+:   */
+/*   ft_sprintf.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nsainton <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: nsainton <nsainton@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/05 01:07:48 by nsainton          #+#    #+#             */
-/*   Updated: 2022/12/28 03:29:16 by nsainton         ###   ########.fr       */
+/*   Created: 2022/12/28 03:18:11 by nsainton          #+#    #+#             */
+/*   Updated: 2022/12/28 03:33:44 by nsainton         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/libft.h"
 
-int	ft_printf(const char *format, ...)
+int	ft_snprintf(char *str, size_t size, const char *format, ...)
 {
 	va_list	ap;
 	int		ret;
+	t_str	tstr;
 
 	va_start(ap, format);
-	ret = ft_vdprintf(STDOUT_FILENO, format, ap);
+	tstr = (t_str){str, 0, size};
+	ret = ft_vsnprintf(&tstr, format, ap);
 	va_end(ap);
 	return (ret);
 }
 
-int	ft_dprintf(int fd, const char *format, ...)
-{
-	va_list	ap;
-	int		ret;
-
-	va_start(ap, format);
-	ret = ft_vdprintf(fd, format, ap);
-	va_end(ap);
-	return (ret);
-}
-
-int	ft_vdprintf(int fd, const char *format, va_list ap)
+int	ft_vsnprintf(t_str *str, const char *format, va_list ap)
 {
 	t_pbuffer		buf;
 	const char		*s;
@@ -44,7 +35,7 @@ int	ft_vdprintf(int fd, const char *format, va_list ap)
 
 	va_copy(cpy, ap);
 	s = format;
-	init_pbuf_fd(&buf, fd);
+	init_pbuf_str(&buf, str);
 	init_func(func);
 	while (*s)
 	{

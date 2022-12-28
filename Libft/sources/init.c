@@ -6,7 +6,7 @@
 /*   By: nsainton <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/04 23:02:41 by nsainton          #+#    #+#             */
-/*   Updated: 2022/12/26 21:04:54 by nsainton         ###   ########.fr       */
+/*   Updated: 2022/12/28 03:28:08 by nsainton         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,16 @@ void	init_pbuf_fd(t_pbuffer *buf, int fd)
 	buf->width = 0;
 	buf->prec = 0;
 	buf->str = 0;
+}
+
+void	init_pbuf_str(t_pbuffer *buf, t_str *str)
+{
+	buf->fd = (intptr_t)str;
+	buf->len = 0;
+	buf->printed = 0;
+	buf->width = 0;
+	buf->prec = 0;
+	buf->str = 1;
 }
 
 void	set_pad(char flags[128], t_print *pads)
@@ -42,6 +52,10 @@ void	set_pad(char flags[128], t_print *pads)
 
 void	init_func(t_pfunc func[128])
 {
+	static char	flag = 0;
+
+	if (flag)
+		return ;
 	func['d'] = &put_dec;
 	func['i'] = &put_dec;
 	func['c'] = &put_char;
@@ -51,4 +65,5 @@ void	init_func(t_pfunc func[128])
 	func['x'] = &put_hex_min;
 	func['X'] = &put_hex_maj;
 	func['%'] = &put_percent;
+	flag = 1;
 }

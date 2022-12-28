@@ -80,6 +80,12 @@ int	ft_vdprintf(int fd, const char *format, va_list ap);
 
 char	**ft_split(char const *s, char c);
 
+//Functions from ft_sprintf.c [       2 functions]
+
+int	ft_snprintf(char *str, size_t size, const char *format, ...);
+
+int	ft_vsnprintf(t_str *str, const char *format, va_list ap);
+
 //Functions from ft_strchr.c [       1 functions]
 
 char	*ft_strchr(const char *s, int c);
@@ -160,9 +166,11 @@ void	put_hex_min(t_pbuffer *buf, va_list *ap, char flags[128]);
 
 void	put_hex_maj(t_pbuffer *buf, va_list *ap, char flags[128]);
 
-//Functions from init.c [       3 functions]
+//Functions from init.c [       4 functions]
 
 void	init_pbuf_fd(t_pbuffer *buf, int fd);
+
+void	init_pbuf_str(t_pbuffer *buf, t_str *str);
 
 void	set_pad(char flags[128], t_print *pads);
 
