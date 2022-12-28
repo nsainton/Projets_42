@@ -276,17 +276,11 @@ size_t	ft_strlen(const char *s);
 
 size_t	ft_strnlen(const char *s, size_t maxlen);
 
-//Functions from tstr.c [       1 functions]
-
-void	tstr_print(t_str *str);
-
-//Functions from tstr_add.c [       3 functions]
+//Functions from tstr_add.c [       2 functions]
 
 int	tstr_addchar(t_str *str, char c);
 
 size_t	tstrncat(t_str *str, const char *s, size_t bytes);
-
-int	tstr_addstr(t_str *str, const t_str *toadd);
 
 //Functions from tstr_del.c [       1 functions]
 
@@ -299,5 +293,11 @@ void	tstr_init(t_str *str);
 int	tstr_initstr(t_str *tstr, char *str, size_t buffsize);
 
 int	tstr_cpy(t_str *dst, const t_str *src);
+
+//Functions from tstr_print.c [       2 functions]
+
+void	tstr_print(t_str *str);
+
+void	tstr_print_fd(t_str *str, int fd);
 
 #endif

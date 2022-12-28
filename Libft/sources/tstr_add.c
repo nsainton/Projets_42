@@ -6,7 +6,7 @@
 /*   By: nsainton <nsainton@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/27 04:34:33 by nsainton          #+#    #+#             */
-/*   Updated: 2022/12/28 21:48:05 by nsainton         ###   ########.fr       */
+/*   Updated: 2022/12/28 21:55:44 by nsainton         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ size_t	tstrncat(t_str *str, const char *s, size_t bytes)
 	if (bytes + str->len >= str->size - 1)
 		bytes = str->size - str->len - 1;
 	added = bytes;
-	while (bytes > 0)
+	while (bytes > 0 && *s)
 	{
 		*(str->str + str->len) = *s;
 		s ++;

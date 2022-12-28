@@ -6,7 +6,7 @@
 /*   By: nsainton <nsainton@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/14 09:38:01 by nsainton          #+#    #+#             */
-/*   Updated: 2022/12/28 20:34:36 by nsainton         ###   ########.fr       */
+/*   Updated: 2022/12/28 21:57:16 by nsainton         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,6 @@ void	flush_str(t_pbuffer *buf)
 	t_str	*str;
 
 	str = (t_str *)buf->fd;
-	write(2, "Bonjour\n", 8);
 	if (buf->printed == -1)
 		return ;
 	printed = (int)tstrncat(str, buf->buffer, buf->len);
