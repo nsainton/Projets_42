@@ -6,7 +6,7 @@
 /*   By: nsainton <nsainton@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/14 09:38:01 by nsainton          #+#    #+#             */
-/*   Updated: 2022/12/28 08:00:40 by nsainton         ###   ########.fr       */
+/*   Updated: 2022/12/28 18:35:23 by nsainton         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ void	flush_str(t_pbuffer *buf)
 	if (buf->printed == -1)
 		return ;
 	if (buf->len + str->len >= str->size - 1)
-		to_print = str->size - str->len;
+		to_print = str->size - str->len - (str->size > str->len);
 	else
 		to_print = buf->len;
 	if (! to_print)
