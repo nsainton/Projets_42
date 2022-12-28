@@ -1,0 +1,16 @@
+#Don't forget the 'm' at the end of the code and separate multiple codes with ';'
+#Use the codes with echo -e
+BEGIN=\033[
+BLACK=30
+RED=31
+GREEN=32
+BROWN=33
+BLUE=34
+PURPLE=35
+CYAN=36
+NORMAL=0
+BOLD=1
+UNDERLINED=4
+BLINKING=5
+REVERSE=7
+END=\033[0m
