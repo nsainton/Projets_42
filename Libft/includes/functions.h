@@ -48,11 +48,13 @@ void	put_dec(t_pbuffer *buf, va_list *ap, char flags[128]);
 
 void	put_unsigned(t_pbuffer *buf, va_list *ap, char flags[128]);
 
-//Functions from flush.c [       2 functions]
+//Functions from flush.c [       3 functions]
 
 void	flush(t_pbuffer *buf);
 
 void	flush_fd(t_pbuffer *buf);
+
+void	flush_str(t_pbuffer *buf);
 
 //Functions from ft_atoi.c [       1 functions]
 
@@ -108,7 +110,7 @@ char	*ft_strmapi(char const *s, char (*f) (unsigned int, char));
 
 //Functions from ft_strncat.c [       1 functions]
 
-char	*ft_strncat(char *dest, const char *src, size_t n);
+size_t	ft_strncat(char *dest, const char *src, size_t n);
 
 //Functions from ft_strncmp.c [       1 functions]
 

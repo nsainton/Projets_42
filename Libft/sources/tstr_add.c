@@ -6,7 +6,7 @@
 /*   By: nsainton <nsainton@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/27 04:34:33 by nsainton          #+#    #+#             */
-/*   Updated: 2022/12/27 04:47:02 by nsainton         ###   ########.fr       */
+/*   Updated: 2022/12/28 02:53:19 by nsainton         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,11 @@
 
 int	tstr_addchar(t_str *str, char c)
 {
-	if (str->len >= str->size)
+	if (str->len >= str->size - 1)
 		return (1);
 	*(str->str + str->len) = c;
 	str->len += 1;
+	*(str->str + str->len) = 0;
 	return (0);
 }
 

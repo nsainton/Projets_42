@@ -6,7 +6,7 @@
 /*   By: nsainton <nsainton@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/27 04:47:28 by nsainton          #+#    #+#             */
-/*   Updated: 2022/12/27 05:29:18 by nsainton         ###   ########.fr       */
+/*   Updated: 2022/12/28 02:42:36 by nsainton         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ int	tstr_initstr(t_str *tstr, char *str, size_t buffsize)
 	size = len + 1;
 	if (size < buffsize)
 		size = buffsize;
-	tstr->str = malloc(sizeof *(tstr->str) * size);
+	tstr->str = ft_calloc(size, sizeof *(tstr->str));
 	if (tstr->str == NULL)
 	{
 		tstr_init(tstr);
@@ -44,7 +44,7 @@ int	tstr_cpy(t_str *dst, const t_str *src)
 {
 	if (dst->size > 0)
 		free(dst->str);
-	dst->str = malloc (src->size);
+	dst->str = ft_calloc(src->size, 1);
 	if (dst->str == NULL)
 	{
 		tstr_init(dst);
