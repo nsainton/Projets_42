@@ -6,7 +6,7 @@
 /*   By: nsainton <nsainton@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/14 09:38:01 by nsainton          #+#    #+#             */
-/*   Updated: 2022/12/28 03:02:01 by nsainton         ###   ########.fr       */
+/*   Updated: 2022/12/28 08:00:40 by nsainton         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,7 @@ void	flush_str(t_pbuffer *buf)
 	size_t	to_print;
 
 	str = (t_str *)buf->fd;
+	write(2, "Bonjour\n", 8);
 	if (buf->printed == -1)
 		return ;
 	if (buf->len + str->len >= str->size - 1)
