@@ -6,7 +6,7 @@
 #    By: nsainton <nsainton@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/23 06:01:21 by nsainton          #+#    #+#              #
-#    Updated: 2022/12/28 07:32:53 by nsainton         ###   ########.fr        #
+#    Updated: 2022/12/29 03:40:12 by nsainton         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -101,5 +101,10 @@ fclean: clean
 
 re: fclean all
 
-.PHONY: all debug clean fclean re
+git:
+	git add --all
+	git commit
+	git push origin dev
+
+.PHONY: all debug clean fclean re git
 .SILENT:

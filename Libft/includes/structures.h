@@ -6,7 +6,7 @@
 /*   By: nsainton <nsainton@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/23 18:32:51 by nsainton          #+#    #+#             */
-/*   Updated: 2022/12/27 21:08:22 by nsainton         ###   ########.fr       */
+/*   Updated: 2022/12/29 03:38:32 by nsainton         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,13 +22,13 @@ typedef struct s_list
 
 typedef struct s_pbuffer
 {
-	char		buffer[PBUFFER_SIZE];
-	int			len;
-	int			width;
-	int			prec;
-	intptr_t	fd;
-	int			printed;
-	char		str;
+	char			buffer[PBUFFER_SIZE];
+	int				len;
+	int				width;
+	int				prec;
+	intptr_t		fd;
+	int				printed;
+	unsigned char	str:1;
 }				t_pbuffer;
 
 typedef struct s_print
