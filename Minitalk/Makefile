@@ -6,7 +6,7 @@
 #    By: nsainton <nsainton@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/29 21:53:38 by nsainton          #+#    #+#              #
-#    Updated: 2022/12/29 23:25:29 by nsainton         ###   ########.fr        #
+#    Updated: 2022/12/29 23:39:35 by nsainton         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,7 @@ CLIENT= client
 
 LIBFT_DIR= ../Libft
 
-Libft= ../Libft/libft.a
+LIBFT= ../Libft/libft.a
 
 SSOURCES_DIR= server_sources
 
@@ -109,13 +109,16 @@ $(COBJECTS_DIR):
 $(LIBFT):
 	$(MAKE) -C $(LIBFT_DIR)
 debug:
-	$(MAKE) re GG=-g3 OPT=-O0
+	$(MAKE) debug -C $(LIBFT_DIR)
+	$(MAKE) GG=-g3 OPT=-O0
 
 clean:
+	$(MAKE) clean -C $(LIBFT_DIR)
 	rm -rf $(SOBJECTS_DIR) $(COBJECTS_DIR)
 	echo "$(BEGIN)$(RED)mObjects have been successfully removed$(END)"
 
 fclean: clean
+	$(MAKE) fclean -C $(LIBFT_DIR)
 	rm -f $(CLIENT) $(SERVER)
 	echo "$(BEGIN)$(UNDERLINED);$(RED)m$(SERVER)$(BEGIN)$(NORMAL);$(CYAN)m and \
 	$(BEGIN)$(UNDERLINED);$(RED)m$(CLIENT)$(BEGIN)$(NORMAL);$(CYAN)m have been \
@@ -129,3 +132,4 @@ git:
 	git push origin dev
 
 .PHONY: $(NAME) debug clean fclean re git
+.SILENT:
