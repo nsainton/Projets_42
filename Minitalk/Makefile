@@ -6,7 +6,7 @@
 #    By: nsainton <nsainton@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/29 21:53:38 by nsainton          #+#    #+#              #
-#    Updated: 2022/12/29 23:39:35 by nsainton         ###   ########.fr        #
+#    Updated: 2022/12/30 00:35:23 by nsainton         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,23 +24,35 @@ SSOURCES_DIR= server_sources
 
 CSOURCES_DIR= client_sources
 
+SOURCES_DIR= sources
+
 INCLUDES= includes
+
+SOURCES_NAMES= $(notdir $(wildcard $(SOURCES_DIR)/*))
 
 SSOURCES_NAMES= $(subst $(SSOURCES_DIR)/,, $(wildcard $(SSOURCES_DIR)/*))
 
 CSOURCES_NAMES= $(notdir $(wildcard $(CSOURCES_DIR)/*))
 
+SOURCES= $(addprefix $(SOURCES_DIR)/, $(SOURCES_NAMES))
+
 SSOURCES= $(addprefix $(SSOURCES_DIR)/,$(SSOURCES_NAMES))
 
 CSOURCES= $(addprefix $(CSOURCES_DIR)/, $(CSOURCES_NAMES))
+
+OBJECTS_DIR= objects
 
 SOBJECTS_DIR= server_objects
 
 COBJECTS_DIR= client_objects
 
+OBJECTS_NAMES= $(SOURCES_NAMES:.c=.o)
+
 SOBJECTS_NAMES= $(SSOURCES_NAMES:.c=.o)
 
 COBJECTS_NAMES= $(CSOURCES_NAMES:.c=.o)
+
+OBJECTS= $(addprefix $(OBJECTS_DIR)/, $(OBJECTS_NAMES))
 
 SOBJECTS= $(addprefix $(SOBJECTS_DIR)/, $(SOBJECTS_NAMES))
 
@@ -66,17 +78,30 @@ BLINKING=5
 REVERSE=7
 END=\033[0m
 
-define minitalk_header
- ______    _______  _______  ______   __   __    _______  _______    _______  _______  ___      ___   _  ______  
-|    _ |  |       ||   _   ||      | |  | |  |  |       ||       |  |       ||   _   ||   |    |   | | ||      | 
-|   | ||  |    ___||  |_|  ||  _    ||  |_|  |  |_     _||   _   |  |_     _||  |_|  ||   |    |   |_| ||___   | 
-|   |_||_ |   |___ |       || | |   ||       |    |   |  |  | |  |    |   |  |       ||   |    |      _|  __|  | 
-|    __  ||    ___||       || |_|   ||_     _|    |   |  |  |_|  |    |   |  |       ||   |___ |     |_  |_____| 
-|   |  | ||   |___ |   _   ||       |  |   |      |   |  |       |    |   |  |   _   ||       ||    _  |   __    
-|___|  |_||_______||__| |__||______|   |___|      |___|  |_______|    |___|  |__| |__||_______||___| |_|  |__|   
+#Font is Modular
+define server_header
+ ______    _______  _______  ______   __   __    _______  _______    ___      ___   _______  _______  _______  __    _ 
+|    _ |  |       ||   _   ||      | |  | |  |  |       ||       |  |   |    |   | |       ||       ||       ||  |  | |
+|   | ||  |    ___||  |_|  ||  _    ||  |_|  |  |_     _||   _   |  |   |    |   | |  _____||_     _||    ___||   |_| |
+|   |_||_ |   |___ |       || | |   ||       |    |   |  |  | |  |  |   |    |   | | |_____   |   |  |   |___ |       |
+|    __  ||    ___||       || |_|   ||_     _|    |   |  |  |_|  |  |   |___ |   | |_____  |  |   |  |    ___||  _    |
+|   |  | ||   |___ |   _   ||       |  |   |      |   |  |       |  |       ||   |  _____| |  |   |  |   |___ | | |   |
+|___|  |_||_______||__| |__||______|   |___|      |___|  |_______|  |_______||___| |_______|  |___|  |_______||_|  |__|
 endef
-export minitalk_header
+export server_header
 
+#Font is Big
+define client_header
+  _____                _         _          _        _ _    
+ |  __ \              | |       | |        | |      | | |   
+ | |__) |___  __ _  __| |_   _  | |_ ___   | |_ __ _| | | __
+ |  _  // _ \/ _` |/ _` | | | | | __/ _ \  | __/ _` | | |/ /
+ | | \ \  __/ (_| | (_| | |_| | | || (_) | | || (_| | |   < 
+ |_|  \_\___|\__,_|\__,_|\__, |  \__\___/   \__\__,_|_|_|\_\ 
+                          __/ |                             
+                         |___/                              
+endef
+export client_header
 all:
 	$(MAKE) $(NAME)
 
@@ -84,21 +109,26 @@ $(NAME):
 	$(MAKE) -C $(LIBFT_DIR)
 	$(MAKE) $(SERVER)
 	$(MAKE) $(CLIENT)
-	@echo "$(BEGIN)$(BOLD);$(RED)m"
-	@echo "$$minitalk_header"
-	@echo "$(END)"
 
-$(SERVER): $(SOBJECTS)
-	$(CC) $(CFLAGS) $(GG) $(OPT) $(SOBJECTS) -o $(SERVER)
+$(SERVER): $(SOBJECTS) $(OBJECTS)
+	$(CC) $(CFLAGS) $(GG) $(OPT) $(SOBJECTS) $(OBJECTS) -o $(SERVER)
+	@echo "$(BEGIN)$(BOLD);$(RED)m $$server_header $(END)"
 
-$(CLIENT): $(COBJECTS)
-	$(CC) $(CFLAGS) $(GG) $(OPT) $(COBJECTS) -o $(CLIENT)
+$(CLIENT): $(COBJECTS) $(OBJECTS)
+	$(CC) $(CFLAGS) $(GG) $(OPT) $(COBJECTS) $(OBJECTS) -o $(CLIENT)
+	@echo "$(BEGIN)$(BOLD);$(CYAN)m $$client_header $(END)"
+
+$(OBJECTS_DIR)/%.o: $(SOURCES_DIR)/%.c $(wildcard $(INCLUDES)/*) $(LIBFT) | $(OBJECTS_DIR)
+	$(CC) $(CFLAGS) $(GG) $(OPT) -c $< $(LIBFT) -o $@ -I $(INCLUDES)
 
 $(SOBJECTS_DIR)/%.o: $(SSOURCES_DIR)/%.c $(wildcard $(INCLUDES)/*) $(LIBFT) | $(SOBJECTS_DIR)
 	$(CC) $(CFLAGS) $(GG) $(OPT) -c $< $(LIBFT) -o $@ -I $(INCLUDES)
 
 $(COBJECTS_DIR)/%.o: $(CSOURCES_DIR)/%.c $(wildcard $(INCLUDES)/*) $(LIBFT) | $(COBJECTS_DIR)
 	$(CC) $(CFLAGS) $(GG) $(OPT) -c $< $(LIBFT) -o $@ -I $(INCLUDES)
+
+$(OBJECTS_DIR):
+	mkdir $(OBJECTS_DIR)
 
 $(SOBJECTS_DIR):
 	mkdir $(SOBJECTS_DIR)
@@ -114,7 +144,7 @@ debug:
 
 clean:
 	$(MAKE) clean -C $(LIBFT_DIR)
-	rm -rf $(SOBJECTS_DIR) $(COBJECTS_DIR)
+	rm -rf $(SOBJECTS_DIR) $(COBJECTS_DIR) $(OBJECTS_DIR)
 	echo "$(BEGIN)$(RED)mObjects have been successfully removed$(END)"
 
 fclean: clean
