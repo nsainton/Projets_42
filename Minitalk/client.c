@@ -6,7 +6,7 @@
 /*   By: nsainton <nsainton@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/30 05:24:05 by nsainton          #+#    #+#             */
-/*   Updated: 2022/12/30 09:31:46 by nsainton         ###   ########.fr       */
+/*   Updated: 2022/12/30 09:37:32 by nsainton         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	main(int ac, char **av)
 
 	if (ac != 3)
 		error_handling("Incorrect number of arguments supplied");
-	if (tstr_initstr(&g_message, *(av + 1), 0))
+	if (tstr_initstr(&g_message, *(av + 2), 0))
 		error_handling("Allocation Error, what did you do to get that?");
 	server_pid = ft_atoi(*(av + 1));
 	action.sa_sigaction = handle_sigusr2;
