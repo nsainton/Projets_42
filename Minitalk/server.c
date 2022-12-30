@@ -6,7 +6,7 @@
 /*   By: nsainton <nsainton@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/30 04:27:30 by nsainton          #+#    #+#             */
-/*   Updated: 2022/12/30 07:55:56 by nsainton         ###   ########.fr       */
+/*   Updated: 2022/12/30 09:31:01 by nsainton         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,8 @@ int	main(void)
 
 	action.sa_sigaction = handle_signal;
 	action.sa_flags = SA_SIGINFO;
+	sigemptyset(&action.sa_mask);
+	sigaddset(&action.sa_mask, SIGUSR2);
 	sigaction(SIGUSR1, &action, NULL);
 	while (1)
 	{

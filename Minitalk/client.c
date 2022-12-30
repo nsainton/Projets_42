@@ -6,7 +6,7 @@
 /*   By: nsainton <nsainton@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/30 05:24:05 by nsainton          #+#    #+#             */
-/*   Updated: 2022/12/30 07:52:43 by nsainton         ###   ########.fr       */
+/*   Updated: 2022/12/30 09:31:46 by nsainton         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,8 @@ int	main(int ac, char **av)
 	server_pid = ft_atoi(*(av + 1));
 	action.sa_sigaction = handle_sigusr2;
 	action.sa_flags = SA_SIGINFO;
+	sigemptyset(&action.sa_mask);
+	sigaddset(&action.sa_mask, SIGUSR1);
 	sigaction(SIGUSR2, &action, NULL);
 	if (kill(server_pid, SIGUSR1) == -1)
 		error_handling("Why do I talk if no one listens?");
