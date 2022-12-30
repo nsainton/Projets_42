@@ -6,7 +6,7 @@
 /*   By: nsainton <nsainton@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/30 04:27:30 by nsainton          #+#    #+#             */
-/*   Updated: 2022/12/30 06:45:30 by nsainton         ###   ########.fr       */
+/*   Updated: 2022/12/30 07:55:56 by nsainton         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ int	main(void)
 	{
 		while (! g_srv_print)
 		{
-			usleep(1000);
+			sleep(1);
 		}
 		g_srv_print = 0;
 	}
