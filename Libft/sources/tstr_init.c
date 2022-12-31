@@ -6,7 +6,7 @@
 /*   By: nsainton <nsainton@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/27 04:47:28 by nsainton          #+#    #+#             */
-/*   Updated: 2022/12/28 02:42:36 by nsainton         ###   ########.fr       */
+/*   Updated: 2022/12/31 04:36:05 by nsainton         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,8 @@ int	tstr_initstr(t_str *tstr, char *str, size_t buffsize)
 	size_t	len;
 	size_t	size;
 
+	if (str == NULL)
+		str = "";
 	len = ft_strlen(str);
 	size = len + 1;
 	if (size < buffsize)
