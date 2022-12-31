@@ -6,20 +6,15 @@
 /*   By: nsainton <nsainton@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/30 06:09:30 by nsainton          #+#    #+#             */
-/*   Updated: 2022/12/30 07:57:33 by nsainton         ###   ########.fr       */
+/*   Updated: 2022/12/31 02:51:46 by nsainton         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/minitalk.h"
 
-t_str	g_message = {0};
-
-int		g_srv_print = 0;
-
 void	handle_signal(int sig, siginfo_t *sigi, void *context)
 {
 	(void)context;
-	(void)sig;
 	handle_sigusr1(sig);
 	if (kill(sigi->si_pid, SIGUSR2) == -1)
 	{
@@ -31,9 +26,9 @@ void	handle_signal(int sig, siginfo_t *sigi, void *context)
 
 void	handle_sigusr1(int sig)
 {
-	(void)sig;
-	ft_printf("1\n");
+	ft_printf("%d\n", sig);
 	tstr_print(&g_message);
+	ft_printf("%d\n", g_message.size);
 	free(g_message.str);
 	tstr_init(&g_message);
 }
