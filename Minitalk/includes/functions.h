@@ -19,4 +19,6 @@ void	print_bits(t_byte byte);
 
 void	build_message(int sig, siginfo_t *sigi, void *context);
 
+//Functions from server.c [ 1 function]
+void	update_byte(int sig, t_byte *bit, t_byte *byte, int unsigned *received);
 #endif

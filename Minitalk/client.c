@@ -6,14 +6,17 @@
 /*   By: nsainton <nsainton@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/31 21:08:58 by nsainton          #+#    #+#             */
-/*   Updated: 2023/01/01 01:31:04 by nsainton         ###   ########.fr       */
+/*   Updated: 2023/01/01 05:52:06 by nsainton         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "includes/minitalk.h"
+#include "minitalk.h"
 
 int	pong(int sig, siginfo_t *sigi, void *context)
 {
+	(void)sig;
+	(void)sigi;
+	(void)context;
 	return (0);
 }
 

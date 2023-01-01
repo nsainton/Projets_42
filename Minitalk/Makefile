@@ -6,7 +6,7 @@
 #    By: nsainton <nsainton@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/31 22:53:20 by nsainton          #+#    #+#              #
-#    Updated: 2023/01/01 05:16:25 by nsainton         ###   ########.fr        #
+#    Updated: 2023/01/01 05:40:10 by nsainton         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -42,11 +42,11 @@ $(NAME):
 	$(MAKE) $(SERVER)
 	$(MAKE) $(CLIENT)
 
-$(SERVER): $(SERVER).c $(SOURCES) $(LIBFT)
-	$(CC) $(CFLAGS) $(OPT) $(GG) $(SERVER).c $(SOURCES) -$(LIBFT) -o $(SERVER)
+$(SERVER): $(SERVER).c $(SRCS) $(LIBFT)
+	$(CC) $(CFLAGS) $(OPT) $(GG) $(SERVER).c $(SRCS) -$(LIBFT) -o $(SERVER)
 
-$(CLIENT): $(CLIENT).c $(SOURCES) $(LIBFT)
-	$(CC) $(CFLAGS) $(OPT) $(GG) $(CLIENT).c $(SOURCES) -$(LIBFT) -o $(CLIENT)
+$(CLIENT): $(CLIENT).c $(SRCS) $(LIBFT)
+	$(CC) $(CFLAGS) $(OPT) $(GG) $(CLIENT).c $(SRCS) -$(LIBFT) -o $(CLIENT)
 
 %.o: %.c $(wildcard $(INCLUDES)/*) $(LIBFT)
 	$(CC) $(CFLAGS) $(OPT) $(GG) -c $< -$(LIBFT) -o $@

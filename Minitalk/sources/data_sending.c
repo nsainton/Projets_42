@@ -6,11 +6,11 @@
 /*   By: nsainton <nsainton@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/01 01:00:28 by nsainton          #+#    #+#             */
-/*   Updated: 2023/01/01 01:00:58 by nsainton         ###   ########.fr       */
+/*   Updated: 2023/01/01 05:53:01 by nsainton         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/minitalk.h"
+#include "minitalk.h"
 
 int	send_bit(char unsigned bit, pid_t receiver)
 {
@@ -34,6 +34,7 @@ int	send_byte(char unsigned byte, pid_t receiver)
 		//ft_printf("This is the return value for bit[%d] : %d\n", i, t);
 		i ++;
 	}
+	(void)info;
 	(void)t;
 	return (send_bit(byte & 1 << i, receiver));
 }
@@ -50,4 +51,23 @@ int	send_integer(int unsigned quadruplet, pid_t receiver)
 	while (index < 3)
 		send_byte(*(byte + index ++), receiver);
 	return (send_byte(*(byte + index), receiver));
+}
+
+void	update_byte(int sig, t_byte *bit, t_byte *byte, int unsigned *received)
+{
+	if (sig == SIGUSR1)
+	{
+		*byte |= 1 << *bit;
+		*bit += 1;
+	}
+	else if (sig == SIGUSR2)
+	{
+		*byte &= (-1 ^ 1 << *bit);
+		*bit += 1;
+	}
+	if (*bit == 8)
+	{
+		*received += 1;
+		*bit = 0;
+	}
 }
