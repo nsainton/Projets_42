@@ -6,7 +6,7 @@
 #    By: nsainton <nsainton@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/31 22:53:20 by nsainton          #+#    #+#              #
-#    Updated: 2022/12/31 23:55:35 by nsainton         ###   ########.fr        #
+#    Updated: 2023/01/01 00:56:52 by nsainton         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,11 @@ CLIENT= client
 
 SERVER= server
 
-SOURCES= debug.c
+SRCS_DIR = sources
+
+SRCS_NAMES = $(notdir $(wildcard $(SRCS_DIR)/*))
+
+SRCS= $(addprefix $(SRCS_DIR)/, $(SRCS_NAMES))
 
 INCLUDES= includes
 
