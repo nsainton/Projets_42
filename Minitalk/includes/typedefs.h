@@ -6,7 +6,7 @@
 /*   By: nsainton <nsainton@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/01 01:10:09 by nsainton          #+#    #+#             */
-/*   Updated: 2023/01/01 07:43:17 by nsainton         ###   ########.fr       */
+/*   Updated: 2023/01/01 18:08:26 by nsainton         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,8 @@
 # include "librairies.h"
 
 extern int					g_printed;
+
+extern int					g_sent;
 
 typedef char unsigned		t_byte;
 

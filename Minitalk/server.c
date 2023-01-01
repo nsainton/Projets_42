@@ -6,7 +6,7 @@
 /*   By: nsainton <nsainton@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/31 21:24:04 by nsainton          #+#    #+#             */
-/*   Updated: 2023/01/01 07:42:39 by nsainton         ###   ########.fr       */
+/*   Updated: 2023/01/01 18:14:28 by nsainton         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@ void	build_message(int sig, siginfo_t *sigi, void *context)
 {
 	static t_message	message;
 
-	(void)sigi;
 	(void)context;
 	//ft_printf("I have been killed with signal : %d\n", sig);
 	//ft_printf("This is the bit I'm looking at : %d\n", message.bit);
@@ -36,7 +35,9 @@ void	build_message(int sig, siginfo_t *sigi, void *context)
 		ft_printf("This is the length : %d\n", message.message_length);
 		//write(1, &message.current_byte, 1);
 		g_printed = 1;
+		//kill(sigi->si_pid, SIGUSR2);
 	}
+	kill(sigi->si_pid, SIGUSR1);
 }
 
 int	main(void)

@@ -6,7 +6,7 @@
 /*   By: nsainton <nsainton@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/31 22:50:55 by nsainton          #+#    #+#             */
-/*   Updated: 2022/12/31 23:05:32 by nsainton         ###   ########.fr       */
+/*   Updated: 2023/01/01 18:26:23 by nsainton         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,5 +25,20 @@ void	print_bits(t_byte byte)
 			write(1, "0", 1);
 		i ++;
 	}
-	write(1, "\n", 1);
+}
+
+void	print_bits_integer(int unsigned to_print)
+{
+	int	unsigned	i;
+	int	unsigned	tmp;
+	t_byte			*byte;
+
+	i = 0;
+	tmp = to_print;
+	byte = (t_byte *)&tmp;
+	while (i < 4)
+	{
+		print_bits(*(byte + i));
+		i ++;
+	}
 }
