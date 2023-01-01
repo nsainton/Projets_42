@@ -6,7 +6,7 @@
 /*   By: nsainton <nsainton@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/31 21:24:04 by nsainton          #+#    #+#             */
-/*   Updated: 2023/01/01 18:14:28 by nsainton         ###   ########.fr       */
+/*   Updated: 2023/01/01 21:20:06 by nsainton         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ void	build_message(int sig, siginfo_t *sigi, void *context)
 		//write(1, &message.current_byte, 1);
 		g_printed = 1;
 		//kill(sigi->si_pid, SIGUSR2);
+		sleep(1);
 	}
 	kill(sigi->si_pid, SIGUSR1);
 }
