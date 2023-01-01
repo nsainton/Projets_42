@@ -6,11 +6,11 @@
 /*   By: nsainton <nsainton@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/31 21:24:04 by nsainton          #+#    #+#             */
-/*   Updated: 2023/01/01 01:30:58 by nsainton         ###   ########.fr       */
+/*   Updated: 2023/01/01 05:21:10 by nsainton         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "includes/minitalk.h"
+#include "minitalk.h"
 
 int	g_printed;
 
