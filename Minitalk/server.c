@@ -6,7 +6,7 @@
 /*   By: nsainton <nsainton@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/31 21:24:04 by nsainton          #+#    #+#             */
-/*   Updated: 2023/01/01 05:59:46 by nsainton         ###   ########.fr       */
+/*   Updated: 2023/01/01 07:42:39 by nsainton         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,15 +42,9 @@ void	build_message(int sig, siginfo_t *sigi, void *context)
 int	main(void)
 {
 	pid_t 				pid;
-	struct sigaction	action;
+	t_sigaction			action;
 
-	action.sa_sigaction = build_message;
-	action.sa_flags = SA_SIGINFO;
-	sigemptyset(&action.sa_mask);
-	sigaddset(&action.sa_mask, SIGUSR1);
-	sigaddset(&action.sa_mask, SIGUSR2);
-	sigaction(SIGUSR1, &action, NULL);
-	sigaction(SIGUSR2, &action, NULL);
+	init_sigaction(&action, build_message);
 	pid = getpid();
 	ft_printf("This is my pid : %d\n", pid);
 	while (!g_printed);

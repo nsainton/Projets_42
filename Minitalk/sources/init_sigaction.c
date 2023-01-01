@@ -1,24 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   typedefs.h                                         :+:      :+:    :+:   */
+/*   init_sigaction.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nsainton <nsainton@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/01 01:10:09 by nsainton          #+#    #+#             */
-/*   Updated: 2023/01/01 07:43:17 by nsainton         ###   ########.fr       */
+/*   Created: 2023/01/01 07:34:17 by nsainton          #+#    #+#             */
+/*   Updated: 2023/01/01 07:43:56 by nsainton         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef TYPEDEFS_H
-# define TYPEDEFS_H
-# include "librairies.h"
+#include "minitalk.h"
 
-extern int					g_printed;
-
-typedef char unsigned		t_byte;
-
-typedef void				(*t_action)(int, siginfo_t *, void *);
-
-typedef struct sigaction	t_sigaction;
-#endif
+void	init_sigaction(t_sigaction *action, t_action handler)
+{
+	action->sa_sigaction = handler;
+	action->sa_flags = SA_SIGINFO;
+	sigemptyset(&action->sa_mask);
+	sigaddset(&action->sa_mask, SIGUSR1);
+	sigaddset(&action->sa_mask, SIGUSR2);
+	sigaction(SIGUSR1, action, NULL);
+	sigaction(SIGUSR2, action, NULL);
+}

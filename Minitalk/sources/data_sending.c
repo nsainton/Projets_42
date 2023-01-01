@@ -6,7 +6,7 @@
 /*   By: nsainton <nsainton@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/01 01:00:28 by nsainton          #+#    #+#             */
-/*   Updated: 2023/01/01 05:53:01 by nsainton         ###   ########.fr       */
+/*   Updated: 2023/01/01 07:23:51 by nsainton         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,16 +25,15 @@ int	send_byte(char unsigned byte, pid_t receiver)
 {
 	int unsigned			i;
 	int						t;
-	static struct sigaction	info;
 
 	i = 0;
 	while (i < 7)
 	{
 		t = send_bit(byte & 1 << i, receiver);
+		pause();
 		//ft_printf("This is the return value for bit[%d] : %d\n", i, t);
 		i ++;
 	}
-	(void)info;
 	(void)t;
 	return (send_bit(byte & 1 << i, receiver));
 }
