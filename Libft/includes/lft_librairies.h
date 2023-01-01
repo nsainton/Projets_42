@@ -1,22 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   librairies.h                                       :+:      :+:    :+:   */
+/*   lft_librairies.h                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nsainton <nsainton@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/23 08:01:59 by nsainton          #+#    #+#             */
-/*   Updated: 2022/12/26 22:18:42 by nsainton         ###   ########.fr       */
+/*   Updated: 2023/01/01 05:41:29 by nsainton         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIBRAIRIES_H
-# define LIBRAIRIES_H
+#ifndef LFT_LIBRAIRIES_H
+# define LFT_LIBRAIRIES_H
 # include <stdlib.h>
 # include <unistd.h>
 # include <limits.h>
 # include <stdarg.h>
 # include <stdint.h>
+# include <sys/types.h>
 # ifndef BUFFER_SIZE
 #  define BUFFER_SIZE 42
 # endif

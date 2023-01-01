@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   typedefs.h                                         :+:      :+:    :+:   */
+/*   lft_typedefs.h                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nsainton <nsainton@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/23 18:37:09 by nsainton          #+#    #+#             */
-/*   Updated: 2022/12/27 20:16:10 by nsainton         ###   ########.fr       */
+/*   Updated: 2023/01/01 05:36:21 by nsainton         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef TYPEDEFS_H
-# define TYPEDEFS_H
+#ifndef LFT_TYPEDEFS_H
+# define LFT_TYPEDEFS_H
 
 typedef long long int			t_ll;
 

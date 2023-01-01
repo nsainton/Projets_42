@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   structures.h                                       :+:      :+:    :+:   */
+/*   lft_structures.h                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nsainton <nsainton@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/23 18:32:51 by nsainton          #+#    #+#             */
-/*   Updated: 2022/12/29 03:38:32 by nsainton         ###   ########.fr       */
+/*   Updated: 2023/01/01 05:35:58 by nsainton         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef STRUCTURES_H
-# define STRUCTURES_H
+#ifndef LFT_STRUCTURES_H
+# define LFT_STRUCTURES_H
 
 typedef struct s_list
 {

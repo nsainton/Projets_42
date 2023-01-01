@@ -1,10 +1,10 @@
 
-#ifndef FUNCTIONS_H
-# define FUNCTIONS_H
-# include "librairies.h"
-# include "structures.h"
-# include "enums.h"
-# include "typedefs.h"
+#ifndef LFT_FUNCTIONS_H
+# define LFT_FUNCTIONS_H
+# include "lft_librairies.h"
+# include "lft_structures.h"
+# include "lft_enums.h"
+# include "lft_typedefs.h"
 
 //Functions from address.c [       2 functions]
 

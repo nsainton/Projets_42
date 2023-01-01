@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   enums.h                                            :+:      :+:    :+:   */
+/*   lft_enums.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nsainton <nsainton@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/23 18:35:26 by nsainton          #+#    #+#             */
-/*   Updated: 2022/12/23 18:36:11 by nsainton         ###   ########.fr       */
+/*   Updated: 2023/01/01 05:36:44 by nsainton         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ENUMS_H
-# define ENUMS_H
+#ifndef LFT_ENUMS_H
+# define LFT_ENUMS_H
 
 typedef enum e_pflags
 {
