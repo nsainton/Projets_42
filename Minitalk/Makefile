@@ -6,7 +6,7 @@
 #    By: nsainton <nsainton@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/31 22:53:20 by nsainton          #+#    #+#              #
-#    Updated: 2023/01/01 07:54:03 by nsainton         ###   ########.fr        #
+#    Updated: 2023/01/01 17:53:04 by nsainton         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -76,3 +76,4 @@ git:
 	git add --all
 	git commit
 	git push origin dev
+.PHONY: all debug clean fclean re
