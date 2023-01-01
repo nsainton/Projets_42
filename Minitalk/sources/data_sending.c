@@ -6,7 +6,7 @@
 /*   By: nsainton <nsainton@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/01 01:00:28 by nsainton          #+#    #+#             */
-/*   Updated: 2023/01/01 21:16:38 by nsainton         ###   ########.fr       */
+/*   Updated: 2023/01/01 22:14:00 by nsainton         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ int	send_byte(char unsigned byte, pid_t receiver)
 		pause();
 		//ft_printf("This is the return value for bit[%d] : %d\n", i, t);
 		i ++;
-		sleep(1);
+		//sleep(1);
 	}
 	(void)t;
 	return (send_bit(byte & 1 << i, receiver));

@@ -6,13 +6,13 @@
 /*   By: nsainton <nsainton@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/31 21:24:04 by nsainton          #+#    #+#             */
-/*   Updated: 2023/01/01 21:20:06 by nsainton         ###   ########.fr       */
+/*   Updated: 2023/01/01 22:44:31 by nsainton         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minitalk.h"
 
-int	g_printed;
+int	g_printed = 0;
 
 void	build_message(int sig, siginfo_t *sigi, void *context)
 {
@@ -32,13 +32,15 @@ void	build_message(int sig, siginfo_t *sigi, void *context)
 	if (message.bytes_received == 4 && ! message.bit)
 	{
 		//ft_printf("Salut\n");
-		ft_printf("This is the length : %d\n", message.message_length);
+		ft_printf("This is the length : %u\n", message.message_length);
 		//write(1, &message.current_byte, 1);
 		g_printed = 1;
+		ft_printf("This is the value of g_printed : %d\n", g_printed);
 		//kill(sigi->si_pid, SIGUSR2);
-		sleep(1);
+		//sleep(1);
 	}
-	kill(sigi->si_pid, SIGUSR1);
+	else
+		kill(sigi->si_pid, SIGUSR1);
 }
 
 int	main(void)
@@ -49,6 +51,9 @@ int	main(void)
 	init_sigaction(&action, build_message);
 	pid = getpid();
 	ft_printf("This is my pid : %d\n", pid);
-	while (!g_printed);
+	while (!g_printed)
+	{
+		pause();
+	}
 	return (0);
 }
