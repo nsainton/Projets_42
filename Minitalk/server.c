@@ -6,7 +6,7 @@
 /*   By: nsainton <nsainton@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/31 21:24:04 by nsainton          #+#    #+#             */
-/*   Updated: 2023/01/01 22:44:31 by nsainton         ###   ########.fr       */
+/*   Updated: 2023/01/02 02:19:43 by nsainton         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,15 +19,16 @@ void	build_message(int sig, siginfo_t *sigi, void *context)
 	static t_message	message;
 
 	(void)context;
-	//ft_printf("I have been killed with signal : %d\n", sig);
-	//ft_printf("This is the bit I'm looking at : %d\n", message.bit);
+	ft_printf("I have been killed with signal : %d\n", sig);
+	ft_printf("This is the bit I'm looking at : %d\n", message.bit);
 	//print_bits(message.current_byte);
 	if (message.bytes_received < 4)
 		update_byte(sig, &message.bit, (t_byte *)&message.message_length + message.bytes_received,&message.bytes_received);
 	//update_byte(sig, &message.bit, &message.current_byte, &message.bytes_received);
-	//ft_printf("Updated\n");
+	ft_printf("Updated\n");
 	//print_bits(message.current_byte);
-	ft_printf("This is the current number of bytes received : %d\n", message.bytes_received);
+	print_bits_integer(message.message_length, "1", "0");
+	ft_printf("\nThis is the current number of bytes received : %d\n", message.bytes_received);
 	ft_printf("This is the current watched bit : %d\n", message.bit);
 	if (message.bytes_received == 4 && ! message.bit)
 	{
@@ -36,7 +37,7 @@ void	build_message(int sig, siginfo_t *sigi, void *context)
 		//write(1, &message.current_byte, 1);
 		g_printed = 1;
 		ft_printf("This is the value of g_printed : %d\n", g_printed);
-		//kill(sigi->si_pid, SIGUSR2);
+		kill(sigi->si_pid, SIGUSR2);
 		//sleep(1);
 	}
 	else

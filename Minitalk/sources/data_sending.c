@@ -6,7 +6,7 @@
 /*   By: nsainton <nsainton@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/01 01:00:28 by nsainton          #+#    #+#             */
-/*   Updated: 2023/01/01 22:14:00 by nsainton         ###   ########.fr       */
+/*   Updated: 2023/01/02 02:18:54 by nsainton         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,15 @@
 int	send_bit(char unsigned bit, pid_t receiver)
 {
 	if (bit && ! kill(receiver, SIGUSR1))
+	{
+		pause();
 		return (0);
+	}
 	else if (!bit && ! kill(receiver, SIGUSR2))
+	{
+		pause();
 		return (0);
+	}
 	return (1);
 }
 
@@ -30,7 +36,6 @@ int	send_byte(char unsigned byte, pid_t receiver)
 	while (i < 7)
 	{
 		t = send_bit(byte & 1 << i, receiver);
-		pause();
 		//ft_printf("This is the return value for bit[%d] : %d\n", i, t);
 		i ++;
 		//sleep(1);

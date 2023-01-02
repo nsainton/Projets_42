@@ -6,13 +6,13 @@
 /*   By: nsainton <nsainton@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/31 22:50:55 by nsainton          #+#    #+#             */
-/*   Updated: 2023/01/01 18:26:23 by nsainton         ###   ########.fr       */
+/*   Updated: 2023/01/02 02:11:17 by nsainton         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minitalk.h"
 
-void	print_bits(t_byte byte)
+void	print_bits(t_byte byte, char *on, char *off)
 {
 	int unsigned i;
 
@@ -20,14 +20,14 @@ void	print_bits(t_byte byte)
 	while (i < 8)
 	{
 		if (byte & 1 << i)
-			write(1, "1", 1);
+			write(1, on, ft_strlen(on));
 		else
-			write(1, "0", 1);
+			write(1, off, ft_strlen(off));
 		i ++;
 	}
 }
 
-void	print_bits_integer(int unsigned to_print)
+void	print_bits_integer(int unsigned to_print, char *on, char *off)
 {
 	int	unsigned	i;
 	int	unsigned	tmp;
@@ -38,7 +38,7 @@ void	print_bits_integer(int unsigned to_print)
 	byte = (t_byte *)&tmp;
 	while (i < 4)
 	{
-		print_bits(*(byte + i));
+		print_bits(*(byte + i), on, off);
 		i ++;
 	}
 }
