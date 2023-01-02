@@ -6,20 +6,20 @@
 /*   By: nsainton <nsainton@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/26 21:22:56 by nsainton          #+#    #+#             */
-/*   Updated: 2022/12/26 21:53:26 by nsainton         ###   ########.fr       */
+/*   Updated: 2023/01/02 06:25:09 by nsainton         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/libft.h"
 
-signed int	ft_minint(signed int a, int signed b)
+t_sint	ft_minint(t_sint a, t_sint b)
 {
 	if (a < b)
 		return (a);
 	return (b);
 }
 
-unsigned int	ft_minuint(unsigned int a, unsigned int b)
+t_uint	ft_minuint(t_uint a, t_uint b)
 {
 	if (a < b)
 		return (a);

@@ -6,7 +6,7 @@
 /*   By: nsainton <nsainton@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/01 01:00:28 by nsainton          #+#    #+#             */
-/*   Updated: 2023/01/02 05:55:52 by nsainton         ###   ########.fr       */
+/*   Updated: 2023/01/02 06:52:43 by nsainton         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,9 +36,7 @@ int	send_byte(char unsigned byte, pid_t receiver)
 	while (i < 7)
 	{
 		t = send_bit(byte & 1 << i, receiver);
-		//ft_printf("This is the return value for bit[%d] : %d\n", i, t);
 		i ++;
-		//sleep(1);
 	}
 	(void)t;
 	return (send_bit(byte & 1 << i, receiver));
@@ -82,18 +80,19 @@ void	update_byte(int sig, t_byte *bit, t_byte *byte, int unsigned *received)
 void	build_message(int sig, t_message *message)
 {
 	if (message->bytes < 4)
-		update_byte(sig, &message->bit,\
-		(t_byte *)&message->length + message->bytes,&message->bytes);
+		update_byte(sig, &message->bit, \
+		(t_byte *)&message->length + message->bytes, &message->bytes);
 	else if (message->bytes == 4 && ! message->bit && message->message == NULL)
 	{
-		message->message = ft_calloc(message->length, sizeof *message->message);
+		message->message = ft_calloc(message->length, \
+		sizeof * message->message);
 		if (message->message == NULL)
 			exit(EXIT_FAILURE);
 		update_byte(sig, &message->bit, message->message, &message->bytes);
 	}
-	else if(message->bytes < message->length + 4)
+	else if (message->bytes < message->length + 4)
 	{
-		update_byte(sig, &message->bit,\
+		update_byte(sig, &message->bit, \
 		message->message + message->bytes - 4, &message->bytes);
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: nsainton <nsainton@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/31 21:08:58 by nsainton          #+#    #+#             */
-/*   Updated: 2023/01/02 05:48:50 by nsainton         ###   ########.fr       */
+/*   Updated: 2023/01/02 06:57:09 by nsainton         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,16 +18,17 @@ void	handle_client(int sig, siginfo_t *sigi, void *context)
 	(void)context;
 	if (sig == SIGUSR1)
 		return ;
-	ft_printf("The server acknowledges the successfull recepetion of the message\n");
+	ft_printf("The server acknowledges the successful \
+	recepetion of the message\n");
 	exit(EXIT_SUCCESS);
 }
 
 int	main(int ac, char **av)
 {
-	pid_t				receiver;
-	size_t				len;
-	size_t				index;
-	t_sigaction			action;
+	pid_t		receiver;
+	size_t		len;
+	size_t		index;
+	t_sigaction	action;
 
 	init_sigaction(&action, handle_client);
 	if (ac != 3)
@@ -44,7 +45,7 @@ int	main(int ac, char **av)
 	index = 0;
 	while (index < len)
 	{
-		send_byte((t_byte)*(*(av + 2) + index), receiver);
+		send_byte((t_byte) *(*(av + 2) + index), receiver);
 		index ++;
 	}
 	return (0);

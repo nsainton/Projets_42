@@ -6,7 +6,7 @@
 /*   By: nsainton <nsainton@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/31 21:24:04 by nsainton          #+#    #+#             */
-/*   Updated: 2023/01/02 05:54:30 by nsainton         ###   ########.fr       */
+/*   Updated: 2023/01/02 06:55:18 by nsainton         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,8 @@ void	print_message(int sig, siginfo_t *sigi, void *context)
 
 int	main(void)
 {
-	pid_t 				pid;
-	t_sigaction			action;
+	pid_t		pid;
+	t_sigaction	action;
 
 	init_sigaction(&action, print_message);
 	pid = getpid();
