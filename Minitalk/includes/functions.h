@@ -3,7 +3,7 @@
 # define FUNCTIONS_H
 # include "structures.h"
 
-//Functions from data_sending.c [       4 functions]
+//Functions from data_sending.c [       5 functions]
 
 int	send_bit(char unsigned bit, pid_t receiver);
 
@@ -12,6 +12,8 @@ int	send_byte(char unsigned byte, pid_t receiver);
 int	send_integer(int unsigned quadruplet, pid_t receiver);
 
 void	update_byte(int sig, t_byte *bit, t_byte *byte, int unsigned *received);
+
+void	build_message(int sig, t_message *message);
 
 //Functions from debug.c [       2 functions]
 
