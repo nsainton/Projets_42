@@ -6,7 +6,7 @@
 /*   By: nsainton <nsainton@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/21 01:01:35 by nsainton          #+#    #+#             */
-/*   Updated: 2022/12/21 02:10:13 by nsainton         ###   ########.fr       */
+/*   Updated: 2023/01/02 04:14:54 by nsainton         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@ void	static_increment(void)
 }
 */
 
+/*
 int	main(void)
 {
 	int	x;
@@ -47,5 +48,20 @@ int	main(void)
 	x = 0;
 	printf("%d\n", (++x, x ++, 2));
 	printf("%d\n", x);
+	return (0);
+}
+*/
+
+void	func(void)
+{
+	static char *s;
+
+	if (s == NULL)
+		printf("Bonjour\n");
+}
+
+int	main(void)
+{
+	func();
 	return (0);
 }
