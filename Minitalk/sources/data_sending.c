@@ -6,7 +6,7 @@
 /*   By: nsainton <nsainton@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/01 01:00:28 by nsainton          #+#    #+#             */
-/*   Updated: 2023/01/02 06:52:43 by nsainton         ###   ########.fr       */
+/*   Updated: 2023/01/02 07:41:05 by nsainton         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,8 +58,7 @@ int	send_integer(int unsigned quadruplet, pid_t receiver)
 
 void	update_byte(int sig, t_byte *bit, t_byte *byte, int unsigned *received)
 {
-	if (! *bit)
-		*byte = 0;
+	*byte = *byte * (*bit > 0);
 	if (sig == SIGUSR1)
 	{
 		*byte |= 1 << *bit;
@@ -84,15 +83,19 @@ void	build_message(int sig, t_message *message)
 		(t_byte *)&message->length + message->bytes, &message->bytes);
 	else if (message->bytes == 4 && ! message->bit && message->message == NULL)
 	{
+		ft_printf("Size is : %u\n", message->length);
 		message->message = ft_calloc(message->length, \
 		sizeof * message->message);
 		if (message->message == NULL)
 			exit(EXIT_FAILURE);
+		ft_printf("Allocated\n");
 		update_byte(sig, &message->bit, message->message, &message->bytes);
 	}
 	else if (message->bytes < message->length + 4)
 	{
 		update_byte(sig, &message->bit, \
 		message->message + message->bytes - 4, &message->bytes);
+		if (message->bit == 0)
+			ft_printf("Byte : %d received\n", message->bytes);
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: nsainton <nsainton@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/31 21:08:58 by nsainton          #+#    #+#             */
-/*   Updated: 2023/01/02 06:57:09 by nsainton         ###   ########.fr       */
+/*   Updated: 2023/01/02 07:09:51 by nsainton         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	handle_client(int sig, siginfo_t *sigi, void *context)
 	if (sig == SIGUSR1)
 		return ;
 	ft_printf("The server acknowledges the successful \
-	recepetion of the message\n");
+	reception of the message\n");
 	exit(EXIT_SUCCESS);
 }
 
