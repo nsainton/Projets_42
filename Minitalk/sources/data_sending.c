@@ -6,7 +6,7 @@
 /*   By: nsainton <nsainton@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/01 01:00:28 by nsainton          #+#    #+#             */
-/*   Updated: 2023/01/02 02:18:54 by nsainton         ###   ########.fr       */
+/*   Updated: 2023/01/02 04:59:10 by nsainton         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,8 @@ int	send_integer(int unsigned quadruplet, pid_t receiver)
 
 void	update_byte(int sig, t_byte *bit, t_byte *byte, int unsigned *received)
 {
+	if (! *bit)
+		*byte = 0;
 	if (sig == SIGUSR1)
 	{
 		*byte |= 1 << *bit;

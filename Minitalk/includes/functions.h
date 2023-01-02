@@ -19,8 +19,10 @@ void	print_bits(t_byte byte, char *on, char *off);
 
 void	print_bits_integer(int unsigned to_print, char *on, char *off);
 
-//Functions from init_sigaction.c [       1 functions]
+//Functions from init.c [       2 functions]
 
 void	init_sigaction(t_sigaction *action, t_action handler);
+
+void	init_message(t_message *message);
 
 #endif
