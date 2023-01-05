@@ -6,7 +6,7 @@
 /*   By: nsainton <nsainton@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/31 21:24:04 by nsainton          #+#    #+#             */
-/*   Updated: 2023/01/02 20:11:14 by nsainton         ###   ########.fr       */
+/*   Updated: 2023/01/04 01:21:36 by nsainton         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ void	print_message(int sig, siginfo_t *sigi, void *context)
 	build_message(sig, &message);
 	if (message.bytes == message.length + 4)
 	{
+		sleep(1);
 		write(1, message.message, message.length);
 		init_message(&message);
 		g_printed = 1;

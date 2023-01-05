@@ -6,7 +6,7 @@
 /*   By: nsainton <nsainton@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/01 01:00:28 by nsainton          #+#    #+#             */
-/*   Updated: 2023/01/02 07:41:05 by nsainton         ###   ########.fr       */
+/*   Updated: 2023/01/05 17:49:36 by nsainton         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,6 +96,9 @@ void	build_message(int sig, t_message *message)
 		update_byte(sig, &message->bit, \
 		message->message + message->bytes - 4, &message->bytes);
 		if (message->bit == 0)
+		{
 			ft_printf("Byte : %d received\n", message->bytes);
+			print_tmessage(2, message);
+		}
 	}
 }
