@@ -6,7 +6,7 @@
 /*   By: nsainton <nsainton@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/01 07:34:17 by nsainton          #+#    #+#             */
-/*   Updated: 2023/01/04 01:12:39 by nsainton         ###   ########.fr       */
+/*   Updated: 2023/01/06 21:08:12 by nsainton         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 void	init_sigaction(t_sigaction *action, t_action handler)
 {
+	ft_bzero(action, sizeof *action);
 	action->sa_sigaction = handler;
 	action->sa_flags = SA_SIGINFO;
 	sigemptyset(&action->sa_mask);

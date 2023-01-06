@@ -6,7 +6,7 @@
 /*   By: nsainton <nsainton@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/31 21:24:04 by nsainton          #+#    #+#             */
-/*   Updated: 2023/01/04 01:21:36 by nsainton         ###   ########.fr       */
+/*   Updated: 2023/01/06 20:44:56 by nsainton         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,9 +27,14 @@ void	print_message(int sig, siginfo_t *sigi, void *context)
 		write(1, message.message, message.length);
 		init_message(&message);
 		g_printed = 1;
+		ft_dprintf(2, "Sending back SIGUSR2\n");
 		kill(sigi->si_pid, SIGUSR2);
 	}
-	kill(sigi->si_pid, SIGUSR1);
+	else
+	{
+		ft_dprintf(2, "Sending back SIGUSR1\n");
+		kill(sigi->si_pid, SIGUSR1);
+	}
 }
 
 int	main(void)
