@@ -6,7 +6,7 @@
 #    By: nsainton <nsainton@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/31 22:53:20 by nsainton          #+#    #+#              #
-#    Updated: 2023/01/02 06:02:54 by nsainton         ###   ########.fr        #
+#    Updated: 2023/01/07 04:30:30 by nsainton         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -69,7 +69,7 @@ $(OBJS_DIR):
 
 debug:
 	$(MAKE) debug -C $(LIBFT_DIR)
-	$(MAKE) GG=-g3 OPT=-O0
+	$(MAKE) GG="-g3 -fsanitize=undefined" OPT=-O0
 
 clean:
 	$(MAKE) clean -C $(LIBFT_DIR)

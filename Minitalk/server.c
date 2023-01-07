@@ -6,7 +6,7 @@
 /*   By: nsainton <nsainton@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/31 21:24:04 by nsainton          #+#    #+#             */
-/*   Updated: 2023/01/07 02:02:44 by nsainton         ###   ########.fr       */
+/*   Updated: 2023/01/07 02:31:15 by nsainton         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,10 +21,14 @@ void	print_message(int sig, siginfo_t *sigi, void *context)
 	(void)context;
 	usleep(10);
 	build_message(sig, &message);
+	/*
+	print_bits_integer(message.length, "1", "0");
+	write(2, "\n", 1);
 	if (message.bytes == 4)
 	{
 		ft_printf("Length : %u\n", message.length);
 	}
+	*/
 	if (message.bytes > 4 && message.bytes == message.length + 4)
 	{
 		sleep(1);

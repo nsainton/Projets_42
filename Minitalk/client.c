@@ -6,7 +6,7 @@
 /*   By: nsainton <nsainton@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/31 21:08:58 by nsainton          #+#    #+#             */
-/*   Updated: 2023/01/07 02:00:37 by nsainton         ###   ########.fr       */
+/*   Updated: 2023/01/07 03:26:14 by nsainton         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,6 @@ int	main(int ac, char **av)
 {
 	pid_t		receiver;
 	size_t		len;
-//	size_t		index;
 	t_sigaction	action;
 
 	init_sigaction(&action, handle_client);
@@ -49,13 +48,8 @@ int	main(int ac, char **av)
 		ft_printf("Error\n");
 		exit(EXIT_FAILURE);
 	}
-	/*
-	index = 0;
-	while (index < len)
-	{
-		send_byte((t_byte) *(*(av + 2) + index), receiver);
-		index ++;
-	}
-	*/
+	ft_dprintf(2, "This is the len : %u\n", len);
+	print_bits_integer(len, "1", "0");
+	send_string((t_byte *)*(av + 2), len, receiver);
 	return (0);
 }

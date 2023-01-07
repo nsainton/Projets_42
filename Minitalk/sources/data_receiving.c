@@ -6,7 +6,7 @@
 /*   By: nsainton <nsainton@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/07 01:57:16 by nsainton          #+#    #+#             */
-/*   Updated: 2023/01/07 01:58:28 by nsainton         ###   ########.fr       */
+/*   Updated: 2023/01/07 03:06:00 by nsainton         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,19 @@ void	update_byte(int sig, t_byte *bit, t_byte *byte, int unsigned *received)
 
 	u_bit = *bit;
 	u_byte = *byte;
+	ft_dprintf(2, "Bit[%u] of byte[%u]\n", u_bit, *received - 4);
 	if (sig == SIGUSR1)
+	{
+		ft_dprintf(2, "SIGUSR1 received \n");
 		u_byte |= 1 << u_bit;
+	}
 	else if (sig == SIGUSR2)
+	{
+		ft_dprintf(2, "SIGUSR2 received \n");
 		u_byte &= (-1u ^ 1 << u_bit);
+	}
+	ft_dprintf(2, "After update :\n");
+	ft_dprintf(2, "As an integer : %u | as a character : %c\n", u_byte, u_byte);
 	u_bit ++;
 	if (u_bit == 8)
 	{
@@ -41,9 +50,15 @@ void	update_length(int sig, t_byte *bit, t_uint *length, t_uint *received)
 	u_bit = *bit;
 	len =  *length;
 	if (sig == SIGUSR1)
+	{
+		ft_dprintf(2, "SIGUSR1 received\n");
 		len |= 1 << u_bit;
+	}
 	else if (sig == SIGUSR2)
+	{
+		ft_dprintf(2, "SIGUSR2 received\n");
 		len &= (-1 ^ 1 << u_bit);
+	}
 	u_bit ++;
 	if (u_bit == 32)
 	{
@@ -84,6 +99,10 @@ void	build_message(int sig, t_message *message)
 		{
 			ft_printf("Byte : %d received\n", message->bytes);
 			print_tmessage(2, message);
+			ft_dprintf(2, "This is the value of the character[%u] in the message\n", message->bytes - 4);
+			ft_dprintf(2, "As an integer : %u | And as a character : %c\n", *(message->message + message->bytes - 5), *(message->message + message->bytes - 5));
+			print_bits(*(message->message + message->bytes - 5), "1", "0");
+			write(2, "\n", 1);
 		}
 	}
 }
