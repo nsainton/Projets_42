@@ -6,7 +6,7 @@
 /*   By: nsainton <nsainton@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/31 21:24:04 by nsainton          #+#    #+#             */
-/*   Updated: 2023/01/08 02:52:46 by nsainton         ###   ########.fr       */
+/*   Updated: 2023/01/08 03:14:37 by nsainton         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@ t_sint	g_bit = 0;
 void	handle_server(int sig, siginfo_t *sigi, void *context)
 {
 	(void) context;
+	usleep(10);
 	if (sig == SIGUSR1)
 		g_bit = sigi->si_pid;
 	else if (sig == SIGUSR2)
