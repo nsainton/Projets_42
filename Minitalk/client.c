@@ -6,7 +6,7 @@
 /*   By: nsainton <nsainton@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/31 21:08:58 by nsainton          #+#    #+#             */
-/*   Updated: 2023/01/08 03:14:58 by nsainton         ###   ########.fr       */
+/*   Updated: 2023/01/08 03:25:25 by nsainton         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	handle_client(int sig, siginfo_t *sigi, void *context)
 {
 	(void)sigi;
 	(void)context;
-	usleep(10);
+	usleep(100);
 	if (sig == SIGUSR1)
 	{
 		ft_dprintf(2, "SIGUSR1 received\n");
