@@ -1,30 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   structures.h                                       :+:      :+:    :+:   */
+/*   debug.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nsainton <nsainton@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/01 01:11:00 by nsainton          #+#    #+#             */
-/*   Updated: 2023/01/08 02:26:31 by nsainton         ###   ########.fr       */
+/*   Created: 2023/01/05 17:42:30 by nsainton          #+#    #+#             */
+/*   Updated: 2023/01/05 17:48:00 by nsainton         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef STRUCTURES_H
-# define STRUCTURES_H
-# include "librairies.h"
-# include "typedefs.h"
+#ifndef DEBUG_H
+# define DEBUG_H
+# include "structures.h"
+void	print_bits(t_byte byte, char *on, char *off);
 
-typedef struct s_byte_count
-{
-	t_uint	bytes;
-	t_byte	bit;
-}				t_byte_count;
+void	print_bits_integer(int unsigned to_print, char *on, char *off);
 
-typedef struct s_message
-{
-	t_byte_count	byte;
-	t_byte			*message;
-	t_uint			length;
-}				t_message;
+void	print_tmessage(int fd, t_message *message);
+
 #endif

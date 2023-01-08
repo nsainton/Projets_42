@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: nsainton <nsainton@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/08 03:05:51 by nsainton          #+#    #+#             */
-/*   Updated: 2023/01/08 03:06:01 by nsainton         ###   ########.fr       */
+/*   Created: 2023/01/07 03:27:04 by nsainton          #+#    #+#             */
+/*   Updated: 2023/01/07 03:27:07 by nsainton         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,11 +16,11 @@
 
 //Functions from data_receiving.c [       3 functions]
 
-void	update_message(t_message *msg, t_sint signal);
+void	update_byte(int sig, t_byte *bit, t_byte *byte, int unsigned *received);
 
-void	update_length(t_uint *length, t_byte_count *count, t_sint signal);
+void	update_length(int sig, t_byte *bit, t_uint *length, t_uint *received);
 
-void	update_byte(t_byte *message, t_byte_count *count, t_sint signal);
+void	build_message(int sig, t_message *message);
 
 //Functions from data_sending.c [       4 functions]
 

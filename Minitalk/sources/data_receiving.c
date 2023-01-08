@@ -5,104 +5,69 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: nsainton <nsainton@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/07 01:57:16 by nsainton          #+#    #+#             */
-/*   Updated: 2023/01/07 03:06:00 by nsainton         ###   ########.fr       */
+/*   Created: 2023/01/08 02:16:11 by nsainton          #+#    #+#             */
+/*   Updated: 2023/01/08 03:05:37 by nsainton         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minitalk.h"
 
-void	update_byte(int sig, t_byte *bit, t_byte *byte, int unsigned *received)
+void	update_message(t_message *msg, t_sint signal)
 {
-	t_byte	u_bit;
-	t_byte	u_byte;
-
-	u_bit = *bit;
-	u_byte = *byte;
-	ft_dprintf(2, "Bit[%u] of byte[%u]\n", u_bit, *received - 4);
-	if (sig == SIGUSR1)
+	if (! msg->byte.bytes)
+		update_length(&msg->length, &msg->byte, signal);
+	else if (msg->byte.bytes == 1 && ! msg->byte.bit && msg->message == NULL)
 	{
-		ft_dprintf(2, "SIGUSR1 received \n");
-		u_byte |= 1 << u_bit;
+		msg->message = ft_calloc(msg->length, sizeof *msg->message);
+		if (msg->message == NULL)
+		{
+			ft_printf("Error while allocating\n");
+			exit(EXIT_FAILURE);
+		}
+		update_byte(msg->message, &msg->byte, signal);
 	}
-	else if (sig == SIGUSR2)
-	{
-		ft_dprintf(2, "SIGUSR2 received \n");
-		u_byte &= (-1u ^ 1 << u_bit);
-	}
-	ft_dprintf(2, "After update :\n");
-	ft_dprintf(2, "As an integer : %u | as a character : %c\n", u_byte, u_byte);
-	u_bit ++;
-	if (u_bit == 8)
-	{
-		*received += 1;
-		u_bit = 0;
-	}
-	*bit = u_bit;
-	*byte = u_byte;
+	else if (msg->byte.bytes < msg->length + 1)
+		update_byte(msg->message, &msg->byte, signal);
 }
 
-void	update_length(int sig, t_byte *bit, t_uint *length, t_uint *received)
+void	update_length(t_uint *length, t_byte_count *count, t_sint signal)
 {
 	t_uint	len;
-	t_byte	u_bit;
+	t_byte	bit;
 
-	u_bit = *bit;
-	len =  *length;
-	if (sig == SIGUSR1)
+	len = *length;
+	bit = count->bit;
+	if (signal > 0)
+		len |= 1 << bit;
+	else
+		len &= (-1 ^ 1 << bit);
+	bit ++;
+	if (bit == 32)
 	{
-		ft_dprintf(2, "SIGUSR1 received\n");
-		len |= 1 << u_bit;
+		bit = 0;
+		count->bytes = 1;
 	}
-	else if (sig == SIGUSR2)
-	{
-		ft_dprintf(2, "SIGUSR2 received\n");
-		len &= (-1 ^ 1 << u_bit);
-	}
-	u_bit ++;
-	if (u_bit == 32)
-	{
-		*received = 4;
-		u_bit = 0;
-	}
-	*bit = u_bit;
 	*length = len;
+	count->bit = bit;
 }
 
-void	build_message(int sig, t_message *message)
+void	update_byte(t_byte *message, t_byte_count *count, t_sint signal)
 {
-	if (message->bytes < 4)
+	t_byte	bit;
+	t_byte	msg;
+
+	msg = *(message + count->bytes - 1);
+	bit = count->bit;
+	if (signal > 0)
+		msg |= 1 << bit;
+	else
+		msg &= (-1 ^ 1 << bit);
+	*(message + count->bytes - 1) = msg;
+	bit ++;
+	if (bit == 8)
 	{
-		ft_dprintf(2, "Updating...\n");
-		update_length(sig, &message->bit, &message->length, &message->bytes);
+		bit = 0;
+		count->bytes += 1;
 	}
-	else if (message->bytes == 4 && ! message->bit && message->message == NULL)
-	{
-		ft_printf("Size is : %u\n", message->length);
-		message->message = ft_calloc(message->length, \
-		sizeof * message->message);
-		if (message->message == NULL)
-			exit(EXIT_FAILURE);
-		ft_bzero(message->message, message->length);
-		ft_printf("Allocated\n");
-		ft_dprintf(2, "Updating after allocation\n");
-		update_byte(sig, &message->bit, message->message, &message->bytes);
-		//ft_dprintf(2, "Message after allocation");
-		//print_tmessage(2, message);
-	}
-	else if (message->bytes < message->length + 4)
-	{
-		ft_dprintf(2, "Updating message\n");
-		update_byte(sig, &message->bit, \
-		message->message + message->bytes - 4, &message->bytes);
-		if (message->bit == 0)
-		{
-			ft_printf("Byte : %d received\n", message->bytes);
-			print_tmessage(2, message);
-			ft_dprintf(2, "This is the value of the character[%u] in the message\n", message->bytes - 4);
-			ft_dprintf(2, "As an integer : %u | And as a character : %c\n", *(message->message + message->bytes - 5), *(message->message + message->bytes - 5));
-			print_bits(*(message->message + message->bytes - 5), "1", "0");
-			write(2, "\n", 1);
-		}
-	}
+	count->bit = bit;
 }

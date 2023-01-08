@@ -1,30 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   structures.h                                       :+:      :+:    :+:   */
+/*   typedefs.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nsainton <nsainton@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/01 01:11:00 by nsainton          #+#    #+#             */
-/*   Updated: 2023/01/08 02:26:31 by nsainton         ###   ########.fr       */
+/*   Created: 2023/01/01 01:10:09 by nsainton          #+#    #+#             */
+/*   Updated: 2023/01/01 18:08:26 by nsainton         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef STRUCTURES_H
-# define STRUCTURES_H
+#ifndef TYPEDEFS_H
+# define TYPEDEFS_H
 # include "librairies.h"
-# include "typedefs.h"
 
-typedef struct s_byte_count
-{
-	t_uint	bytes;
-	t_byte	bit;
-}				t_byte_count;
+extern int					g_printed;
 
-typedef struct s_message
-{
-	t_byte_count	byte;
-	t_byte			*message;
-	t_uint			length;
-}				t_message;
+extern int					g_sent;
+
+typedef char unsigned		t_byte;
+
+typedef void				(*t_action)(int, siginfo_t *, void *);
+
+typedef struct sigaction	t_sigaction;
 #endif

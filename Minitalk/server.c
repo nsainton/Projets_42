@@ -6,58 +6,52 @@
 /*   By: nsainton <nsainton@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/31 21:24:04 by nsainton          #+#    #+#             */
-/*   Updated: 2023/01/07 02:31:15 by nsainton         ###   ########.fr       */
+/*   Updated: 2023/01/08 02:52:46 by nsainton         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minitalk.h"
 
-int	g_printed = 0;
+t_sint	g_bit = 0;
 
-void	print_message(int sig, siginfo_t *sigi, void *context)
+void	handle_server(int sig, siginfo_t *sigi, void *context)
 {
-	static t_message	message;
+	(void) context;
+	if (sig == SIGUSR1)
+		g_bit = sigi->si_pid;
+	else if (sig == SIGUSR2)
+		g_bit = -1 * sigi->si_pid;
+	else
+		g_bit = 0;
+}
 
-	(void)context;
-	usleep(10);
-	build_message(sig, &message);
-	/*
-	print_bits_integer(message.length, "1", "0");
-	write(2, "\n", 1);
-	if (message.bytes == 4)
-	{
-		ft_printf("Length : %u\n", message.length);
-	}
-	*/
-	if (message.bytes > 4 && message.bytes == message.length + 4)
-	{
-		sleep(1);
-		write(1, message.message, message.length);
-		init_message(&message);
-		g_printed = 1;
-		ft_dprintf(2, "Sending back SIGUSR2\n");
-		kill(sigi->si_pid, SIGUSR2);
-	}
+void	send_signal(t_message *message, t_sint pid)
+{
+	if (message->byte.bytes < message->length + 1)
+		kill(pid, SIGUSR1);
 	else
 	{
-		ft_dprintf(2, "Sending back SIGUSR1\n");
-		kill(sigi->si_pid, SIGUSR1);
+		write(1, message->message, message->length);
+		init_message(message);
+		g_bit = 0;
+		kill(pid, SIGUSR2);
 	}
 }
 
 int	main(void)
 {
-	pid_t		pid;
+	pid_t		self_pid;
 	t_sigaction	action;
+	t_message	message;
 
-	init_sigaction(&action, print_message);
-	pid = getpid();
-	ft_printf("This is my pid : %d\n", pid);
+	self_pid = getpid();
+	ft_bzero(&message, sizeof message);
+	init_sigaction(&action, handle_server);
+	ft_printf("This is my pid : %d\n", self_pid);
 	while (1)
 	{
-		while (!g_printed)
-			pause();
-		g_printed = 0;
+		pause();
+		update_message(&message, g_bit);
+		send_signal(&message, g_bit);
 	}
-	return (0);
 }

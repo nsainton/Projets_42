@@ -6,7 +6,7 @@
 /*   By: nsainton <nsainton@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/01 01:11:00 by nsainton          #+#    #+#             */
-/*   Updated: 2023/01/08 02:26:31 by nsainton         ###   ########.fr       */
+/*   Updated: 2023/01/07 03:14:24 by nsainton         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,16 +15,11 @@
 # include "librairies.h"
 # include "typedefs.h"
 
-typedef struct s_byte_count
+typedef struct s_message
 {
 	t_uint	bytes;
 	t_byte	bit;
-}				t_byte_count;
-
-typedef struct s_message
-{
-	t_byte_count	byte;
-	t_byte			*message;
-	t_uint			length;
+	t_byte	*message;
+	t_uint	length;
 }				t_message;
 #endif
