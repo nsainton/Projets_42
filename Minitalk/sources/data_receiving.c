@@ -6,7 +6,7 @@
 /*   By: nsainton <nsainton@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/08 02:16:11 by nsainton          #+#    #+#             */
-/*   Updated: 2023/01/08 03:05:37 by nsainton         ###   ########.fr       */
+/*   Updated: 2023/01/08 03:30:04 by nsainton         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	update_message(t_message *msg, t_sint signal)
 		update_length(&msg->length, &msg->byte, signal);
 	else if (msg->byte.bytes == 1 && ! msg->byte.bit && msg->message == NULL)
 	{
-		msg->message = ft_calloc(msg->length, sizeof *msg->message);
+		msg->message = ft_calloc(msg->length, sizeof * msg->message);
 		if (msg->message == NULL)
 		{
 			ft_printf("Error while allocating\n");

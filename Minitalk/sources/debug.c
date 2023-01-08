@@ -6,7 +6,7 @@
 /*   By: nsainton <nsainton@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/31 22:50:55 by nsainton          #+#    #+#             */
-/*   Updated: 2023/01/08 03:05:09 by nsainton         ###   ########.fr       */
+/*   Updated: 2023/01/08 03:29:20 by nsainton         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	print_bits(t_byte byte, char *on, char *off)
 {
-	int unsigned i;
+	t_uint	i;
 
 	i = 0;
 	while (i < 8)
@@ -29,7 +29,7 @@ void	print_bits(t_byte byte, char *on, char *off)
 
 void	print_bits_integer(int unsigned integer, char *on, char *off)
 {
-	int	unsigned	i;
+	t_uint	i;
 
 	i = 0;
 	while (i < 32)
@@ -45,7 +45,8 @@ void	print_bits_integer(int unsigned integer, char *on, char *off)
 void	print_tmessage(int fd, t_message *message)
 {
 	ft_dprintf(fd, "This is the structure : t_message\n");
-	ft_dprintf(fd, "This is the current number of bytes received : %u\n", message->byte.bytes);
+	ft_dprintf(fd, "This is the current number of bytes received : %u\n", \
+	message->byte.bytes);
 	ft_dprintf(fd, "This is the  current watched bit : %d\n", message->byte.bit);
 	ft_dprintf(fd, "This is the current value of len : %u\n", message->length);
 	if (message->byte.bytes < 2)
