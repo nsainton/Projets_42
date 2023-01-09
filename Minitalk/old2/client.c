@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: nsainton <nsainton@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/08 23:42:36 by nsainton          #+#    #+#             */
-/*   Updated: 2023/01/09 03:28:59 by nsainton         ###   ########.fr       */
+/*   Created: 2022/12/31 21:08:58 by nsainton          #+#    #+#             */
+/*   Updated: 2023/01/08 03:25:25 by nsainton         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,42 +14,43 @@
 
 void	handle_client(int sig, siginfo_t *sigi, void *context)
 {
+	(void)sigi;
 	(void)context;
-	usleep(10);
-	if (sig == RECEIVED)
+	usleep(100);
+	if (sig == SIGUSR1)
 	{
-		ft_printf("The server acknowledges the successful reception of the message\n");
-		exit(EXIT_SUCCESS);
+		ft_dprintf(2, "SIGUSR1 received\n");
+		return ;
 	}
-	if (send_string(sigi->si_pid, NULL))
+	else if (sig == SIGUSR2)
 	{
-		ft_printf("Error !\n");
-		exit(EXIT_FAILURE);
+		ft_dprintf(2, "SIGUSR2 received\n");
+		ft_printf("The server acknowledges the successful \
+	reception of the message\n");
+		exit(EXIT_SUCCESS);
 	}
 }
 
 int	main(int ac, char **av)
 {
+	pid_t		receiver;
+	size_t		len;
 	t_sigaction	action;
-	pid_t		server_pid;
 
-	if (ac != 3)
-	{
-		ft_printf("Incorrect number of arguments\n");
-		return (1);
-	}
-	server_pid = (pid_t)ft_atoi(av[1]);
-	if (server_pid < 1)
-	{
-		ft_printf("Server PID must me positive\n");
-		return (2);
-	}
-	ft_dprintf(2, "This is the len : %u\n", ft_strlen(*(av + 2)));
-	if (**(av + 2) == 0)
-		return (0);
 	init_sigaction(&action, handle_client);
-	send_string(server_pid, (t_byte *)*(av + 2));
-	while (1)
-		pause();
+	if (ac != 3)
+		return (ft_printf("Bonjour\n"));
+	receiver = ft_atoi(*(av + 1));
+	if (receiver < 1)
+		return (ft_printf("Error\n"));
+	len = ft_strlen(*(av + 2));
+	if (send_integer(len, receiver))
+	{
+		ft_printf("Error\n");
+		exit(EXIT_FAILURE);
+	}
+	ft_dprintf(2, "This is the len : %u\n", len);
+	print_bits_integer(len, "1", "0");
+	send_string((t_byte *)*(av + 2), len, receiver);
 	return (0);
 }

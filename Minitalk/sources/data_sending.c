@@ -5,62 +5,52 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: nsainton <nsainton@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/08 02:53:19 by nsainton          #+#    #+#             */
-/*   Updated: 2023/01/08 03:03:52 by nsainton         ###   ########.fr       */
+/*   Created: 2023/01/09 03:17:08 by nsainton          #+#    #+#             */
+/*   Updated: 2023/01/09 03:18:30 by nsainton         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minitalk.h"
 
-int	send_bit(t_uint bit, pid_t receiver)
+int	send_string(pid_t receiver, t_byte *str)
 {
-	if (kill(receiver, 0))
-		return (1);
-	if (bit)
-		kill(receiver, SIGUSR1);
+	static t_string_infos	to_send;
+
+	if (str)
+		to_send.str = str;
+	if (! to_send.len)
+		to_send.len = ft_strlen((char *)str);
+	if (! to_send.len_sent)
+		return (send_len(receiver, to_send.len, &to_send.len_sent));
+	if (*to_send.str)
+	{
+		if (to_send.bit == 8)
+		{
+			to_send.bit = 0;
+			to_send.str ++;
+		}
+		if (*to_send.str & 1 << to_send.bit++)
+			return (kill(receiver, ON));
+		else
+			return (kill(receiver, OFF));
+	}
 	else
-		kill(receiver, SIGUSR2);
-	pause();
-	return (0);
+		return (kill(receiver, ON));
 }
 
-int	send_byte(t_byte byte, pid_t receiver)
+int	send_len(pid_t receiver, size_t len, t_byte *sent)
 {
-	t_uint	index;
+	static int	bit;
+	int			killed;
 
-	index = 0;
-	while (index < 7)
+	if (len & 1 << bit++)
+		killed = kill(receiver, ON);
+	else
+		killed = kill(receiver, OFF);
+	if (bit == 32)
 	{
-		send_bit(byte & 1 << index, receiver);
-		index ++;
+		*sent = 1;
+		bit = 0;
 	}
-	return (send_bit(byte & 1 << index, receiver));
-}
-
-int	send_integer(t_uint integer, pid_t receiver)
-{
-	t_uint	index;
-
-	index = 0;
-	while (index < 31)
-	{
-		send_bit(integer & 1 << index, receiver);
-		index ++;
-	}
-	return (send_bit(integer & 1 << index, receiver));
-}
-
-int	send_string(t_byte *str, size_t len, pid_t receiver)
-{
-	size_t	index;
-
-	index = 0;
-	if (! len)
-		return (0);
-	while (index < len - 1)
-	{
-		send_byte(*(str + index), receiver);
-		index ++;
-	}
-	return (send_byte(*(str + index), receiver));
+	return (killed);
 }

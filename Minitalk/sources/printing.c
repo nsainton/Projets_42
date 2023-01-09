@@ -1,37 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   server.c                                           :+:      :+:    :+:   */
+/*   printing.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nsainton <nsainton@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/09 02:03:53 by nsainton          #+#    #+#             */
-/*   Updated: 2023/01/09 03:28:50 by nsainton         ###   ########.fr       */
+/*   Created: 2023/01/09 03:00:25 by nsainton          #+#    #+#             */
+/*   Updated: 2023/01/09 03:01:29 by nsainton         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minitalk.h"
 
-void	handle_server(int sig, siginfo_t *sigi, void *context)
-{	
-	(void)context;
-	usleep(10);
-	if (update_message(sigi->si_pid, sig))
-	{
-		update_message(0, 0);
-		ft_printf("Error\n");
-	}
-}
-
-int	main(void)
+void	print_message(t_message *message)
 {
-	t_sigaction action;
-	pid_t		pid;
-
-	init_sigaction(&action, handle_server);
-	pid = getpid();
-	ft_printf("This is my pid : %d\n", pid);
-	while (1)
-		pause();
-	return (0);
+	if (message->str)
+		write(1, message->str, message->len);
+	init_message(message);
 }

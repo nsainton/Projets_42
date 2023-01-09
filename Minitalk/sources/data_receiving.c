@@ -3,71 +3,91 @@
 /*                                                        :::      ::::::::   */
 /*   data_receiving.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nsainton <nsainton@student.42.fr>          +#+  +:+       +#+        */
+/*   By: nsaintON <nsaintON@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/08 02:16:11 by nsainton          #+#    #+#             */
-/*   Updated: 2023/01/08 03:30:04 by nsainton         ###   ########.fr       */
+/*   Created: 2023/01/09 03:03:53 by nsaintON          #+#    #+#             */
+/*   Updated: 2023/01/09 03:26:12 by nsainton         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minitalk.h"
 
-void	update_message(t_message *msg, t_sint signal)
+int	update_message(pid_t receiver, int signal)
 {
-	if (! msg->byte.bytes)
-		update_length(&msg->length, &msg->byte, signal);
-	else if (msg->byte.bytes == 1 && ! msg->byte.bit && msg->message == NULL)
+	static t_message	message;
+
+	if (! signal)
 	{
-		msg->message = ft_calloc(msg->length, sizeof * msg->message);
-		if (msg->message == NULL)
-		{
-			ft_printf("Error while allocating\n");
-			exit(EXIT_FAILURE);
-		}
-		update_byte(msg->message, &msg->byte, signal);
+		init_message(&message);
+		update_length(0, NULL, NULL, 0);
+		update_byte(NULL, NULL, 0);
+		return (0);
 	}
-	else if (msg->byte.bytes < msg->length + 1)
-		update_byte(msg->message, &msg->byte, signal);
+	if (! message.length)
+		return (update_length(receiver, &message.len, \
+		&message.length, signal));
+	return (update_string(receiver, &message, signal));
 }
 
-void	update_length(t_uint *length, t_byte_count *count, t_sint signal)
+int	update_length(pid_t receiver, size_t *length, t_byte *received, int signal)
 {
-	t_uint	len;
-	t_byte	bit;
+	static int	bit;
 
-	len = *length;
-	bit = count->bit;
-	if (signal > 0)
-		len |= 1 << bit;
+	if (! signal)
+	{
+		bit = 0;
+		return (0);
+	}
+	if (signal == ON)
+		*length |= 1 << bit++;
 	else
-		len &= (-1 ^ 1 << bit);
-	bit ++;
+		*length &= (-1 ^ 1 << bit++);
 	if (bit == 32)
 	{
+		*received = 1;
 		bit = 0;
-		count->bytes = 1;
 	}
-	*length = len;
-	count->bit = bit;
+	return (kill(receiver, CONTINUE));
 }
 
-void	update_byte(t_byte *message, t_byte_count *count, t_sint signal)
+int	update_string(pid_t receiver, t_message *message, int signal)
 {
-	t_byte	bit;
-	t_byte	msg;
+	if(message->str == NULL)
+	{
+		message->str = ft_calloc(message->len, sizeof * message->str);
+		ft_dprintf(2, "This is the len : %u\n", message->len);
+		if (message->str == NULL)
+		{
+			ft_printf("error while allocating\n");
+			kill(receiver, CONTINUE);
+			exit(EXIT_FAILURE);
+		}
+		update_byte(message->str, &message->bytes, signal);
+	}
+	else if (message->bytes < message->len)
+		update_byte(message->str, &message->bytes, signal);
+	if (message->bytes == message->len)
+	{
+		print_message(message);
+		update_message(0, 0);
+		return (kill(receiver, RECEIVED));
+	}
+	return (kill(receiver, CONTINUE));
+}
 
-	msg = *(message + count->bytes - 1);
-	bit = count->bit;
-	if (signal > 0)
-		msg |= 1 << bit;
-	else
-		msg &= (-1 ^ 1 << bit);
-	*(message + count->bytes - 1) = msg;
-	bit ++;
+void	update_byte(t_byte *msg, t_uint *bytes, int signal)
+{
+	static int	bit;
+
+	if (! signal)
+		bit = 0;
+	else if (signal == ON)
+		*(msg + *bytes) |= 1 << bit ++;
+	else if (signal == OFF)
+		*(msg + *bytes) &= (-1 ^ 1 << bit ++);
 	if (bit == 8)
 	{
+		*bytes += 1;
 		bit = 0;
-		count->bytes += 1;
 	}
-	count->bit = bit;
 }
