@@ -6,7 +6,7 @@
 /*   By: nsainton <nsainton@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/01 07:34:17 by nsainton          #+#    #+#             */
-/*   Updated: 2023/01/09 03:26:53 by nsainton         ###   ########.fr       */
+/*   Updated: 2023/01/09 03:36:25 by nsainton         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ void	init_message(t_message *message)
 	if (message->str != NULL)
 	{
 		ft_dprintf(2, "This is the message : \n");
-		write(2, message->str, message->length);
+		write(2, message->str, message->len);
 		free(message->str);
 		ft_dprintf(2, "\nMessage freed\n", 1);
 	}

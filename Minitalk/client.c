@@ -6,7 +6,7 @@
 /*   By: nsainton <nsainton@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/08 23:42:36 by nsainton          #+#    #+#             */
-/*   Updated: 2023/01/09 03:28:59 by nsainton         ###   ########.fr       */
+/*   Updated: 2023/01/09 03:59:12 by nsainton         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 void	handle_client(int sig, siginfo_t *sigi, void *context)
 {
 	(void)context;
-	usleep(10);
+	usleep(50);
 	if (sig == RECEIVED)
 	{
 		ft_printf("The server acknowledges the successful reception of the message\n");

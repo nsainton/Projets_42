@@ -6,7 +6,7 @@
 /*   By: nsainton <nsainton@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/09 02:03:53 by nsainton          #+#    #+#             */
-/*   Updated: 2023/01/09 03:28:50 by nsainton         ###   ########.fr       */
+/*   Updated: 2023/01/09 03:59:23 by nsainton         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 void	handle_server(int sig, siginfo_t *sigi, void *context)
 {	
 	(void)context;
-	usleep(10);
+	usleep(50);
 	if (update_message(sigi->si_pid, sig))
 	{
 		update_message(0, 0);
