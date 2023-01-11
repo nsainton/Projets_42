@@ -6,7 +6,7 @@
 #    By: nsainton <nsainton@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/31 22:53:20 by nsainton          #+#    #+#              #
-#    Updated: 2023/01/12 00:36:50 by nsainton         ###   ########.fr        #
+#    Updated: 2023/01/12 00:43:34 by nsainton         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,7 @@ SERVER= server
 
 SRCS_DIR = sources
 
-SRCS_NAMES = $(notdir $(wildcard $(SRCS_DIR)/*))
+SRCS_NAMES = data_sending.c data_receiving.c init.c printing.c
 
 SRCS= $(addprefix $(SRCS_DIR)/, $(SRCS_NAMES))
 
