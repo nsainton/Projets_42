@@ -6,7 +6,7 @@
 /*   By: nsainton <nsainton@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/09 02:03:53 by nsainton          #+#    #+#             */
-/*   Updated: 2023/01/09 03:59:23 by nsainton         ###   ########.fr       */
+/*   Updated: 2023/01/11 23:46:16 by nsainton         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void	handle_server(int sig, siginfo_t *sigi, void *context)
 
 int	main(void)
 {
-	t_sigaction action;
+	t_sigaction	action;
 	pid_t		pid;
 
 	init_sigaction(&action, handle_server);
