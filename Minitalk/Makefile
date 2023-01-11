@@ -6,7 +6,7 @@
 #    By: nsainton <nsainton@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/31 22:53:20 by nsainton          #+#    #+#              #
-#    Updated: 2023/01/08 03:12:02 by nsainton         ###   ########.fr        #
+#    Updated: 2023/01/12 00:36:50 by nsainton         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -38,7 +38,7 @@ LIBFT_PATH= $(addprefix $(LIBFT_DIR)/, $(LIBFT_NAME))
 
 LIBFT= lft
 
-CC= gcc
+CC= cc
 
 CFLAGS= -Wall -Wextra -Werror
 
@@ -59,7 +59,7 @@ $(CLIENT): $(CLIENT).c $(OBJS) $(LIBFT_PATH)
 	$(CC) $(CFLAGS) $(OPT) $(GG) $(CLIENT).c $(OBJS) -$(LIBFT) -o $(CLIENT)
 
 $(OBJS_DIR)/%.o: $(SRCS_DIR)/%.c $(wildcard $(INCLUDES)/*) $(LIBFT_PATH) | $(OBJS_DIR)
-	$(CC) $(CFLAGS) $(OPT) $(GG) -c $< -$(LIBFT) -o $@
+	$(CC) $(CFLAGS) $(OPT) $(GG) -c $< -o $@
 
 $(LIBFT_PATH): | $(LIBFT_DIR)
 	$(MAKE) -C $(LIBFT_DIR)

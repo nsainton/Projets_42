@@ -6,7 +6,7 @@
 /*   By: nsaintON <nsaintON@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/09 03:03:53 by nsaintON          #+#    #+#             */
-/*   Updated: 2023/01/11 23:45:47 by nsainton         ###   ########.fr       */
+/*   Updated: 2023/01/12 00:41:49 by nsainton         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,6 @@ int	update_string(pid_t receiver, t_message *message, int signal)
 	if (message->str == NULL)
 	{
 		message->str = ft_calloc(message->len, sizeof * message->str);
-		ft_dprintf(2, "This is the len : %u\n", message->len);
 		if (message->str == NULL)
 		{
 			ft_printf("error while allocating\n");

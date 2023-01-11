@@ -6,7 +6,7 @@
 /*   By: nsainton <nsainton@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/01 07:34:17 by nsainton          #+#    #+#             */
-/*   Updated: 2023/01/09 03:36:25 by nsainton         ###   ########.fr       */
+/*   Updated: 2023/01/12 00:41:33 by nsainton         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,11 +27,6 @@ void	init_sigaction(t_sigaction *action, t_action handler)
 void	init_message(t_message *message)
 {
 	if (message->str != NULL)
-	{
-		ft_dprintf(2, "This is the message : \n");
-		write(2, message->str, message->len);
 		free(message->str);
-		ft_dprintf(2, "\nMessage freed\n", 1);
-	}
 	ft_bzero(message, sizeof * message);
 }
