@@ -6,7 +6,7 @@
 /*   By: nsainton <nsainton@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/27 04:47:28 by nsainton          #+#    #+#             */
-/*   Updated: 2023/01/04 01:10:09 by nsainton         ###   ########.fr       */
+/*   Updated: 2023/01/12 03:11:31 by nsainton         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	tstr_init(t_str *str)
 {
 	if (str->str != NULL)
 		free(str->str);
-	ft_bzero(str, sizeof *str);
+	ft_bzero(str, sizeof * str);
 }
 
 int	tstr_initstr(t_str *tstr, char *str, size_t buffsize)
