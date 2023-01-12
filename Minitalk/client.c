@@ -6,7 +6,7 @@
 /*   By: nsainton <nsainton@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/08 23:42:36 by nsainton          #+#    #+#             */
-/*   Updated: 2023/01/12 00:38:16 by nsainton         ###   ########.fr       */
+/*   Updated: 2023/01/12 03:17:38 by nsainton         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,6 @@ int	main(int ac, char **av)
 		ft_printf("Server PID must me positive\n");
 		return (2);
 	}
-	ft_dprintf(2, "This is the len : %u\n", ft_strlen(*(av + 2)));
 	if (**(av + 2) == 0)
 		return (0);
 	init_sigaction(&action, handle_client);
